@@ -1,0 +1,7 @@
+D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/Debug/MeshTypes.obj
+D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/Debug/MeshReader.obj
+D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/Debug/MeshWriter.obj
+D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/Debug/MeshConverter.obj
+D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/Debug/MeshProcessor.obj
+D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/Debug/MeshHelper.obj
+D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/Debug/MeshException.obj

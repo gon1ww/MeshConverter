@@ -1,0 +1,7 @@
+D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/MinSizeRel/MeshTypes.obj
+D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/MinSizeRel/MeshReader.obj
+D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/MinSizeRel/MeshWriter.obj
+D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/MinSizeRel/MeshConverter.obj
+D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/MinSizeRel/MeshProcessor.obj
+D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/MinSizeRel/MeshHelper.obj
+D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/MinSizeRel/MeshException.obj

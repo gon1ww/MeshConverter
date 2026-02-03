@@ -1,0 +1,2163 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Windows - 10.0.22631 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: D:/Qt/Tools/mingw1310_64/bin/c++.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
+      
+      The CXX compiler identification is GNU, found in:
+        D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/3.30.5/CompilerIdCXX/a.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-gg622h"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-gg622h"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms;D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_ADDITIONAL_PACKAGES_PREFIX_PATH: ""
+      QT_CHAINLOAD_TOOLCHAIN_FILE: ""
+      QT_TOOLCHAIN_INCLUDE_FILE: ""
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+      QT_TOOLCHAIN_RELOCATABLE_PREFIX: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-gg622h'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_c8f37
+        [1/2] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -v -o CMakeFiles/cmTC_c8f37.dir/CMakeCXXCompilerABI.cpp.obj -c D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp
+        Using built-in specs.
+        COLLECT_GCC=D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe
+        Target: x86_64-w64-mingw32
+        Configured with: ../../../src/gcc-13.1.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --with-sysroot=/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64 --enable-host-shared --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --disable-libssp --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-seh-rev1, Built by MinGW-Builds project' --with-bugurl=https://github.com/niXman/mingw-builds CFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/lib -L/c/buildroot/prerequisites/x86_64-zlib-static/lib -L/c/buildroot/prerequisites/x86_64-w64-mingw32-static/lib ' LD_FOR_TARGET=/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/bin/ld.exe --with-boot-ldflags=' -Wl,--disable-dynamicbase -static-libstdc++ -static-libgcc'
+        Thread model: posix
+        Supported LTO compression algorithms: zlib
+        gcc version 13.1.0 (x86_64-posix-seh-rev1, Built by MinGW-Builds project) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c8f37.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_c8f37.dir/'
+         D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/cc1plus.exe -quiet -v -iprefix D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/ -D_REENTRANT D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_c8f37.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=core2 -march=nocona -version -o C:\\Users\\Administrator\\AppData\\Local\\Temp\\cckBg61r.s
+        GNU C++17 (x86_64-posix-seh-rev1, Built by MinGW-Builds project) version 13.1.0 (x86_64-w64-mingw32)
+        	compiled by GNU C version 13.1.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.25-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring duplicate directory "D:/Qt/Tools/mingw1310_64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"
+        ignoring duplicate directory "D:/Qt/Tools/mingw1310_64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"
+        ignoring duplicate directory "D:/Qt/Tools/mingw1310_64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"
+        ignoring duplicate directory "D:/Qt/Tools/mingw1310_64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/13.1.0/include"
+        ignoring nonexistent directory "C:/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64D:/a/_temp/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"
+        ignoring duplicate directory "D:/Qt/Tools/mingw1310_64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"
+        ignoring duplicate directory "D:/Qt/Tools/mingw1310_64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"
+        ignoring nonexistent directory "C:/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/mingw/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++
+         D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32
+         D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward
+         D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include
+         D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed
+         D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include
+        End of search list.
+        Compiler executable checksum: b3d236387f35294e2a73c51628039e05
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c8f37.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_c8f37.dir/'
+         D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_c8f37.dir/CMakeCXXCompilerABI.cpp.obj C:\\Users\\Administrator\\AppData\\Local\\Temp\\cckBg61r.s
+        GNU assembler version 2.39 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.39
+        COMPILER_PATH=D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/;D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/;D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/
+        LIBRARY_PATH=D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/;D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/;D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/;D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib/;D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/;D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c8f37.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_c8f37.dir/CMakeCXXCompilerABI.cpp.'
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe  -v -Wl,-v CMakeFiles/cmTC_c8f37.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_c8f37.exe -Wl,--out-implib,libcmTC_c8f37.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        Using built-in specs.
+        COLLECT_GCC=D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe
+        COLLECT_LTO_WRAPPER=D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe
+        Target: x86_64-w64-mingw32
+        Configured with: ../../../src/gcc-13.1.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --with-sysroot=/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64 --enable-host-shared --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --disable-libssp --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-seh-rev1, Built by MinGW-Builds project' --with-bugurl=https://github.com/niXman/mingw-builds CFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/lib -L/c/buildroot/prerequisites/x86_64-zlib-static/lib -L/c/buildroot/prerequisites/x86_64-w64-mingw32-static/lib ' LD_FOR_TARGET=/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/bin/ld.exe --with-boot-ldflags=' -Wl,--disable-dynamicbase -static-libstdc++ -static-libgcc'
+        Thread model: posix
+        Supported LTO compression algorithms: zlib
+        gcc version 13.1.0 (x86_64-posix-seh-rev1, Built by MinGW-Builds project) 
+        COMPILER_PATH=D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/;D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/;D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/
+        LIBRARY_PATH=D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/;D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/;D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/;D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib/;D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/;D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c8f37.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'cmTC_c8f37.'
+         D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/collect2.exe -plugin D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/liblto_plugin.dll -plugin-opt=D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Administrator\\AppData\\Local\\Temp\\cccPfk1v.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=C:/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64 -m i386pep -Bdynamic -o cmTC_c8f37.exe D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o -LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0 -LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc -LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib -LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib -LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../.. -v CMakeFiles/cmTC_c8f37.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_c8f37.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtend.o
+        collect2 version 13.1.0
+        D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/liblto_plugin.dll -plugin-opt=D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Administrator\\AppData\\Local\\Temp\\cccPfk1v.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=C:/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64 -m i386pep -Bdynamic -o cmTC_c8f37.exe D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o -LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0 -LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc -LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib -LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib -LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../.. -v CMakeFiles/cmTC_c8f37.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_c8f37.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtend.o
+        GNU ld (GNU Binutils) 2.39
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c8f37.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'cmTC_c8f37.'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:182 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++]
+          add: [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32]
+          add: [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward]
+          add: [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include]
+          add: [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed]
+          add: [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include]
+        end of search list found
+        collapse include dir [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++] ==> [D:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++]
+        collapse include dir [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32] ==> [D:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32]
+        collapse include dir [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward] ==> [D:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward]
+        collapse include dir [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include] ==> [D:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include]
+        collapse include dir [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed] ==> [D:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed]
+        collapse include dir [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include] ==> [D:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include]
+        implicit include dirs: [D:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++;D:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32;D:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward;D:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include;D:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed;D:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
+        ignore line: [Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-gg622h']
+        ignore line: []
+        ignore line: [Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_c8f37]
+        ignore line: [[1/2] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -v -o CMakeFiles/cmTC_c8f37.dir/CMakeCXXCompilerABI.cpp.obj -c D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe]
+        ignore line: [Target: x86_64-w64-mingw32]
+        ignore line: [Configured with: ../../../src/gcc-13.1.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --with-sysroot=/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64 --enable-host-shared --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --disable-libssp --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-seh-rev1, Built by MinGW-Builds project' --with-bugurl=https://github.com/niXman/mingw-builds CFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/lib -L/c/buildroot/prerequisites/x86_64-zlib-static/lib -L/c/buildroot/prerequisites/x86_64-w64-mingw32-static/lib ' LD_FOR_TARGET=/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/bin/ld.exe --with-boot-ldflags=' -Wl,--disable-dynamicbase -static-libstdc++ -static-libgcc']
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib]
+        ignore line: [gcc version 13.1.0 (x86_64-posix-seh-rev1  Built by MinGW-Builds project) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c8f37.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_c8f37.dir/']
+        ignore line: [ D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/cc1plus.exe -quiet -v -iprefix D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/ -D_REENTRANT D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_c8f37.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=core2 -march=nocona -version -o C:\\Users\\Administrator\\AppData\\Local\\Temp\\cckBg61r.s]
+        ignore line: [GNU C++17 (x86_64-posix-seh-rev1  Built by MinGW-Builds project) version 13.1.0 (x86_64-w64-mingw32)]
+        ignore line: [	compiled by GNU C version 13.1.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.25-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring duplicate directory "D:/Qt/Tools/mingw1310_64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++"]
+        ignore line: [ignoring duplicate directory "D:/Qt/Tools/mingw1310_64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32"]
+        ignore line: [ignoring duplicate directory "D:/Qt/Tools/mingw1310_64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward"]
+        ignore line: [ignoring duplicate directory "D:/Qt/Tools/mingw1310_64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/13.1.0/include"]
+        ignore line: [ignoring nonexistent directory "C:/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64D:/a/_temp/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../include"]
+        ignore line: [ignoring duplicate directory "D:/Qt/Tools/mingw1310_64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed"]
+        ignore line: [ignoring duplicate directory "D:/Qt/Tools/mingw1310_64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include"]
+        ignore line: [ignoring nonexistent directory "C:/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/mingw/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++]
+        ignore line: [ D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32]
+        ignore line: [ D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward]
+        ignore line: [ D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include]
+        ignore line: [ D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed]
+        ignore line: [ D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/include]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: b3d236387f35294e2a73c51628039e05]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c8f37.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_c8f37.dir/']
+        ignore line: [ D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_c8f37.dir/CMakeCXXCompilerABI.cpp.obj C:\\Users\\Administrator\\AppData\\Local\\Temp\\cckBg61r.s]
+        ignore line: [GNU assembler version 2.39 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.39]
+        ignore line: [COMPILER_PATH=D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/]
+        ignore line: [D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/]
+        ignore line: [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/]
+        ignore line: [LIBRARY_PATH=D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/]
+        ignore line: [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/]
+        ignore line: [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/]
+        ignore line: [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib/]
+        ignore line: [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/]
+        ignore line: [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c8f37.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'CMakeFiles/cmTC_c8f37.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [[2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe  -v -Wl -v CMakeFiles/cmTC_c8f37.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_c8f37.exe -Wl --out-implib libcmTC_c8f37.dll.a -Wl --major-image-version 0 --minor-image-version 0   && cd ."]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe]
+        ignore line: [COLLECT_LTO_WRAPPER=D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe]
+        ignore line: [Target: x86_64-w64-mingw32]
+        ignore line: [Configured with: ../../../src/gcc-13.1.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --with-sysroot=/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64 --enable-host-shared --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --disable-libssp --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-seh-rev1, Built by MinGW-Builds project' --with-bugurl=https://github.com/niXman/mingw-builds CFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/lib -L/c/buildroot/prerequisites/x86_64-zlib-static/lib -L/c/buildroot/prerequisites/x86_64-w64-mingw32-static/lib ' LD_FOR_TARGET=/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/bin/ld.exe --with-boot-ldflags=' -Wl,--disable-dynamicbase -static-libstdc++ -static-libgcc']
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib]
+        ignore line: [gcc version 13.1.0 (x86_64-posix-seh-rev1  Built by MinGW-Builds project) ]
+        ignore line: [COMPILER_PATH=D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/]
+        ignore line: [D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/]
+        ignore line: [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/bin/]
+        ignore line: [LIBRARY_PATH=D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/]
+        ignore line: [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/]
+        ignore line: [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/]
+        ignore line: [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib/]
+        ignore line: [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/]
+        ignore line: [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c8f37.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona' '-dumpdir' 'cmTC_c8f37.']
+        link line: [ D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/collect2.exe -plugin D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/liblto_plugin.dll -plugin-opt=D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Administrator\\AppData\\Local\\Temp\\cccPfk1v.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=C:/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64 -m i386pep -Bdynamic -o cmTC_c8f37.exe D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o -LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0 -LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc -LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib -LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib -LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../.. -v CMakeFiles/cmTC_c8f37.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_c8f37.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtend.o]
+          arg [D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/collect2.exe] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/liblto_plugin.dll] ==> ignore
+          arg [-plugin-opt=D:/Qt/Tools/mingw1310_64/bin/../libexec/gcc/x86_64-w64-mingw32/13.1.0/lto-wrapper.exe] ==> ignore
+          arg [-plugin-opt=-fresolution=C:\\Users\\Administrator\\AppData\\Local\\Temp\\cccPfk1v.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmoldname] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingwex] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmsvcrt] ==> ignore
+          arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lpthread] ==> ignore
+          arg [-plugin-opt=-pass-through=-ladvapi32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lshell32] ==> ignore
+          arg [-plugin-opt=-pass-through=-luser32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+          arg [-plugin-opt=-pass-through=-liconv] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmoldname] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmingwex] ==> ignore
+          arg [-plugin-opt=-pass-through=-lmsvcrt] ==> ignore
+          arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+          arg [--sysroot=C:/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64] ==> ignore
+          arg [-m] ==> ignore
+          arg [i386pep] ==> ignore
+          arg [-Bdynamic] ==> search dynamic
+          arg [-o] ==> ignore
+          arg [cmTC_c8f37.exe] ==> ignore
+          arg [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> obj [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o]
+          arg [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o] ==> obj [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o]
+          arg [-LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0] ==> dir [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0]
+          arg [-LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc] ==> dir [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc]
+          arg [-LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib] ==> dir [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib]
+          arg [-LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib] ==> dir [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib]
+          arg [-LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib] ==> dir [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib]
+          arg [-LD:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../..] ==> dir [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../..]
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_c8f37.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
+          arg [--out-implib] ==> ignore
+          arg [libcmTC_c8f37.dll.a] ==> ignore
+          arg [--major-image-version] ==> ignore
+          arg [0] ==> ignore
+          arg [--minor-image-version] ==> ignore
+          arg [0] ==> ignore
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lmingw32] ==> lib [mingw32]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lmoldname] ==> lib [moldname]
+          arg [-lmingwex] ==> lib [mingwex]
+          arg [-lmsvcrt] ==> lib [msvcrt]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-lpthread] ==> lib [pthread]
+          arg [-ladvapi32] ==> lib [advapi32]
+          arg [-lshell32] ==> lib [shell32]
+          arg [-luser32] ==> lib [user32]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-liconv] ==> lib [iconv]
+          arg [-lmingw32] ==> lib [mingw32]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lmoldname] ==> lib [moldname]
+          arg [-lmingwex] ==> lib [mingwex]
+          arg [-lmsvcrt] ==> lib [msvcrt]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtend.o] ==> obj [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtend.o]
+        linker tool for 'CXX': ../src/gcc-13.1.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --with-sysroot=/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64 --enable-host-shared --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --disable-libssp --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-seh-rev1, Built by MinGW-Builds project' --with-bugurl=https:/github.com/niXman/mingw-builds CFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/lib -L/c/buildroot/prerequisites/x86_64-zlib-static/lib -L/c/buildroot/prerequisites/x86_64-w64-mingw32-static/lib ' LD_FOR_TARGET=/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/bin/ld.exe
+        remove lib [msvcrt]
+        remove lib [msvcrt]
+        collapse obj [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> [D:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/lib/crt2.o]
+        collapse obj [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o] ==> [D:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o]
+        collapse obj [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/crtend.o] ==> [D:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/crtend.o]
+        collapse library dir [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0] ==> [D:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0]
+        collapse library dir [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc] ==> [D:/Qt/Tools/mingw1310_64/lib/gcc]
+        collapse library dir [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib/../lib] ==> [D:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/lib]
+        collapse library dir [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../lib] ==> [D:/Qt/Tools/mingw1310_64/lib]
+        collapse library dir [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../../../x86_64-w64-mingw32/lib] ==> [D:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/lib]
+        collapse library dir [D:/Qt/Tools/mingw1310_64/bin/../lib/gcc/x86_64-w64-mingw32/13.1.0/../../..] ==> [D:/Qt/Tools/mingw1310_64/lib]
+        implicit libs: [stdc++;mingw32;gcc_s;gcc;moldname;mingwex;kernel32;pthread;advapi32;shell32;user32;kernel32;iconv;mingw32;gcc_s;gcc;moldname;mingwex;kernel32]
+        implicit objs: [D:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/lib/crt2.o;D:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/crtbegin.o;D:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/crtend.o]
+        implicit dirs: [D:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0;D:/Qt/Tools/mingw1310_64/lib/gcc;D:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/lib;D:/Qt/Tools/mingw1310_64/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "../src/gcc-13.1.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --with-sysroot=/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64 --enable-host-shared --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --disable-libssp --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-seh-rev1, Built by MinGW-Builds project' --with-bugurl=https:/github.com/niXman/mingw-builds CFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/lib -L/c/buildroot/prerequisites/x86_64-zlib-static/lib -L/c/buildroot/prerequisites/x86_64-w64-mingw32-static/lib ' LD_FOR_TARGET=/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/bin/ld.exe" "-v"
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "../src/gcc-13.1.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --with-sysroot=/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64 --enable-host-shared --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --disable-libssp --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-seh-rev1, Built by MinGW-Builds project' --with-bugurl=https:/github.com/niXman/mingw-builds CFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/lib -L/c/buildroot/prerequisites/x86_64-zlib-static/lib -L/c/buildroot/prerequisites/x86_64-w64-mingw32-static/lib ' LD_FOR_TARGET=/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/bin/ld.exe" "-V"
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "../src/gcc-13.1.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --with-sysroot=/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64 --enable-host-shared --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --disable-libssp --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-seh-rev1, Built by MinGW-Builds project' --with-bugurl=https:/github.com/niXman/mingw-builds CFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/opt/lib -L/c/buildroot/prerequisites/x86_64-zlib-static/lib -L/c/buildroot/prerequisites/x86_64-w64-mingw32-static/lib ' LD_FOR_TARGET=/c/buildroot/x86_64-1310-posix-seh-msvcrt-rt_v11-rev1/mingw64/bin/ld.exe" "--version"
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FindThreads.cmake:99 (CHECK_CXX_SOURCE_COMPILES)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "D:/code/lib/VTK-9.5.2-install/lib/cmake/vtk-9.5/VTK-vtk-module-find-packages.cmake:121 (find_package)"
+      - "D:/code/lib/VTK-9.5.2-install/lib/cmake/vtk-9.5/vtk-config.cmake:171 (include)"
+      - "CMakeLists.txt:24 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-n680i1"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-n680i1"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/code/lib/VTK-9.5.2-install/lib/cmake/vtk-9.5/patches/99;D:/code/lib/VTK-9.5.2-install/lib/cmake/vtk-9.5;D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms;D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_ADDITIONAL_PACKAGES_PREFIX_PATH: ""
+      QT_CHAINLOAD_TOOLCHAIN_FILE: ""
+      QT_TOOLCHAIN_INCLUDE_FILE: ""
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+      QT_TOOLCHAIN_RELOCATABLE_PREFIX: ""
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-n680i1'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_57de6
+        [1/2] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe -DCMAKE_HAVE_LIBC_PTHREAD  -std=c++17 -o CMakeFiles/cmTC_57de6.dir/src.cxx.obj -c D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-n680i1/src.cxx
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   CMakeFiles/cmTC_57de6.dir/src.cxx.obj -o cmTC_57de6.exe -Wl,--out-implib,libcmTC_57de6.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.44.35222 版
+      版权所有(C) Microsoft Corporation。保留所有权利。
+      
+      CMakeCCompilerId.c
+      Microsoft (R) Incremental Linker Version 14.44.35222.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      /out:CMakeCCompilerId.exe 
+      CMakeCCompilerId.obj 
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
+      
+      The C compiler identification is MSVC, found in:
+        D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/3.30.5/CompilerIdC/CMakeCCompilerId.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:1243 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    message: |
+      Detecting C compiler /showIncludes prefix:
+        main.c
+        注意: 包含文件:  D:\\code\\Project\\QtProject\\ConverterTrae\\build\\CMakeFiles\\ShowIncludes\\foo.h
+        
+      Found prefix "注意: 包含文件:  "
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-2gvom8"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-2gvom8"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-2gvom8'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_40cf9
+        [1/2] "C:\\PROGRA~1\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_40cf9.dir\\CMakeCCompilerABI.c.obj /FdCMakeFiles\\cmTC_40cf9.dir\\ /FS -c D:\\Qt\\Tools\\CMake_64\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_40cf9.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_40cf9.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_40cf9.exe /implib:cmTC_40cf9.lib /pdb:cmTC_40cf9.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: [code=4294967295] cmTC_40cf9.exe 
+        C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_40cf9.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_40cf9.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_40cf9.exe /implib:cmTC_40cf9.lib /pdb:cmTC_40cf9.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        RC Pass 1: command "D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe /fo CMakeFiles\\cmTC_40cf9.dir/manifest.res CMakeFiles\\cmTC_40cf9.dir/manifest.rc" failed (exit code 1) with the following output:
+        Usage: D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe [option(s)] [input-file] [output-file]
+         The options are:
+          -i --input=<file>            Name input file
+          -o --output=<file>           Name output file
+          -J --input-format=<format>   Specify input format
+          -O --output-format=<format>  Specify output format
+          -F --target=<target>         Specify COFF target
+             --preprocessor=<program>  Program to use to preprocess rc file
+             --preprocessor-arg=<arg>  Additional preprocessor argument
+          -I --include-dir=<dir>       Include directory when preprocessing rc file
+          -D --define <sym>[=<val>]    Define SYM when preprocessing rc file
+          -U --undefine <sym>          Undefine SYM when preprocessing rc file
+          -v --verbose                 Verbose - tells you what it's doing
+          -c --codepage=<codepage>     Specify default codepage
+          -l --language=<val>          Set language when reading rc file
+             --use-temp-file           Use a temporary file instead of popen to read
+                                       the preprocessor output
+             --no-use-temp-file        Use popen (default)
+          -r                           Ignored for compatibility with rc
+          @<file>                      Read options from <file>
+          -h --help                    Print this help message
+          -V --version                 Print version information
+        FORMAT is one of rc, res, or coff, and is deduced from the file name
+        extension if not specified.  A single file name is an input file.
+        No input-file is stdin, default rc.  No output-file is stdout, default rc.
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe: supported targets: pe-x86-64 pei-x86-64 pe-bigobj-x86-64 elf64-x86-64 pe-i386 pei-i386 elf32-i386 elf32-iamcu elf64-little elf64-big elf32-little elf32-big srec symbolsrec verilog tekhex binary ihex plugin
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: -1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:56 (try_compile)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    checks:
+      - "Check for working C compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-73uaji"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-73uaji"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "CMAKE_C_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-73uaji'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_d5f8a
+        [1/2] "C:\\PROGRA~1\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_d5f8a.dir\\testCCompiler.c.obj /FdCMakeFiles\\cmTC_d5f8a.dir\\ /FS -c D:\\code\\Project\\QtProject\\ConverterTrae\\build\\CMakeFiles\\CMakeScratch\\TryCompile-73uaji\\testCCompiler.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_d5f8a.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_d5f8a.dir\\testCCompiler.c.obj  /out:cmTC_d5f8a.exe /implib:cmTC_d5f8a.lib /pdb:cmTC_d5f8a.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: [code=4294967295] cmTC_d5f8a.exe 
+        C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_d5f8a.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_d5f8a.dir\\testCCompiler.c.obj  /out:cmTC_d5f8a.exe /implib:cmTC_d5f8a.lib /pdb:cmTC_d5f8a.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        RC Pass 1: command "D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe /fo CMakeFiles\\cmTC_d5f8a.dir/manifest.res CMakeFiles\\cmTC_d5f8a.dir/manifest.rc" failed (exit code 1) with the following output:
+        Usage: D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe [option(s)] [input-file] [output-file]
+         The options are:
+          -i --input=<file>            Name input file
+          -o --output=<file>           Name output file
+          -J --input-format=<format>   Specify input format
+          -O --output-format=<format>  Specify output format
+          -F --target=<target>         Specify COFF target
+             --preprocessor=<program>  Program to use to preprocess rc file
+             --preprocessor-arg=<arg>  Additional preprocessor argument
+          -I --include-dir=<dir>       Include directory when preprocessing rc file
+          -D --define <sym>[=<val>]    Define SYM when preprocessing rc file
+          -U --undefine <sym>          Undefine SYM when preprocessing rc file
+          -v --verbose                 Verbose - tells you what it's doing
+          -c --codepage=<codepage>     Specify default codepage
+          -l --language=<val>          Set language when reading rc file
+             --use-temp-file           Use a temporary file instead of popen to read
+                                       the preprocessor output
+             --no-use-temp-file        Use popen (default)
+          -r                           Ignored for compatibility with rc
+          @<file>                      Read options from <file>
+          -h --help                    Print this help message
+          -V --version                 Print version information
+        FORMAT is one of rc, res, or coff, and is deduced from the file name
+        extension if not specified.  A single file name is an input file.
+        No input-file is stdin, default rc.  No output-file is stdout, default rc.
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe: supported targets: pe-x86-64 pei-x86-64 pe-bigobj-x86-64 elf64-x86-64 pe-i386 pei-i386 elf32-i386 elf32-iamcu elf64-little elf64-big elf32-little elf32-big srec symbolsrec verilog tekhex binary ihex plugin
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: -1
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe 
+      Build flags: /DWIN32;/D_WINDOWS
+      Id flags:  
+      
+      The output was:
+      2
+      用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.44.35222 版
+      版权所有(C) Microsoft Corporation。保留所有权利。
+      
+      CMakeCCompilerId.c
+      Microsoft (R) Incremental Linker Version 14.44.35222.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      /out:CMakeCCompilerId.exe 
+      CMakeCCompilerId.obj 
+      LINK : fatal error LNK1104: 无法打开文件“LIBCMT.lib”
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe 
+      Build flags: /DWIN32;/D_WINDOWS
+      Id flags: -c 
+      
+      The output was:
+      0
+      用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.44.35222 版
+      版权所有(C) Microsoft Corporation。保留所有权利。
+      
+      CMakeCCompilerId.c
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
+      
+      The C compiler identification is MSVC, found in:
+        D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/3.30.5/CompilerIdC/CMakeCCompilerId.obj
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:1243 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    message: |
+      Detecting C compiler /showIncludes prefix:
+        main.c
+        注意: 包含文件:  D:\\code\\Project\\QtProject\\ConverterTrae\\build\\CMakeFiles\\ShowIncludes\\foo.h
+        
+      Found prefix "注意: 包含文件:  "
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-zo9bda"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-zo9bda"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-zo9bda'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_7e827
+        [1/2] "C:\\PROGRA~1\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_7e827.dir\\CMakeCCompilerABI.c.obj /FdCMakeFiles\\cmTC_7e827.dir\\ /FS -c D:\\Qt\\Tools\\CMake_64\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_7e827.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_7e827.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_7e827.exe /implib:cmTC_7e827.lib /pdb:cmTC_7e827.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: [code=4294967295] cmTC_7e827.exe 
+        C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_7e827.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_7e827.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_7e827.exe /implib:cmTC_7e827.lib /pdb:cmTC_7e827.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        RC Pass 1: command "D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe /fo CMakeFiles\\cmTC_7e827.dir/manifest.res CMakeFiles\\cmTC_7e827.dir/manifest.rc" failed (exit code 1) with the following output:
+        Usage: D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe [option(s)] [input-file] [output-file]
+         The options are:
+          -i --input=<file>            Name input file
+          -o --output=<file>           Name output file
+          -J --input-format=<format>   Specify input format
+          -O --output-format=<format>  Specify output format
+          -F --target=<target>         Specify COFF target
+             --preprocessor=<program>  Program to use to preprocess rc file
+             --preprocessor-arg=<arg>  Additional preprocessor argument
+          -I --include-dir=<dir>       Include directory when preprocessing rc file
+          -D --define <sym>[=<val>]    Define SYM when preprocessing rc file
+          -U --undefine <sym>          Undefine SYM when preprocessing rc file
+          -v --verbose                 Verbose - tells you what it's doing
+          -c --codepage=<codepage>     Specify default codepage
+          -l --language=<val>          Set language when reading rc file
+             --use-temp-file           Use a temporary file instead of popen to read
+                                       the preprocessor output
+             --no-use-temp-file        Use popen (default)
+          -r                           Ignored for compatibility with rc
+          @<file>                      Read options from <file>
+          -h --help                    Print this help message
+          -V --version                 Print version information
+        FORMAT is one of rc, res, or coff, and is deduced from the file name
+        extension if not specified.  A single file name is an input file.
+        No input-file is stdin, default rc.  No output-file is stdout, default rc.
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe: supported targets: pe-x86-64 pei-x86-64 pe-bigobj-x86-64 elf64-x86-64 pe-i386 pei-i386 elf32-i386 elf32-iamcu elf64-little elf64-big elf32-little elf32-big srec symbolsrec verilog tekhex binary ihex plugin
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: -1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:56 (try_compile)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    checks:
+      - "Check for working C compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-knrdu9"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-knrdu9"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "CMAKE_C_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-knrdu9'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_b7461
+        [1/2] "C:\\PROGRA~1\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_b7461.dir\\testCCompiler.c.obj /FdCMakeFiles\\cmTC_b7461.dir\\ /FS -c D:\\code\\Project\\QtProject\\ConverterTrae\\build\\CMakeFiles\\CMakeScratch\\TryCompile-knrdu9\\testCCompiler.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_b7461.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_b7461.dir\\testCCompiler.c.obj  /out:cmTC_b7461.exe /implib:cmTC_b7461.lib /pdb:cmTC_b7461.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: [code=4294967295] cmTC_b7461.exe 
+        C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_b7461.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_b7461.dir\\testCCompiler.c.obj  /out:cmTC_b7461.exe /implib:cmTC_b7461.lib /pdb:cmTC_b7461.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        RC Pass 1: command "D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe /fo CMakeFiles\\cmTC_b7461.dir/manifest.res CMakeFiles\\cmTC_b7461.dir/manifest.rc" failed (exit code 1) with the following output:
+        Usage: D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe [option(s)] [input-file] [output-file]
+         The options are:
+          -i --input=<file>            Name input file
+          -o --output=<file>           Name output file
+          -J --input-format=<format>   Specify input format
+          -O --output-format=<format>  Specify output format
+          -F --target=<target>         Specify COFF target
+             --preprocessor=<program>  Program to use to preprocess rc file
+             --preprocessor-arg=<arg>  Additional preprocessor argument
+          -I --include-dir=<dir>       Include directory when preprocessing rc file
+          -D --define <sym>[=<val>]    Define SYM when preprocessing rc file
+          -U --undefine <sym>          Undefine SYM when preprocessing rc file
+          -v --verbose                 Verbose - tells you what it's doing
+          -c --codepage=<codepage>     Specify default codepage
+          -l --language=<val>          Set language when reading rc file
+             --use-temp-file           Use a temporary file instead of popen to read
+                                       the preprocessor output
+             --no-use-temp-file        Use popen (default)
+          -r                           Ignored for compatibility with rc
+          @<file>                      Read options from <file>
+          -h --help                    Print this help message
+          -V --version                 Print version information
+        FORMAT is one of rc, res, or coff, and is deduced from the file name
+        extension if not specified.  A single file name is an input file.
+        No input-file is stdin, default rc.  No output-file is stdout, default rc.
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe: supported targets: pe-x86-64 pei-x86-64 pe-bigobj-x86-64 elf64-x86-64 pe-i386 pei-i386 elf32-i386 elf32-iamcu elf64-little elf64-big elf32-little elf32-big srec symbolsrec verilog tekhex binary ihex plugin
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: -1
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe 
+      Build flags: /DWIN32;/D_WINDOWS
+      Id flags:  
+      
+      The output was:
+      0
+      用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.44.35222 版
+      版权所有(C) Microsoft Corporation。保留所有权利。
+      
+      CMakeCCompilerId.c
+      Microsoft (R) Incremental Linker Version 14.44.35222.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      /out:CMakeCCompilerId.exe 
+      CMakeCCompilerId.obj 
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
+      
+      The C compiler identification is MSVC, found in:
+        D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/3.30.5/CompilerIdC/CMakeCCompilerId.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:1243 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    message: |
+      Detecting C compiler /showIncludes prefix:
+        main.c
+        注意: 包含文件:  D:\\code\\Project\\QtProject\\ConverterTrae\\build\\CMakeFiles\\ShowIncludes\\foo.h
+        
+      Found prefix "注意: 包含文件:  "
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-r2imdj"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-r2imdj"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-r2imdj'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_b0f02
+        [1/2] "C:\\PROGRA~1\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_b0f02.dir\\CMakeCCompilerABI.c.obj /FdCMakeFiles\\cmTC_b0f02.dir\\ /FS -c D:\\Qt\\Tools\\CMake_64\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_b0f02.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_b0f02.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_b0f02.exe /implib:cmTC_b0f02.lib /pdb:cmTC_b0f02.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: [code=4294967295] cmTC_b0f02.exe 
+        C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_b0f02.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_b0f02.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_b0f02.exe /implib:cmTC_b0f02.lib /pdb:cmTC_b0f02.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        RC Pass 1: command "D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe /fo CMakeFiles\\cmTC_b0f02.dir/manifest.res CMakeFiles\\cmTC_b0f02.dir/manifest.rc" failed (exit code 1) with the following output:
+        Usage: D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe [option(s)] [input-file] [output-file]
+         The options are:
+          -i --input=<file>            Name input file
+          -o --output=<file>           Name output file
+          -J --input-format=<format>   Specify input format
+          -O --output-format=<format>  Specify output format
+          -F --target=<target>         Specify COFF target
+             --preprocessor=<program>  Program to use to preprocess rc file
+             --preprocessor-arg=<arg>  Additional preprocessor argument
+          -I --include-dir=<dir>       Include directory when preprocessing rc file
+          -D --define <sym>[=<val>]    Define SYM when preprocessing rc file
+          -U --undefine <sym>          Undefine SYM when preprocessing rc file
+          -v --verbose                 Verbose - tells you what it's doing
+          -c --codepage=<codepage>     Specify default codepage
+          -l --language=<val>          Set language when reading rc file
+             --use-temp-file           Use a temporary file instead of popen to read
+                                       the preprocessor output
+             --no-use-temp-file        Use popen (default)
+          -r                           Ignored for compatibility with rc
+          @<file>                      Read options from <file>
+          -h --help                    Print this help message
+          -V --version                 Print version information
+        FORMAT is one of rc, res, or coff, and is deduced from the file name
+        extension if not specified.  A single file name is an input file.
+        No input-file is stdin, default rc.  No output-file is stdout, default rc.
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe: supported targets: pe-x86-64 pei-x86-64 pe-bigobj-x86-64 elf64-x86-64 pe-i386 pei-i386 elf32-i386 elf32-iamcu elf64-little elf64-big elf32-little elf32-big srec symbolsrec verilog tekhex binary ihex plugin
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: -1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:56 (try_compile)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    checks:
+      - "Check for working C compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-ds14w3"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-ds14w3"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "CMAKE_C_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-ds14w3'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_5aa56
+        [1/2] "C:\\PROGRA~1\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_5aa56.dir\\testCCompiler.c.obj /FdCMakeFiles\\cmTC_5aa56.dir\\ /FS -c D:\\code\\Project\\QtProject\\ConverterTrae\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ds14w3\\testCCompiler.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_5aa56.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_5aa56.dir\\testCCompiler.c.obj  /out:cmTC_5aa56.exe /implib:cmTC_5aa56.lib /pdb:cmTC_5aa56.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: [code=4294967295] cmTC_5aa56.exe 
+        C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_5aa56.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_5aa56.dir\\testCCompiler.c.obj  /out:cmTC_5aa56.exe /implib:cmTC_5aa56.lib /pdb:cmTC_5aa56.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        RC Pass 1: command "D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe /fo CMakeFiles\\cmTC_5aa56.dir/manifest.res CMakeFiles\\cmTC_5aa56.dir/manifest.rc" failed (exit code 1) with the following output:
+        Usage: D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe [option(s)] [input-file] [output-file]
+         The options are:
+          -i --input=<file>            Name input file
+          -o --output=<file>           Name output file
+          -J --input-format=<format>   Specify input format
+          -O --output-format=<format>  Specify output format
+          -F --target=<target>         Specify COFF target
+             --preprocessor=<program>  Program to use to preprocess rc file
+             --preprocessor-arg=<arg>  Additional preprocessor argument
+          -I --include-dir=<dir>       Include directory when preprocessing rc file
+          -D --define <sym>[=<val>]    Define SYM when preprocessing rc file
+          -U --undefine <sym>          Undefine SYM when preprocessing rc file
+          -v --verbose                 Verbose - tells you what it's doing
+          -c --codepage=<codepage>     Specify default codepage
+          -l --language=<val>          Set language when reading rc file
+             --use-temp-file           Use a temporary file instead of popen to read
+                                       the preprocessor output
+             --no-use-temp-file        Use popen (default)
+          -r                           Ignored for compatibility with rc
+          @<file>                      Read options from <file>
+          -h --help                    Print this help message
+          -V --version                 Print version information
+        FORMAT is one of rc, res, or coff, and is deduced from the file name
+        extension if not specified.  A single file name is an input file.
+        No input-file is stdin, default rc.  No output-file is stdout, default rc.
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe: supported targets: pe-x86-64 pei-x86-64 pe-bigobj-x86-64 elf64-x86-64 pe-i386 pei-i386 elf32-i386 elf32-iamcu elf64-little elf64-big elf32-little elf32-big srec symbolsrec verilog tekhex binary ihex plugin
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: -1
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe 
+      Build flags: /DWIN32;/D_WINDOWS
+      Id flags:  
+      
+      The output was:
+      0
+      用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.44.35222 版
+      版权所有(C) Microsoft Corporation。保留所有权利。
+      
+      CMakeCCompilerId.c
+      Microsoft (R) Incremental Linker Version 14.44.35222.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      /out:CMakeCCompilerId.exe 
+      CMakeCCompilerId.obj 
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
+      
+      The C compiler identification is MSVC, found in:
+        D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/3.30.5/CompilerIdC/CMakeCCompilerId.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:1243 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    message: |
+      Detecting C compiler /showIncludes prefix:
+        main.c
+        注意: 包含文件:  D:\\code\\Project\\QtProject\\ConverterTrae\\build\\CMakeFiles\\ShowIncludes\\foo.h
+        
+      Found prefix "注意: 包含文件:  "
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-x27nw8"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-x27nw8"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-x27nw8'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_d8fe6
+        [1/2] "C:\\PROGRA~1\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_d8fe6.dir\\CMakeCCompilerABI.c.obj /FdCMakeFiles\\cmTC_d8fe6.dir\\ /FS -c D:\\Qt\\Tools\\CMake_64\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_d8fe6.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_d8fe6.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_d8fe6.exe /implib:cmTC_d8fe6.lib /pdb:cmTC_d8fe6.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: [code=4294967295] cmTC_d8fe6.exe 
+        C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_d8fe6.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_d8fe6.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_d8fe6.exe /implib:cmTC_d8fe6.lib /pdb:cmTC_d8fe6.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        RC Pass 1: command "D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe /fo CMakeFiles\\cmTC_d8fe6.dir/manifest.res CMakeFiles\\cmTC_d8fe6.dir/manifest.rc" failed (exit code 1) with the following output:
+        Usage: D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe [option(s)] [input-file] [output-file]
+         The options are:
+          -i --input=<file>            Name input file
+          -o --output=<file>           Name output file
+          -J --input-format=<format>   Specify input format
+          -O --output-format=<format>  Specify output format
+          -F --target=<target>         Specify COFF target
+             --preprocessor=<program>  Program to use to preprocess rc file
+             --preprocessor-arg=<arg>  Additional preprocessor argument
+          -I --include-dir=<dir>       Include directory when preprocessing rc file
+          -D --define <sym>[=<val>]    Define SYM when preprocessing rc file
+          -U --undefine <sym>          Undefine SYM when preprocessing rc file
+          -v --verbose                 Verbose - tells you what it's doing
+          -c --codepage=<codepage>     Specify default codepage
+          -l --language=<val>          Set language when reading rc file
+             --use-temp-file           Use a temporary file instead of popen to read
+                                       the preprocessor output
+             --no-use-temp-file        Use popen (default)
+          -r                           Ignored for compatibility with rc
+          @<file>                      Read options from <file>
+          -h --help                    Print this help message
+          -V --version                 Print version information
+        FORMAT is one of rc, res, or coff, and is deduced from the file name
+        extension if not specified.  A single file name is an input file.
+        No input-file is stdin, default rc.  No output-file is stdout, default rc.
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe: supported targets: pe-x86-64 pei-x86-64 pe-bigobj-x86-64 elf64-x86-64 pe-i386 pei-i386 elf32-i386 elf32-iamcu elf64-little elf64-big elf32-little elf32-big srec symbolsrec verilog tekhex binary ihex plugin
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: -1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:56 (try_compile)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    checks:
+      - "Check for working C compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-nt83fi"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-nt83fi"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "CMAKE_C_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-nt83fi'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_60d16
+        [1/2] "C:\\PROGRA~1\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_60d16.dir\\testCCompiler.c.obj /FdCMakeFiles\\cmTC_60d16.dir\\ /FS -c D:\\code\\Project\\QtProject\\ConverterTrae\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nt83fi\\testCCompiler.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_60d16.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_60d16.dir\\testCCompiler.c.obj  /out:cmTC_60d16.exe /implib:cmTC_60d16.lib /pdb:cmTC_60d16.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: [code=4294967295] cmTC_60d16.exe 
+        C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_60d16.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_60d16.dir\\testCCompiler.c.obj  /out:cmTC_60d16.exe /implib:cmTC_60d16.lib /pdb:cmTC_60d16.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        RC Pass 1: command "D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe /fo CMakeFiles\\cmTC_60d16.dir/manifest.res CMakeFiles\\cmTC_60d16.dir/manifest.rc" failed (exit code 1) with the following output:
+        Usage: D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe [option(s)] [input-file] [output-file]
+         The options are:
+          -i --input=<file>            Name input file
+          -o --output=<file>           Name output file
+          -J --input-format=<format>   Specify input format
+          -O --output-format=<format>  Specify output format
+          -F --target=<target>         Specify COFF target
+             --preprocessor=<program>  Program to use to preprocess rc file
+             --preprocessor-arg=<arg>  Additional preprocessor argument
+          -I --include-dir=<dir>       Include directory when preprocessing rc file
+          -D --define <sym>[=<val>]    Define SYM when preprocessing rc file
+          -U --undefine <sym>          Undefine SYM when preprocessing rc file
+          -v --verbose                 Verbose - tells you what it's doing
+          -c --codepage=<codepage>     Specify default codepage
+          -l --language=<val>          Set language when reading rc file
+             --use-temp-file           Use a temporary file instead of popen to read
+                                       the preprocessor output
+             --no-use-temp-file        Use popen (default)
+          -r                           Ignored for compatibility with rc
+          @<file>                      Read options from <file>
+          -h --help                    Print this help message
+          -V --version                 Print version information
+        FORMAT is one of rc, res, or coff, and is deduced from the file name
+        extension if not specified.  A single file name is an input file.
+        No input-file is stdin, default rc.  No output-file is stdout, default rc.
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe: supported targets: pe-x86-64 pei-x86-64 pe-bigobj-x86-64 elf64-x86-64 pe-i386 pei-i386 elf32-i386 elf32-iamcu elf64-little elf64-big elf32-little elf32-big srec symbolsrec verilog tekhex binary ihex plugin
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: -1
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe 
+      Build flags: /DWIN32;/D_WINDOWS
+      Id flags:  
+      
+      The output was:
+      2
+      用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.44.35222 版
+      版权所有(C) Microsoft Corporation。保留所有权利。
+      
+      CMakeCCompilerId.c
+      Microsoft (R) Incremental Linker Version 14.44.35222.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      /out:CMakeCCompilerId.exe 
+      CMakeCCompilerId.obj 
+      LINK : fatal error LNK1104: 无法打开文件“LIBCMT.lib”
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe 
+      Build flags: /DWIN32;/D_WINDOWS
+      Id flags: -c 
+      
+      The output was:
+      0
+      用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.44.35222 版
+      版权所有(C) Microsoft Corporation。保留所有权利。
+      
+      CMakeCCompilerId.c
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
+      
+      The C compiler identification is MSVC, found in:
+        D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/3.30.5/CompilerIdC/CMakeCCompilerId.obj
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:1243 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    message: |
+      Detecting C compiler /showIncludes prefix:
+        main.c
+        注意: 包含文件:  D:\\code\\Project\\QtProject\\ConverterTrae\\build\\CMakeFiles\\ShowIncludes\\foo.h
+        
+      Found prefix "注意: 包含文件:  "
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-5xx47a"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-5xx47a"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-5xx47a'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_9170c
+        [1/2] "C:\\PROGRA~1\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_9170c.dir\\CMakeCCompilerABI.c.obj /FdCMakeFiles\\cmTC_9170c.dir\\ /FS -c D:\\Qt\\Tools\\CMake_64\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_9170c.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_9170c.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_9170c.exe /implib:cmTC_9170c.lib /pdb:cmTC_9170c.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: [code=4294967295] cmTC_9170c.exe 
+        C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_9170c.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_9170c.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_9170c.exe /implib:cmTC_9170c.lib /pdb:cmTC_9170c.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        RC Pass 1: command "D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe /fo CMakeFiles\\cmTC_9170c.dir/manifest.res CMakeFiles\\cmTC_9170c.dir/manifest.rc" failed (exit code 1) with the following output:
+        Usage: D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe [option(s)] [input-file] [output-file]
+         The options are:
+          -i --input=<file>            Name input file
+          -o --output=<file>           Name output file
+          -J --input-format=<format>   Specify input format
+          -O --output-format=<format>  Specify output format
+          -F --target=<target>         Specify COFF target
+             --preprocessor=<program>  Program to use to preprocess rc file
+             --preprocessor-arg=<arg>  Additional preprocessor argument
+          -I --include-dir=<dir>       Include directory when preprocessing rc file
+          -D --define <sym>[=<val>]    Define SYM when preprocessing rc file
+          -U --undefine <sym>          Undefine SYM when preprocessing rc file
+          -v --verbose                 Verbose - tells you what it's doing
+          -c --codepage=<codepage>     Specify default codepage
+          -l --language=<val>          Set language when reading rc file
+             --use-temp-file           Use a temporary file instead of popen to read
+                                       the preprocessor output
+             --no-use-temp-file        Use popen (default)
+          -r                           Ignored for compatibility with rc
+          @<file>                      Read options from <file>
+          -h --help                    Print this help message
+          -V --version                 Print version information
+        FORMAT is one of rc, res, or coff, and is deduced from the file name
+        extension if not specified.  A single file name is an input file.
+        No input-file is stdin, default rc.  No output-file is stdout, default rc.
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe: supported targets: pe-x86-64 pei-x86-64 pe-bigobj-x86-64 elf64-x86-64 pe-i386 pei-i386 elf32-i386 elf32-iamcu elf64-little elf64-big elf32-little elf32-big srec symbolsrec verilog tekhex binary ihex plugin
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: -1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:56 (try_compile)"
+      - "extern/googletest/CMakeLists.txt:6 (project)"
+    checks:
+      - "Check for working C compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-jf6egi"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-jf6egi"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "CMAKE_C_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-jf6egi'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_2c574
+        [1/2] "C:\\PROGRA~1\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_2c574.dir\\testCCompiler.c.obj /FdCMakeFiles\\cmTC_2c574.dir\\ /FS -c D:\\code\\Project\\QtProject\\ConverterTrae\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jf6egi\\testCCompiler.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_2c574.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_2c574.dir\\testCCompiler.c.obj  /out:cmTC_2c574.exe /implib:cmTC_2c574.lib /pdb:cmTC_2c574.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: [code=4294967295] cmTC_2c574.exe 
+        C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_2c574.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_2c574.dir\\testCCompiler.c.obj  /out:cmTC_2c574.exe /implib:cmTC_2c574.lib /pdb:cmTC_2c574.pdb /version:0.0 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        RC Pass 1: command "D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe /fo CMakeFiles\\cmTC_2c574.dir/manifest.res CMakeFiles\\cmTC_2c574.dir/manifest.rc" failed (exit code 1) with the following output:
+        Usage: D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe [option(s)] [input-file] [output-file]
+         The options are:
+          -i --input=<file>            Name input file
+          -o --output=<file>           Name output file
+          -J --input-format=<format>   Specify input format
+          -O --output-format=<format>  Specify output format
+          -F --target=<target>         Specify COFF target
+             --preprocessor=<program>  Program to use to preprocess rc file
+             --preprocessor-arg=<arg>  Additional preprocessor argument
+          -I --include-dir=<dir>       Include directory when preprocessing rc file
+          -D --define <sym>[=<val>]    Define SYM when preprocessing rc file
+          -U --undefine <sym>          Undefine SYM when preprocessing rc file
+          -v --verbose                 Verbose - tells you what it's doing
+          -c --codepage=<codepage>     Specify default codepage
+          -l --language=<val>          Set language when reading rc file
+             --use-temp-file           Use a temporary file instead of popen to read
+                                       the preprocessor output
+             --no-use-temp-file        Use popen (default)
+          -r                           Ignored for compatibility with rc
+          @<file>                      Read options from <file>
+          -h --help                    Print this help message
+          -V --version                 Print version information
+        FORMAT is one of rc, res, or coff, and is deduced from the file name
+        extension if not specified.  A single file name is an input file.
+        No input-file is stdin, default rc.  No output-file is stdout, default rc.
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe: supported targets: pe-x86-64 pei-x86-64 pe-bigobj-x86-64 elf64-x86-64 pe-i386 pei-i386 elf32-i386 elf32-iamcu elf64-little elf64-big elf32-little elf32-big srec symbolsrec verilog tekhex binary ihex plugin
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: -1
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "CMakeLists.txt:94 (try_compile)"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "GTEST_COMPILES"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_6cac7
+        [1/2] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_6cac7.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        FAILED: [code=1] CMakeFiles/cmTC_6cac7.dir/gtest-all.cc.obj 
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_6cac7.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc:38:10: fatal error: gtest/gtest.h: No such file or directory
+           38 | #include "gtest/gtest.h"
+              |          ^~~~~~~~~~~~~~~
+        compilation terminated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "CMakeLists.txt:94 (try_compile)"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "GTEST_COMPILES"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_27492
+        [1/2] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_27492.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        FAILED: [code=1] CMakeFiles/cmTC_27492.dir/gtest-all.cc.obj 
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_27492.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc:38:10: fatal error: gtest/gtest.h: No such file or directory
+           38 | #include "gtest/gtest.h"
+              |          ^~~~~~~~~~~~~~~
+        compilation terminated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "CMakeLists.txt:138 (try_compile)"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "GTEST_COMPILES"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_4f9f7
+        [1/2  50% :: 0.043] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_4f9f7.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        FAILED: [code=1] CMakeFiles/cmTC_4f9f7.dir/gtest-all.cc.obj 
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_4f9f7.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc:38:10: fatal error: gtest/gtest.h: No such file or directory
+           38 | #include "gtest/gtest.h"
+              |          ^~~~~~~~~~~~~~~
+        compilation terminated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "CMakeLists.txt:138 (try_compile)"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "GTEST_COMPILES"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_6ec37
+        [1/2  50% :: 0.043] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_6ec37.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        FAILED: [code=1] CMakeFiles/cmTC_6ec37.dir/gtest-all.cc.obj 
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_6ec37.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc:38:10: fatal error: gtest/gtest.h: No such file or directory
+           38 | #include "gtest/gtest.h"
+              |          ^~~~~~~~~~~~~~~
+        compilation terminated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "CMakeLists.txt:178 (try_compile)"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "GTEST_COMPILES"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_2ac73
+        [1/2] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_2ac73.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        FAILED: [code=1] CMakeFiles/cmTC_2ac73.dir/gtest-all.cc.obj 
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_2ac73.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc:38:10: fatal error: gtest/gtest.h: No such file or directory
+           38 | #include "gtest/gtest.h"
+              |          ^~~~~~~~~~~~~~~
+        compilation terminated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "CMakeLists.txt:178 (try_compile)"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "GTEST_COMPILES"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_b1c33
+        [1/2  50% :: 0.045] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_b1c33.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        FAILED: [code=1] CMakeFiles/cmTC_b1c33.dir/gtest-all.cc.obj 
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_b1c33.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc:38:10: fatal error: gtest/gtest.h: No such file or directory
+           38 | #include "gtest/gtest.h"
+              |          ^~~~~~~~~~~~~~~
+        compilation terminated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "CMakeLists.txt:178 (try_compile)"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "GTEST_COMPILES"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_42e82
+        [1/2  50% :: 0.048] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_42e82.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        FAILED: [code=1] CMakeFiles/cmTC_42e82.dir/gtest-all.cc.obj 
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_42e82.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc:38:10: fatal error: gtest/gtest.h: No such file or directory
+           38 | #include "gtest/gtest.h"
+              |          ^~~~~~~~~~~~~~~
+        compilation terminated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "CMakeLists.txt:178 (try_compile)"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "GTEST_COMPILES"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_6fd45
+        [1/2  50% :: 0.050] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_6fd45.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        FAILED: [code=1] CMakeFiles/cmTC_6fd45.dir/gtest-all.cc.obj 
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_6fd45.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc:38:10: fatal error: gtest/gtest.h: No such file or directory
+           38 | #include "gtest/gtest.h"
+              |          ^~~~~~~~~~~~~~~
+        compilation terminated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "CMakeLists.txt:178 (try_compile)"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "GTEST_COMPILES"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_ce9e8
+        [1/2  50% :: 0.045] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_ce9e8.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        FAILED: [code=1] CMakeFiles/cmTC_ce9e8.dir/gtest-all.cc.obj 
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_ce9e8.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc:38:10: fatal error: gtest/gtest.h: No such file or directory
+           38 | #include "gtest/gtest.h"
+              |          ^~~~~~~~~~~~~~~
+        compilation terminated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "CMakeLists.txt:218 (try_compile)"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "GTEST_COMPILES"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_d8a2f
+        [1/2] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_d8a2f.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        FAILED: [code=1] CMakeFiles/cmTC_d8a2f.dir/gtest-all.cc.obj 
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_d8a2f.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc:38:10: fatal error: gtest/gtest.h: No such file or directory
+           38 | #include "gtest/gtest.h"
+              |          ^~~~~~~~~~~~~~~
+        compilation terminated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "CMakeLists.txt:218 (try_compile)"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "GTEST_COMPILES"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_73569
+        [1/2  50% :: 0.053] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_73569.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        FAILED: [code=1] CMakeFiles/cmTC_73569.dir/gtest-all.cc.obj 
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_73569.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc:38:10: fatal error: gtest/gtest.h: No such file or directory
+           38 | #include "gtest/gtest.h"
+              |          ^~~~~~~~~~~~~~~
+        compilation terminated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "CMakeLists.txt:210 (try_compile)"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "GTEST_COMPILES"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_524a7
+        [1/2] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_524a7.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        FAILED: [code=1] CMakeFiles/cmTC_524a7.dir/gtest-all.cc.obj 
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_524a7.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc:38:10: fatal error: gtest/gtest.h: No such file or directory
+           38 | #include "gtest/gtest.h"
+              |          ^~~~~~~~~~~~~~~
+        compilation terminated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "CMakeLists.txt:213 (try_compile)"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "GTEST_COMPILES"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_4172b
+        [1/2] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_4172b.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        FAILED: [code=1] CMakeFiles/cmTC_4172b.dir/gtest-all.cc.obj 
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_4172b.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc:38:10: fatal error: gtest/gtest.h: No such file or directory
+           38 | #include "gtest/gtest.h"
+              |          ^~~~~~~~~~~~~~~
+        compilation terminated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "CMakeLists.txt:213 (try_compile)"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "GTEST_COMPILES"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_38c68
+        [1/2  50% :: 0.044] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_38c68.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        FAILED: [code=1] CMakeFiles/cmTC_38c68.dir/gtest-all.cc.obj 
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_38c68.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc:38:10: fatal error: gtest/gtest.h: No such file or directory
+           38 | #include "gtest/gtest.h"
+              |          ^~~~~~~~~~~~~~~
+        compilation terminated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "CMakeLists.txt:215 (try_compile)"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "GTEST_COMPILES"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_c853b
+        [1/2] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_c853b.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        FAILED: [code=1] CMakeFiles/cmTC_c853b.dir/gtest-all.cc.obj 
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_c853b.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc:38:10: fatal error: gtest/gtest.h: No such file or directory
+           38 | #include "gtest/gtest.h"
+              |          ^~~~~~~~~~~~~~~
+        compilation terminated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "CMakeLists.txt:215 (try_compile)"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "GTEST_COMPILES"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_c2d38
+        [1/2  50% :: 0.052] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_c2d38.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        FAILED: [code=1] CMakeFiles/cmTC_c2d38.dir/gtest-all.cc.obj 
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_c2d38.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc:38:10: fatal error: gtest/gtest.h: No such file or directory
+           38 | #include "gtest/gtest.h"
+              |          ^~~~~~~~~~~~~~~
+        compilation terminated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "CMakeLists.txt:215 (try_compile)"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "GTEST_COMPILES"
+      cached: true
+      stdout: |
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "CMakeLists.txt:218 (try_compile)"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "GTEST_COMPILES"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/gtest_test/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_6febf
+        [1/2  50% :: 0.047] D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_6febf.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        FAILED: [code=1] CMakeFiles/cmTC_6febf.dir/gtest-all.cc.obj 
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=c++17 -o CMakeFiles/cmTC_6febf.dir/gtest-all.cc.obj -c D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc
+        D:/code/Project/QtProject/ConverterTrae/extern/googletest/googletest/src/gtest-all.cc:38:10: fatal error: gtest/gtest.h: No such file or directory
+           38 | #include "gtest/gtest.h"
+              |          ^~~~~~~~~~~~~~~
+        compilation terminated.
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "extern/googletest/CMakeLists.txt:10 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe 
+      Build flags: /DWIN32;/D_WINDOWS
+      Id flags:  
+      
+      The output was:
+      0
+      用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.44.35222 版
+      版权所有(C) Microsoft Corporation。保留所有权利。
+      
+      CMakeCCompilerId.c
+      Microsoft (R) Incremental Linker Version 14.44.35222.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      /out:CMakeCCompilerId.exe 
+      CMakeCCompilerId.obj 
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
+      
+      The C compiler identification is MSVC, found in:
+        D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/3.30.5/CompilerIdC/CMakeCCompilerId.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:1243 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "extern/googletest/CMakeLists.txt:10 (project)"
+    message: |
+      Detecting C compiler /showIncludes prefix:
+        main.c
+        注意: 包含文件:  D:\\code\\Project\\QtProject\\ConverterTrae\\build\\CMakeFiles\\ShowIncludes\\foo.h
+        
+      Found prefix "注意: 包含文件:  "
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "extern/googletest/CMakeLists.txt:10 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-3si8gi"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-3si8gi"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-3si8gi'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_fe174
+        [1/2] "C:\\PROGRA~1\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_fe174.dir\\CMakeCCompilerABI.c.obj /FdCMakeFiles\\cmTC_fe174.dir\\ /FS -c D:\\Qt\\Tools\\CMake_64\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_fe174.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_fe174.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_fe174.exe /implib:cmTC_fe174.lib /pdb:cmTC_fe174.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: [code=4294967295] cmTC_fe174.exe 
+        C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_fe174.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_fe174.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_fe174.exe /implib:cmTC_fe174.lib /pdb:cmTC_fe174.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        RC Pass 1: command "D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe /fo CMakeFiles\\cmTC_fe174.dir/manifest.res CMakeFiles\\cmTC_fe174.dir/manifest.rc" failed (exit code 1) with the following output:
+        Usage: D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe [option(s)] [input-file] [output-file]
+         The options are:
+          -i --input=<file>            Name input file
+          -o --output=<file>           Name output file
+          -J --input-format=<format>   Specify input format
+          -O --output-format=<format>  Specify output format
+          -F --target=<target>         Specify COFF target
+             --preprocessor=<program>  Program to use to preprocess rc file
+             --preprocessor-arg=<arg>  Additional preprocessor argument
+          -I --include-dir=<dir>       Include directory when preprocessing rc file
+          -D --define <sym>[=<val>]    Define SYM when preprocessing rc file
+          -U --undefine <sym>          Undefine SYM when preprocessing rc file
+          -v --verbose                 Verbose - tells you what it's doing
+          -c --codepage=<codepage>     Specify default codepage
+          -l --language=<val>          Set language when reading rc file
+             --use-temp-file           Use a temporary file instead of popen to read
+                                       the preprocessor output
+             --no-use-temp-file        Use popen (default)
+          -r                           Ignored for compatibility with rc
+          @<file>                      Read options from <file>
+          -h --help                    Print this help message
+          -V --version                 Print version information
+        FORMAT is one of rc, res, or coff, and is deduced from the file name
+        extension if not specified.  A single file name is an input file.
+        No input-file is stdin, default rc.  No output-file is stdout, default rc.
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe: supported targets: pe-x86-64 pei-x86-64 pe-bigobj-x86-64 elf64-x86-64 pe-i386 pei-i386 elf32-i386 elf32-iamcu elf64-little elf64-big elf32-little elf32-big srec symbolsrec verilog tekhex binary ihex plugin
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: -1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:56 (try_compile)"
+      - "extern/googletest/CMakeLists.txt:10 (project)"
+    checks:
+      - "Check for working C compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-lraqw8"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-lraqw8"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "CMAKE_C_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-lraqw8'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_5d2d9
+        [1/2] "C:\\PROGRA~1\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_5d2d9.dir\\testCCompiler.c.obj /FdCMakeFiles\\cmTC_5d2d9.dir\\ /FS -c D:\\code\\Project\\QtProject\\ConverterTrae\\build\\CMakeFiles\\CMakeScratch\\TryCompile-lraqw8\\testCCompiler.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_5d2d9.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_5d2d9.dir\\testCCompiler.c.obj  /out:cmTC_5d2d9.exe /implib:cmTC_5d2d9.lib /pdb:cmTC_5d2d9.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: [code=4294967295] cmTC_5d2d9.exe 
+        C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_5d2d9.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_5d2d9.dir\\testCCompiler.c.obj  /out:cmTC_5d2d9.exe /implib:cmTC_5d2d9.lib /pdb:cmTC_5d2d9.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        RC Pass 1: command "D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe /fo CMakeFiles\\cmTC_5d2d9.dir/manifest.res CMakeFiles\\cmTC_5d2d9.dir/manifest.rc" failed (exit code 1) with the following output:
+        Usage: D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe [option(s)] [input-file] [output-file]
+         The options are:
+          -i --input=<file>            Name input file
+          -o --output=<file>           Name output file
+          -J --input-format=<format>   Specify input format
+          -O --output-format=<format>  Specify output format
+          -F --target=<target>         Specify COFF target
+             --preprocessor=<program>  Program to use to preprocess rc file
+             --preprocessor-arg=<arg>  Additional preprocessor argument
+          -I --include-dir=<dir>       Include directory when preprocessing rc file
+          -D --define <sym>[=<val>]    Define SYM when preprocessing rc file
+          -U --undefine <sym>          Undefine SYM when preprocessing rc file
+          -v --verbose                 Verbose - tells you what it's doing
+          -c --codepage=<codepage>     Specify default codepage
+          -l --language=<val>          Set language when reading rc file
+             --use-temp-file           Use a temporary file instead of popen to read
+                                       the preprocessor output
+             --no-use-temp-file        Use popen (default)
+          -r                           Ignored for compatibility with rc
+          @<file>                      Read options from <file>
+          -h --help                    Print this help message
+          -V --version                 Print version information
+        FORMAT is one of rc, res, or coff, and is deduced from the file name
+        extension if not specified.  A single file name is an input file.
+        No input-file is stdin, default rc.  No output-file is stdout, default rc.
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe: supported targets: pe-x86-64 pei-x86-64 pe-bigobj-x86-64 elf64-x86-64 pe-i386 pei-i386 elf32-i386 elf32-iamcu elf64-little elf64-big elf32-little elf32-big srec symbolsrec verilog tekhex binary ihex plugin
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: -1
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "extern/googletest/CMakeLists.txt:10 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe 
+      Build flags: /DWIN32;/D_WINDOWS
+      Id flags:  
+      
+      The output was:
+      0
+      用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.44.35222 版
+      版权所有(C) Microsoft Corporation。保留所有权利。
+      
+      CMakeCCompilerId.c
+      Microsoft (R) Incremental Linker Version 14.44.35222.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      /out:CMakeCCompilerId.exe 
+      CMakeCCompilerId.obj 
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
+      
+      The C compiler identification is MSVC, found in:
+        D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/3.30.5/CompilerIdC/CMakeCCompilerId.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:1243 (message)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "extern/googletest/CMakeLists.txt:10 (project)"
+    message: |
+      Detecting C compiler /showIncludes prefix:
+        main.c
+        注意: 包含文件:  D:\\code\\Project\\QtProject\\ConverterTrae\\build\\CMakeFiles\\ShowIncludes\\foo.h
+        
+      Found prefix "注意: 包含文件:  "
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "extern/googletest/CMakeLists.txt:10 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-31dc77"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-31dc77"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-31dc77'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_36dbe
+        [1/2  50% :: 0.034] "C:\\PROGRA~1\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_36dbe.dir\\CMakeCCompilerABI.c.obj /FdCMakeFiles\\cmTC_36dbe.dir\\ /FS -c D:\\Qt\\Tools\\CMake_64\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c
+        [2/2 100% :: 0.096] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_36dbe.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_36dbe.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_36dbe.exe /implib:cmTC_36dbe.lib /pdb:cmTC_36dbe.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: [code=4294967295] cmTC_36dbe.exe 
+        C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_36dbe.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_36dbe.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_36dbe.exe /implib:cmTC_36dbe.lib /pdb:cmTC_36dbe.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        RC Pass 1: command "D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe /fo CMakeFiles\\cmTC_36dbe.dir/manifest.res CMakeFiles\\cmTC_36dbe.dir/manifest.rc" failed (exit code 1) with the following output:
+        Usage: D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe [option(s)] [input-file] [output-file]
+         The options are:
+          -i --input=<file>            Name input file
+          -o --output=<file>           Name output file
+          -J --input-format=<format>   Specify input format
+          -O --output-format=<format>  Specify output format
+          -F --target=<target>         Specify COFF target
+             --preprocessor=<program>  Program to use to preprocess rc file
+             --preprocessor-arg=<arg>  Additional preprocessor argument
+          -I --include-dir=<dir>       Include directory when preprocessing rc file
+          -D --define <sym>[=<val>]    Define SYM when preprocessing rc file
+          -U --undefine <sym>          Undefine SYM when preprocessing rc file
+          -v --verbose                 Verbose - tells you what it's doing
+          -c --codepage=<codepage>     Specify default codepage
+          -l --language=<val>          Set language when reading rc file
+             --use-temp-file           Use a temporary file instead of popen to read
+                                       the preprocessor output
+             --no-use-temp-file        Use popen (default)
+          -r                           Ignored for compatibility with rc
+          @<file>                      Read options from <file>
+          -h --help                    Print this help message
+          -V --version                 Print version information
+        FORMAT is one of rc, res, or coff, and is deduced from the file name
+        extension if not specified.  A single file name is an input file.
+        No input-file is stdin, default rc.  No output-file is stdout, default rc.
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe: supported targets: pe-x86-64 pei-x86-64 pe-bigobj-x86-64 elf64-x86-64 pe-i386 pei-i386 elf32-i386 elf32-iamcu elf64-little elf64-big elf32-little elf32-big srec symbolsrec verilog tekhex binary ihex plugin
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: -1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:56 (try_compile)"
+      - "extern/googletest/CMakeLists.txt:10 (project)"
+    checks:
+      - "Check for working C compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe"
+    directories:
+      source: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-105cmn"
+      binary: "D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-105cmn"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_MODULE_PATH: "D:/Qt/6.10.2/msvc2022_64/lib/cmake/Qt6/platforms"
+      QT_TOOLCHAIN_RELOCATABLE_CMAKE_DIR: "D:/Qt/6.10.2/msvc2022_64/lib/cmake"
+    buildResult:
+      variable: "CMAKE_C_COMPILER_WORKS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/CMakeScratch/TryCompile-105cmn'
+        
+        Run Build Command(s): D:/code/MinGW/mingw64/bin/ninja.exe -v cmTC_99fae
+        [1/2  50% :: 0.032] "C:\\PROGRA~1\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_99fae.dir\\testCCompiler.c.obj /FdCMakeFiles\\cmTC_99fae.dir\\ /FS -c D:\\code\\Project\\QtProject\\ConverterTrae\\build\\CMakeFiles\\CMakeScratch\\TryCompile-105cmn\\testCCompiler.c
+        [2/2 100% :: 0.096] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_99fae.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_99fae.dir\\testCCompiler.c.obj  /out:cmTC_99fae.exe /implib:cmTC_99fae.lib /pdb:cmTC_99fae.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: [code=4294967295] cmTC_99fae.exe 
+        C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\Qt\\Tools\\CMake_64\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_99fae.dir --rc=D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe --mt="" --manifests  -- D:\\Qt\\Tools\\mingw1310_64\\bin\\ld.exe /nologo CMakeFiles\\cmTC_99fae.dir\\testCCompiler.c.obj  /out:cmTC_99fae.exe /implib:cmTC_99fae.lib /pdb:cmTC_99fae.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        RC Pass 1: command "D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe /fo CMakeFiles\\cmTC_99fae.dir/manifest.res CMakeFiles\\cmTC_99fae.dir/manifest.rc" failed (exit code 1) with the following output:
+        Usage: D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe [option(s)] [input-file] [output-file]
+         The options are:
+          -i --input=<file>            Name input file
+          -o --output=<file>           Name output file
+          -J --input-format=<format>   Specify input format
+          -O --output-format=<format>  Specify output format
+          -F --target=<target>         Specify COFF target
+             --preprocessor=<program>  Program to use to preprocess rc file
+             --preprocessor-arg=<arg>  Additional preprocessor argument
+          -I --include-dir=<dir>       Include directory when preprocessing rc file
+          -D --define <sym>[=<val>]    Define SYM when preprocessing rc file
+          -U --undefine <sym>          Undefine SYM when preprocessing rc file
+          -v --verbose                 Verbose - tells you what it's doing
+          -c --codepage=<codepage>     Specify default codepage
+          -l --language=<val>          Set language when reading rc file
+             --use-temp-file           Use a temporary file instead of popen to read
+                                       the preprocessor output
+             --no-use-temp-file        Use popen (default)
+          -r                           Ignored for compatibility with rc
+          @<file>                      Read options from <file>
+          -h --help                    Print this help message
+          -V --version                 Print version information
+        FORMAT is one of rc, res, or coff, and is deduced from the file name
+        extension if not specified.  A single file name is an input file.
+        No input-file is stdin, default rc.  No output-file is stdout, default rc.
+        D:\\Qt\\Tools\\mingw1310_64\\bin\\windres.exe: supported targets: pe-x86-64 pei-x86-64 pe-bigobj-x86-64 elf64-x86-64 pe-i386 pei-i386 elf32-i386 elf32-iamcu elf64-little elf64-big elf32-little elf32-big srec symbolsrec verilog tekhex binary ihex plugin
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: -1
+...

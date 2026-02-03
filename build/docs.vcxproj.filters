@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\571d183b74ab473867380f62ddb1e42b\docs.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\code\Project\QtProject\ConverterTrae\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\code\Project\QtProject\ConverterTrae\include\MeshTypes.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="D:\code\Project\QtProject\ConverterTrae\include\MeshReader.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="D:\code\Project\QtProject\ConverterTrae\include\MeshWriter.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="D:\code\Project\QtProject\ConverterTrae\include\MeshConverter.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="D:\code\Project\QtProject\ConverterTrae\include\MeshProcessor.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="D:\code\Project\QtProject\ConverterTrae\include\MeshHelper.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="D:\code\Project\QtProject\ConverterTrae\include\MeshException.h">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="D:\code\Project\QtProject\ConverterTrae\src\MeshTypes.cpp">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="D:\code\Project\QtProject\ConverterTrae\src\MeshReader.cpp">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="D:\code\Project\QtProject\ConverterTrae\src\MeshWriter.cpp">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="D:\code\Project\QtProject\ConverterTrae\src\MeshConverter.cpp">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="D:\code\Project\QtProject\ConverterTrae\src\MeshProcessor.cpp">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="D:\code\Project\QtProject\ConverterTrae\src\MeshHelper.cpp">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="D:\code\Project\QtProject\ConverterTrae\src\MeshException.cpp">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\docs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{15E9B57D-C96E-330B-8B15-99725FBB86D8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{A16608D6-DF21-3165-A9C9-E84E5532E58E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{B6E4AC37-D2ED-394F-8AF3-0C1702CCE43F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

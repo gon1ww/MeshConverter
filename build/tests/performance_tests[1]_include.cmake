@@ -1,0 +1,5 @@
+if(EXISTS "D:/code/Project/QtProject/ConverterTrae/build/tests/performance_tests[1]_tests.cmake")
+  include("D:/code/Project/QtProject/ConverterTrae/build/tests/performance_tests[1]_tests.cmake")
+else()
+  add_test(performance_tests_NOT_BUILT performance_tests_NOT_BUILT)
+endif()

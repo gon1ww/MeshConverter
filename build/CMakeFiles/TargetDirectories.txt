@@ -1,0 +1,17 @@
+D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/MeshFormatConverter.dir
+D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/docs.dir
+D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/test.dir
+D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/edit_cache.dir
+D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/rebuild_cache.dir
+D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/list_install_components.dir
+D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/install.dir
+D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/install/local.dir
+D:/code/Project/QtProject/ConverterTrae/build/CMakeFiles/install/strip.dir
+D:/code/Project/QtProject/ConverterTrae/build/examples/CMakeFiles/convert_example.dir
+D:/code/Project/QtProject/ConverterTrae/build/examples/CMakeFiles/test.dir
+D:/code/Project/QtProject/ConverterTrae/build/examples/CMakeFiles/edit_cache.dir
+D:/code/Project/QtProject/ConverterTrae/build/examples/CMakeFiles/rebuild_cache.dir
+D:/code/Project/QtProject/ConverterTrae/build/examples/CMakeFiles/list_install_components.dir
+D:/code/Project/QtProject/ConverterTrae/build/examples/CMakeFiles/install.dir
+D:/code/Project/QtProject/ConverterTrae/build/examples/CMakeFiles/install/local.dir
+D:/code/Project/QtProject/ConverterTrae/build/examples/CMakeFiles/install/strip.dir

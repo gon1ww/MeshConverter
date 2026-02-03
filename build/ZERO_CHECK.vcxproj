@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveNugetPackages>false</ResolveNugetPackages>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E242E8A3-DDF8-3746-9919-B59BD11DFA07}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>ZERO_CHECK</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\571d183b74ab473867380f62ddb1e42b\generate.stamp.rule">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Checking Build System</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+D:\code\CMake\cmake-3.31.10-windows-x86_64\bin\cmake.exe -SD:/code/Project/QtProject/ConverterTrae -BD:/code/Project/QtProject/ConverterTrae/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeRCInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCCompilerFlag.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCSourceCompiles.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCXXCompilerFlag.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCXXSourceCompiles.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCompilerFlag.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckIncludeFileCXX.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckLibraryExists.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckSourceCompiles.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Compiler\MSVC.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\ExternalData.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindDoxygen.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindGTest.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindPackageMessage.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindThreads.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\GenerateExportHeader.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\GoogleTest.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CheckCompilerFlag.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CheckFlagCommonConfig.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CheckSourceCompiles.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Windows.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;D:\code\Project\QtProject\ConverterTrae\CMakeLists.txt;D:\code\Project\QtProject\ConverterTrae\build\CMakeDoxyfile.in;D:\code\Project\QtProject\ConverterTrae\build\CMakeDoxygenDefaults.cmake;D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\3.31.10\CMakeCXXCompiler.cmake;D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\3.31.10\CMakeRCCompiler.cmake;D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\3.31.10\CMakeSystem.cmake;D:\code\Project\QtProject\ConverterTrae\examples\CMakeLists.txt;D:\code\Project\QtProject\ConverterTrae\tests\CMakeLists.txt;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\VTK-targets-release.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\VTK-targets.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\VTK-vtk-module-find-packages.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\VTK-vtk-module-properties.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtk-config-version.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtk-config.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtk-prefix.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkCMakeBackports.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkEncodeString.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkHashSource.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkMobileDevices.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkModule.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkModuleJson.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkModuleSerialization.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkModuleTesting.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkObjectFactory.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkTopologicalSort.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\generate.stamp;D:\code\Project\QtProject\ConverterTrae\build\tests\CMakeFiles\generate.stamp;D:\code\Project\QtProject\ConverterTrae\build\examples\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Checking Build System</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+D:\code\CMake\cmake-3.31.10-windows-x86_64\bin\cmake.exe -SD:/code/Project/QtProject/ConverterTrae -BD:/code/Project/QtProject/ConverterTrae/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeRCInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCCompilerFlag.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCSourceCompiles.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCXXCompilerFlag.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCXXSourceCompiles.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCompilerFlag.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckIncludeFileCXX.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckLibraryExists.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckSourceCompiles.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Compiler\MSVC.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\ExternalData.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindDoxygen.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindGTest.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindPackageMessage.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindThreads.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\GenerateExportHeader.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\GoogleTest.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CheckCompilerFlag.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CheckFlagCommonConfig.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CheckSourceCompiles.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Windows.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;D:\code\Project\QtProject\ConverterTrae\CMakeLists.txt;D:\code\Project\QtProject\ConverterTrae\build\CMakeDoxyfile.in;D:\code\Project\QtProject\ConverterTrae\build\CMakeDoxygenDefaults.cmake;D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\3.31.10\CMakeCXXCompiler.cmake;D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\3.31.10\CMakeRCCompiler.cmake;D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\3.31.10\CMakeSystem.cmake;D:\code\Project\QtProject\ConverterTrae\examples\CMakeLists.txt;D:\code\Project\QtProject\ConverterTrae\tests\CMakeLists.txt;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\VTK-targets-release.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\VTK-targets.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\VTK-vtk-module-find-packages.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\VTK-vtk-module-properties.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtk-config-version.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtk-config.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtk-prefix.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkCMakeBackports.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkEncodeString.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkHashSource.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkMobileDevices.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkModule.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkModuleJson.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkModuleSerialization.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkModuleTesting.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkObjectFactory.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkTopologicalSort.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\generate.stamp;D:\code\Project\QtProject\ConverterTrae\build\tests\CMakeFiles\generate.stamp;D:\code\Project\QtProject\ConverterTrae\build\examples\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Checking Build System</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+D:\code\CMake\cmake-3.31.10-windows-x86_64\bin\cmake.exe -SD:/code/Project/QtProject/ConverterTrae -BD:/code/Project/QtProject/ConverterTrae/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeRCInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCCompilerFlag.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCSourceCompiles.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCXXCompilerFlag.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCXXSourceCompiles.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCompilerFlag.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckIncludeFileCXX.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckLibraryExists.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckSourceCompiles.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Compiler\MSVC.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\ExternalData.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindDoxygen.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindGTest.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindPackageMessage.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindThreads.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\GenerateExportHeader.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\GoogleTest.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CheckCompilerFlag.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CheckFlagCommonConfig.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CheckSourceCompiles.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Windows.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;D:\code\Project\QtProject\ConverterTrae\CMakeLists.txt;D:\code\Project\QtProject\ConverterTrae\build\CMakeDoxyfile.in;D:\code\Project\QtProject\ConverterTrae\build\CMakeDoxygenDefaults.cmake;D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\3.31.10\CMakeCXXCompiler.cmake;D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\3.31.10\CMakeRCCompiler.cmake;D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\3.31.10\CMakeSystem.cmake;D:\code\Project\QtProject\ConverterTrae\examples\CMakeLists.txt;D:\code\Project\QtProject\ConverterTrae\tests\CMakeLists.txt;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\VTK-targets-release.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\VTK-targets.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\VTK-vtk-module-find-packages.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\VTK-vtk-module-properties.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtk-config-version.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtk-config.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtk-prefix.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkCMakeBackports.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkEncodeString.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkHashSource.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkMobileDevices.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkModule.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkModuleJson.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkModuleSerialization.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkModuleTesting.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkObjectFactory.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkTopologicalSort.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\generate.stamp;D:\code\Project\QtProject\ConverterTrae\build\tests\CMakeFiles\generate.stamp;D:\code\Project\QtProject\ConverterTrae\build\examples\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Checking Build System</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+D:\code\CMake\cmake-3.31.10-windows-x86_64\bin\cmake.exe -SD:/code/Project/QtProject/ConverterTrae -BD:/code/Project/QtProject/ConverterTrae/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeRCInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCCompilerFlag.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCSourceCompiles.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCXXCompilerFlag.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCXXSourceCompiles.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckCompilerFlag.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckIncludeFileCXX.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckLibraryExists.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\CheckSourceCompiles.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Compiler\MSVC.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\ExternalData.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindDoxygen.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindGTest.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindPackageMessage.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\FindThreads.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\GenerateExportHeader.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\GoogleTest.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CheckCompilerFlag.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CheckFlagCommonConfig.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Internal\CheckSourceCompiles.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\Windows.cmake;D:\code\CMake\cmake-3.31.10-windows-x86_64\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;D:\code\Project\QtProject\ConverterTrae\CMakeLists.txt;D:\code\Project\QtProject\ConverterTrae\build\CMakeDoxyfile.in;D:\code\Project\QtProject\ConverterTrae\build\CMakeDoxygenDefaults.cmake;D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\3.31.10\CMakeCXXCompiler.cmake;D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\3.31.10\CMakeRCCompiler.cmake;D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\3.31.10\CMakeSystem.cmake;D:\code\Project\QtProject\ConverterTrae\examples\CMakeLists.txt;D:\code\Project\QtProject\ConverterTrae\tests\CMakeLists.txt;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\VTK-targets-release.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\VTK-targets.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\VTK-vtk-module-find-packages.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\VTK-vtk-module-properties.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtk-config-version.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtk-config.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtk-prefix.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkCMakeBackports.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkEncodeString.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkHashSource.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkMobileDevices.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkModule.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkModuleJson.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkModuleSerialization.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkModuleTesting.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkObjectFactory.cmake;D:\code\lib\VTK-9.5.2-install\lib\cmake\vtk-9.5\vtkTopologicalSort.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\generate.stamp;D:\code\Project\QtProject\ConverterTrae\build\tests\CMakeFiles\generate.stamp;D:\code\Project\QtProject\ConverterTrae\build\examples\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
