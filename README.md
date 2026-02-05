@@ -26,6 +26,8 @@ MeshFormatConverter是一个功能强大的网格格式转换工具，支持多�
 - 核心依赖：VTK 9.x、CGNS API 4.x、Gmsh SDK 4.x、CMake 3.20+
 - 跨平台支持：Windows/Linux/macOS
 - 异常处理：基于C++异常体系，自定义异常类型
+- 构建系统：CMake
+- 测试框架：内置测试工具
 
 ## 项目结构
 
@@ -33,12 +35,11 @@ MeshFormatConverter是一个功能强大的网格格式转换工具，支持多�
 MeshFormatConverter/
 ├── include/          # 头文件
 ├── src/              # 源文件
-├── tests/            # 测试文件
-│   ├── unit/         # 单元测试
-│   ├── integration/  # 集成测试
-│   └── performance/  # 性能测试
-├── examples/         # 使用示例
-├── docs/             # 文档
+├── examples/         # 使用示例和测试工具
+├── data/             # 测试数据
+├── extern/           # 外部依赖
+├── build/            # 构建目录
+├── build_new/        # 替代构建目录
 ├── CMakeLists.txt    # CMake配置
 └── README.md         # 项目说明
 ```
@@ -64,12 +65,19 @@ MeshFormatConverter/
 
 2. **构建项目**
    ```bash
+   # Windows
+   cmake --build . --config Debug
+   # 或
    cmake --build . --config Release
+   
+   # Linux/macOS
+   cmake --build .
    ```
 
 3. **运行测试**
    ```bash
-   ctest
+   # 使用内置测试工具
+   bin/Debug/MeshReaderTest.exe data/src/stl/aneurysm_data.stl
    ```
 
 4. **安装项目** (可选)
@@ -136,15 +144,49 @@ int main() {
 }
 ```
 
+### 命令行工具使用
+
+项目提供了 `meshconv` 命令行工具，用于快速执行网格格式转换：
+
+```bash
+# 基本用法
+meshconv <input_file> <output_file>
+
+# 示例：将STL文件转换为VTK文件
+meshconv input.stl output.vtk
+
+# 示例：将VTK文件转换为CGNS文件
+meshconv input.vtk output.cgns
+```
+
+### 测试工具
+
+项目包含多个测试工具，用于验证网格读取和转换功能：
+
+- **MeshReaderTest.exe**：测试网格文件读取功能
+- **STLReaderTest.exe**：专门测试STL文件读取
+- **VTKConverterTest.exe**：测试VTK文件转换
+
+使用示例：
+
+```bash
+# 测试STL文件读取
+MeshReaderTest.exe data/src/stl/aneurysm_data.stl
+
+# 测试VTK文件转换
+VTKConverterTest.exe data/src/vtk/legacy/unstructuredTime1.vtk
+```
+
 ## API 文档
 
 ### 核心接口
 
-- **MeshReader**：网格读取模块，支持自动格式识别和指定格式读取
+- **MeshReader**：网格读取模块，支持自动格式识别和指定格式读取，已修复STL文件格式检测和内存分配问题
 - **MeshWriter**：网格写入模块，支持格式特异性配置
 - **MeshConverter**：格式转换模块，提供单文件和批量转换功能
 - **MeshProcessor**：网格处理模块，提供表面提取、网格校验等功能
 - **MeshHelper**：辅助接口模块，提供格式识别、元数据提取等功能
+- **VTKConverter**：VTK格式转换模块，支持不同VTK格式之间的转换
 
 ### 数据结构
 
@@ -152,6 +194,8 @@ int main() {
 - **MeshMetadata**：网格元数据，描述网格属性
 - **FormatWriteOptions**：格式写入选项，支持格式特异性配置
 - **MeshException**：异常处理类，支持错误码和错误信息
+- **MeshErrorCode**：错误码枚举，定义各种错误类型
+- **MeshFormat**：格式枚举，定义支持的网格格式
 
 ## 扩展指南
 
@@ -178,6 +222,8 @@ int main() {
 - **格式不支持**：检查文件格式是否在支持列表中
 - **文件不存在**：确认文件路径正确
 - **权限不足**：确保有文件读写权限
+- **STL文件读取错误**：如果遇到"bad allocation"错误，可能是因为文件格式检测错误。项目已修复此问题，现在会正确检测STL ASCII和二进制格式。
+- **VTK文件读取错误**：对于结构化网格和曲线网格，项目已添加支持，能够正确转换为非结构化网格。
 
 ### 调试建议
 
@@ -185,6 +231,14 @@ int main() {
 - 检查输入文件格式
 - 验证依赖库版本
 - 使用 `MeshHelper::extractMetadata` 检查文件元数据
+- 对于STL文件，确保文件格式正确（ASCII或二进制）
+- 对于大型网格文件，确保有足够的内存
+
+### 已知问题与解决方案
+
+- **STL文件格式检测**：项目已修复STL文件格式检测逻辑，现在会根据文件内容而不仅仅是扩展名来判断格式。
+- **二进制STL内存分配**：添加了三角形数量验证和内存分配异常捕获，防止因异常大的三角形数量导致的内存分配失败。
+- **VTK结构化网格支持**：添加了对结构化网格和曲线网格的支持，能够正确转换为非结构化网格。
 
 ## 许可证
 

@@ -6,19 +6,19 @@
 #include "MeshException.h"
 
 /**
- * @brief 网格处理模块
- * 提供网格拓扑/几何处理能力，如体网格提取表面、面网格转体网格等
+ * @brief Mesh processing module
+ * Provides mesh topology/geometry processing capabilities, such as extracting surface from volume mesh, converting surface mesh to volume mesh, etc.
  */
 class MeshProcessor {
 public:
     /**
-     * @brief 从体网格提取表面网格（生成闭合壳体）
-     * @param volumeMesh 输入体网格数据
-     * @param[out] surfaceMesh 输出表面网格数据
-     * @param includeBoundaryOnly 是否仅提取边界单元（true=仅边界，false=所有表面）
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息
-     * @return 处理是否成功
+     * @brief Extract surface mesh from volume mesh (generate closed shell)
+     * @param volumeMesh Input volume mesh data
+     * @param[out] surfaceMesh Output surface mesh data
+     * @param includeBoundaryOnly Whether to extract only boundary cells (true=only boundary, false=all surfaces)
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether processing is successful
      */
     static bool extractSurfaceFromVolume(const MeshData& volumeMesh,
                                         MeshData& surfaceMesh,
@@ -27,30 +27,30 @@ public:
                                         std::string& errorMsg);
 
     /**
-     * @brief 网格数据校验（检查点/单元索引、属性数据长度等）
-     * @param meshData 待校验的网格数据
-     * @param[out] errorMsg 输出校验失败信息
-     * @return 校验是否通过
+     * @brief Mesh data validation (check point/cell indices, attribute data length, etc.)
+     * @param meshData Mesh data to validate
+     * @param[out] errorMsg Output validation failure message
+     * @return Whether validation passes
      */
     static bool validateMesh(const MeshData& meshData, std::string& errorMsg);
 
     /**
-     * @brief 计算网格边界盒
-     * @param meshData 网格数据
-     * @param[out] bounds 输出边界盒 [minX, maxX, minY, maxY, minZ, maxZ]
-     * @return 计算是否成功
+     * @brief Calculate mesh bounding box
+     * @param meshData Mesh data
+     * @param[out] bounds Output bounding box [minX, maxX, minY, maxY, minZ, maxZ]
+     * @return Whether calculation is successful
      */
     static bool computeBounds(const MeshData& meshData, std::vector<float>& bounds);
 
     /**
-     * @brief 网格平滑处理
-     * @param meshData 输入网格数据
-     * @param[out] smoothedMesh 输出平滑后的网格数据
-     * @param iterations 平滑迭代次数
-     * @param relaxation 松弛因子（0-1）
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息
-     * @return 处理是否成功
+     * @brief Mesh smoothing
+     * @param meshData Input mesh data
+     * @param[out] smoothedMesh Output smoothed mesh data
+     * @param iterations Smoothing iteration count
+     * @param relaxation Relaxation factor (0-1)
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether processing is successful
      */
     static bool smoothMesh(const MeshData& meshData,
                           MeshData& smoothedMesh,
@@ -60,13 +60,13 @@ public:
                           std::string& errorMsg);
 
     /**
-     * @brief 网格简化
-     * @param meshData 输入网格数据
-     * @param[out] simplifiedMesh 输出简化后的网格数据
-     * @param targetReduction 目标简化比例（0-1）
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息
-     * @return 处理是否成功
+     * @brief Mesh simplification
+     * @param meshData Input mesh data
+     * @param[out] simplifiedMesh Output simplified mesh data
+     * @param targetReduction Target simplification ratio (0-1)
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether processing is successful
      */
     static bool simplifyMesh(const MeshData& meshData,
                             MeshData& simplifiedMesh,
@@ -76,10 +76,10 @@ public:
 
 private:
     /**
-     * @brief 检查点索引是否有效
-     * @param pointIndex 点索引
-     * @param pointCount 点数量
-     * @return 是否有效
+     * @brief Check if point index is valid
+     * @param pointIndex Point index
+     * @param pointCount Point count
+     * @return Whether valid
      */
     static bool isValidPointIndex(uint32_t pointIndex, uint64_t pointCount);
 };

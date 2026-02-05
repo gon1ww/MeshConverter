@@ -1,4 +1,5 @@
 # CMake generation dependency list for this directory.
+C:/Program Files (x86)/cgns/lib/cmake/cgns/cgns-config-version.cmake
 D:/code/CMake/cmake-3.31.10-windows-x86_64/share/cmake-3.31/Modules/CMakeCXXInformation.cmake
 D:/code/CMake/cmake-3.31.10-windows-x86_64/share/cmake-3.31/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake
 D:/code/CMake/cmake-3.31.10-windows-x86_64/share/cmake-3.31/Modules/CMakeCommonLanguageInclude.cmake

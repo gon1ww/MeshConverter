@@ -3,103 +3,103 @@
 #include <limits>
 
 /**
- * @brief 检查点索引是否有效
- * @param pointIndex 点索引
- * @param pointCount 点数量
- * @return 是否有效
+ * @brief Check if point index is valid
+ * @param pointIndex Point index
+ * @param pointCount Point count
+ * @return Whether valid
  */
 bool MeshProcessor::isValidPointIndex(uint32_t pointIndex, uint64_t pointCount) {
     return pointIndex < pointCount;
 }
 
 /**
- * @brief 从体网格提取表面网格（生成闭合壳体）
- * @param volumeMesh 输入体网格数据
- * @param[out] surfaceMesh 输出表面网格数据
- * @param includeBoundaryOnly 是否仅提取边界单元（true=仅边界，false=所有表面）
- * @param[out] errorCode 输出错误码
- * @param[out] errorMsg 输出错误信息
- * @return 处理是否成功
+ * @brief Extract surface mesh from volume mesh (generate closed shell)
+ * @param volumeMesh Input volume mesh data
+ * @param[out] surfaceMesh Output surface mesh data
+ * @param includeBoundaryOnly Whether to extract only boundary cells (true=only boundary, false=all surfaces)
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether processing is successful
  */
 bool MeshProcessor::extractSurfaceFromVolume(const MeshData& volumeMesh,
                                            MeshData& surfaceMesh,
                                            bool includeBoundaryOnly,
                                            MeshErrorCode& errorCode,
                                            std::string& errorMsg) {
-    // 检查输入网格是否为空
+    // Check if input mesh is empty
     if (volumeMesh.isEmpty()) {
         errorCode = MeshErrorCode::MESH_EMPTY;
-        errorMsg = "输入网格数据为空";
+        errorMsg = "Input mesh data is empty";
         return false;
     }
 
-    // 检查是否为体网格
+    // Check if it is volume mesh
     if (volumeMesh.metadata.meshType != MeshType::VOLUME_MESH) {
         errorCode = MeshErrorCode::PARAM_INVALID;
-        errorMsg = "输入网格不是体网格";
+        errorMsg = "Input mesh is not volume mesh";
         return false;
     }
 
-    // 清空输出网格
+    // Clear output mesh
     surfaceMesh.clear();
 
-    // 这里实现体网格提取表面的逻辑
-    // 基本思路：
-    // 1. 遍历所有单元的面
-    // 2. 统计每个面出现的次数
-    // 3. 只保留出现次数为1的面（边界面）
+    // Implementation of surface extraction from volume mesh
+    // Basic idea:
+    // 1. Iterate through all faces of cells
+    // 2. Count occurrence of each face
+    // 3. Only keep faces with occurrence count 1 (boundary faces)
 
-    // 暂时返回未实现
+    // Temporarily return unimplemented
     errorCode = MeshErrorCode::FORMAT_VERSION_INVALID;
-    errorMsg = "体网格提取表面功能未实现";
+    errorMsg = "Surface extraction from volume mesh is not implemented";
     return false;
 }
 
 /**
- * @brief 网格数据校验（检查点/单元索引、属性数据长度等）
- * @param meshData 待校验的网格数据
- * @param[out] errorMsg 输出校验失败信息
- * @return 校验是否通过
+ * @brief Mesh data validation (check point/cell indices, attribute data lengths, etc.)
+ * @param meshData Mesh data to validate
+ * @param[out] errorMsg Output validation failure message
+ * @return Whether validation passes
  */
 bool MeshProcessor::validateMesh(const MeshData& meshData, std::string& errorMsg) {
-    // 检查网格是否为空
+    // Check if mesh is empty
     if (meshData.isEmpty()) {
-        errorMsg = "网格数据为空";
+        errorMsg = "Mesh data is empty";
         return false;
     }
 
-    // 检查点数据
+    // Check point data
     if (meshData.points.size() % 3 != 0) {
-        errorMsg = "点数据长度不是3的倍数";
+        errorMsg = "Point data length is not a multiple of 3";
         return false;
     }
 
     uint64_t pointCount = meshData.points.size() / 3;
 
-    // 检查单元数据
+    // Check cell data
     for (size_t i = 0; i < meshData.cells.size(); i++) {
         const auto& cell = meshData.cells[i];
         for (uint32_t pointIndex : cell.pointIndices) {
             if (!isValidPointIndex(pointIndex, pointCount)) {
-                errorMsg = "单元 " + std::to_string(i) + " 包含无效的点索引: " + std::to_string(pointIndex);
+                errorMsg = "Cell " + std::to_string(i) + " contains invalid point index: " + std::to_string(pointIndex);
                 return false;
             }
         }
     }
 
-    // 检查点属性数据
+    // Check point attribute data
     for (const auto& [name, data] : meshData.pointData) {
         if (!data.empty() && data.size() % pointCount != 0) {
-            errorMsg = "点属性 '" + name + "' 数据长度与点数量不匹配";
+            errorMsg = "Point attribute '" + name + "' data length does not match point count";
             return false;
         }
     }
 
-    // 检查单元属性数据
+    // Check cell attribute data
     uint64_t cellCount = meshData.cells.size();
     for (const auto& [name, data] : meshData.cellData) {
         if (!data.empty() && data.size() % cellCount != 0) {
-            errorMsg = "单元属性 '" + name + "' 数据长度与单元数量不匹配";
+            errorMsg = "Cell attribute '" + name + "' data length does not match cell count";
             return false;
         }
     }
@@ -108,18 +108,18 @@ bool MeshProcessor::validateMesh(const MeshData& meshData, std::string& errorMsg
 }
 
 /**
- * @brief 计算网格边界盒
- * @param meshData 网格数据
- * @param[out] bounds 输出边界盒 [minX, maxX, minY, maxY, minZ, maxZ]
- * @return 计算是否成功
+ * @brief Compute mesh bounding box
+ * @param meshData Mesh data
+ * @param[out] bounds Output bounding box [minX, maxX, minY, maxY, minZ, maxZ]
+ * @return Whether computation is successful
  */
 bool MeshProcessor::computeBounds(const MeshData& meshData, std::vector<float>& bounds) {
-    // 检查网格是否为空
+    // Check if mesh is empty
     if (meshData.isEmpty()) {
         return false;
     }
 
-    // 初始化边界盒
+    // Initialize bounding box
     float minX = std::numeric_limits<float>::max();
     float maxX = std::numeric_limits<float>::lowest();
     float minY = std::numeric_limits<float>::max();
@@ -127,7 +127,7 @@ bool MeshProcessor::computeBounds(const MeshData& meshData, std::vector<float>& 
     float minZ = std::numeric_limits<float>::max();
     float maxZ = std::numeric_limits<float>::lowest();
 
-    // 遍历所有点
+    // Iterate through all points
     for (size_t i = 0; i < meshData.points.size(); i += 3) {
         float x = meshData.points[i];
         float y = meshData.points[i + 1];
@@ -141,7 +141,7 @@ bool MeshProcessor::computeBounds(const MeshData& meshData, std::vector<float>& 
         maxZ = std::max(maxZ, z);
     }
 
-    // 填充输出
+    // Fill output
     bounds.clear();
     bounds.push_back(minX);
     bounds.push_back(maxX);
@@ -154,14 +154,14 @@ bool MeshProcessor::computeBounds(const MeshData& meshData, std::vector<float>& 
 }
 
 /**
- * @brief 网格平滑处理
- * @param meshData 输入网格数据
- * @param[out] smoothedMesh 输出平滑后的网格数据
- * @param iterations 平滑迭代次数
- * @param relaxation 松弛因子（0-1）
- * @param[out] errorCode 输出错误码
- * @param[out] errorMsg 输出错误信息
- * @return 处理是否成功
+ * @brief Mesh smoothing
+ * @param meshData Input mesh data
+ * @param[out] smoothedMesh Output smoothed mesh data
+ * @param iterations Smoothing iterations
+ * @param relaxation Relaxation factor (0-1)
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether processing is successful
  */
 bool MeshProcessor::smoothMesh(const MeshData& meshData,
                               MeshData& smoothedMesh,
@@ -169,75 +169,75 @@ bool MeshProcessor::smoothMesh(const MeshData& meshData,
                               float relaxation,
                               MeshErrorCode& errorCode,
                               std::string& errorMsg) {
-    // 检查输入参数
+    // Check input parameters
     if (iterations < 0) {
         errorCode = MeshErrorCode::PARAM_INVALID;
-        errorMsg = "迭代次数不能为负数";
+        errorMsg = "Iteration count cannot be negative";
         return false;
     }
 
     if (relaxation < 0.0f || relaxation > 1.0f) {
         errorCode = MeshErrorCode::PARAM_INVALID;
-        errorMsg = "松弛因子必须在0-1之间";
+        errorMsg = "Relaxation factor must be between 0-1";
         return false;
     }
 
-    // 检查输入网格是否为空
+    // Check if input mesh is empty
     if (meshData.isEmpty()) {
         errorCode = MeshErrorCode::MESH_EMPTY;
-        errorMsg = "输入网格数据为空";
+        errorMsg = "Input mesh data is empty";
         return false;
     }
 
-    // 这里实现网格平滑的逻辑
-    // 基本思路：
-    // 1. 对每个点，计算其邻接点的平均值
-    // 2. 按照松弛因子移动点的位置
-    // 3. 迭代指定次数
+    // Implementation of mesh smoothing
+    // Basic idea:
+    // 1. For each point, compute average of its neighboring points
+    // 2. Move point position according to relaxation factor
+    // 3. Iterate for specified number of times
 
-    // 暂时返回未实现
+    // Temporarily return unimplemented
     errorCode = MeshErrorCode::FORMAT_VERSION_INVALID;
-    errorMsg = "网格平滑功能未实现";
+    errorMsg = "Mesh smoothing is not implemented";
     return false;
 }
 
 /**
- * @brief 网格简化
- * @param meshData 输入网格数据
- * @param[out] simplifiedMesh 输出简化后的网格数据
- * @param targetReduction 目标简化比例（0-1）
- * @param[out] errorCode 输出错误码
- * @param[out] errorMsg 输出错误信息
- * @return 处理是否成功
+ * @brief Mesh simplification
+ * @param meshData Input mesh data
+ * @param[out] simplifiedMesh Output simplified mesh data
+ * @param targetReduction Target reduction ratio (0-1)
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether processing is successful
  */
 bool MeshProcessor::simplifyMesh(const MeshData& meshData,
                                MeshData& simplifiedMesh,
                                float targetReduction,
                                MeshErrorCode& errorCode,
                                std::string& errorMsg) {
-    // 检查输入参数
+    // Check input parameters
     if (targetReduction < 0.0f || targetReduction >= 1.0f) {
         errorCode = MeshErrorCode::PARAM_INVALID;
-        errorMsg = "目标简化比例必须在0-1之间";
+        errorMsg = "Target reduction ratio must be between 0-1";
         return false;
     }
 
-    // 检查输入网格是否为空
+    // Check if input mesh is empty
     if (meshData.isEmpty()) {
         errorCode = MeshErrorCode::MESH_EMPTY;
-        errorMsg = "输入网格数据为空";
+        errorMsg = "Input mesh data is empty";
         return false;
     }
 
-    // 这里实现网格简化的逻辑
-    // 基本思路：
-    // 1. 使用边折叠算法
-    // 2. 计算边的折叠代价
-    // 3. 按照代价从小到大折叠边
-    // 4. 直到达到目标简化比例
+    // Implementation of mesh simplification
+    // Basic idea:
+    // 1. Use edge collapse algorithm
+    // 2. Compute collapse cost for edges
+    // 3. Collapse edges in order of increasing cost
+    // 4. Until target reduction ratio is reached
 
-    // 暂时返回未实现
+    // Temporarily return unimplemented
     errorCode = MeshErrorCode::FORMAT_VERSION_INVALID;
-    errorMsg = "网格简化功能未实现";
+    errorMsg = "Mesh simplification is not implemented";
     return false;
 }

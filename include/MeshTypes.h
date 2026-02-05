@@ -6,20 +6,20 @@
 #include <cstdint>
 
 /**
- * @brief 网格数据类型（体/面）
+ * @brief Mesh data type (volume/surface)
  */
 enum class MeshType {
     UNKNOWN = 0,
-    VOLUME_MESH = 1,  // 体网格（四面体、六面体等）
-    SURFACE_MESH = 2  // 面网格（三角形、四边形等）
+    VOLUME_MESH = 1,  // Volume mesh (tetrahedron, hexahedron, etc.)
+    SURFACE_MESH = 2  // Surface mesh (triangle, quadrilateral, etc.)
 };
 
 /**
- * @brief 支持的网格格式
+ * @brief Supported mesh formats
  */
 enum class MeshFormat {
     UNKNOWN = 0,
-    // 体网格格式
+    // Volume mesh formats
     VTK_LEGACY = 1,    // VTK Legacy (.vtk)
     VTK_XML = 2,       // VTK XML (.vtu/.vtp/.vti/.vts)
     CGNS = 3,          // CGNS (.cgns)
@@ -27,7 +27,7 @@ enum class MeshFormat {
     GMSH_V4 = 5,       // Gmsh v4 (.msh)
     SU2 = 6,           // SU2 (.su2)
     OPENFOAM = 7,      // OpenFOAM (foamFile)
-    // 面网格格式
+    // Surface mesh formats
     STL_ASCII = 8,     // STL ASCII (.stl)
     STL_BINARY = 9,    // STL Binary (.stl)
     OBJ = 10,          // OBJ (.obj)
@@ -37,7 +37,7 @@ enum class MeshFormat {
 };
 
 /**
- * @brief VTK单元类型（映射VTK原生定义）
+ * @brief VTK cell type (mapping VTK native definition)
  */
 enum class VtkCellType {
     VERTEX = 1,
@@ -48,88 +48,88 @@ enum class VtkCellType {
     HEXAHEDRON = 12,
     WEDGE = 13,
     PYRAMID = 14,
-    // 扩展常用类型
+    // Extended common types
     TRIANGLE_STRIP = 6,
     POLYGON = 7
 };
 
 /**
- * @brief 错误码定义
+ * @brief Error code definition
  */
 enum class MeshErrorCode {
-    SUCCESS = 0,                // 成功
-    FILE_NOT_EXIST = 1,         // 文件不存在
-    FORMAT_UNSUPPORTED = 2,     // 格式不支持
-    READ_FAILED = 3,            // 读取失败（解析错误/权限问题）
-    WRITE_FAILED = 4,           // 写入失败（权限问题/磁盘满）
-    MESH_EMPTY = 5,             // 网格数据为空
-    PARAM_INVALID = 6,          // 参数无效
-    DEPENDENCY_MISSING = 7,     // 依赖库缺失（如CGNS API未加载）
-    FORMAT_VERSION_INVALID = 8  // 格式版本不兼容（如Gmsh v1格式）
+    SUCCESS = 0,                // Success
+    FILE_NOT_EXIST = 1,         // File not exist
+    FORMAT_UNSUPPORTED = 2,     // Format not supported
+    READ_FAILED = 3,            // Read failed (parse error/permission issue)
+    WRITE_FAILED = 4,           // Write failed (permission issue/disk full)
+    MESH_EMPTY = 5,             // Mesh data is empty
+    PARAM_INVALID = 6,          // Invalid parameter
+    DEPENDENCY_MISSING = 7,     // Dependency library missing (e.g. CGNS API not loaded)
+    FORMAT_VERSION_INVALID = 8  // Format version incompatible (e.g. Gmsh v1 format)
 };
 
 /**
- * @brief 网格元数据（描述网格属性，不包含几何/拓扑数据）
+ * @brief Mesh metadata (describes mesh properties, does not include geometry/topology data)
  */
 struct MeshMetadata {
-    std::string fileName;                // 源文件名
-    MeshType meshType = MeshType::UNKNOWN; // 体/面网格类型
-    MeshFormat format = MeshFormat::UNKNOWN; // 源格式
-    uint64_t pointCount = 0;             // 点数量
-    uint64_t cellCount = 0;             // 单元数量
-    std::unordered_map<VtkCellType, uint64_t> cellTypeCount; // 各单元类型数量
-    std::vector<std::string> physicalRegions; // 物理区域名称（如CFD边界条件）
-    std::vector<std::string> pointDataNames;  // 点属性名称（如压力、速度）
-    std::vector<std::string> cellDataNames;   // 单元属性名称（如雅可比、扭曲度）
-    std::string formatVersion;           // 格式版本（如VTK 4.2、Gmsh 4.1）
+    std::string fileName;                // Source file name
+    MeshType meshType = MeshType::UNKNOWN; // Volume/surface mesh type
+    MeshFormat format = MeshFormat::UNKNOWN; // Source format
+    uint64_t pointCount = 0;             // Point count
+    uint64_t cellCount = 0;             // Cell count
+    std::unordered_map<VtkCellType, uint64_t> cellTypeCount; // Count of each cell type
+    std::vector<std::string> physicalRegions; // Physical region names (e.g. CFD boundary conditions)
+    std::vector<std::string> pointDataNames;  // Point attribute names (e.g. pressure, velocity)
+    std::vector<std::string> cellDataNames;   // Cell attribute names (e.g. Jacobian, skewness)
+    std::string formatVersion;           // Format version (e.g. VTK 4.2, Gmsh 4.1)
 };
 
 /**
- * @brief 格式写入选项（不同格式的特异性配置）
+ * @brief Format write options (format-specific configurations)
  */
 struct FormatWriteOptions {
-    // 通用选项
-    bool isBinary = true;                // 是否二进制存储（默认true，优先高性能）
-    int precision = 6;                   // 浮点数精度（ASCII格式有效）
-    bool compress = false;               // 是否压缩（仅支持VTK XML/CGNS）
-    // VTK专属选项
-    bool vtkPreserveAllAttributes = true; // 是否保留所有属性数据
-    // CGNS专属选项
-    std::string cgnsBaseName = "Base1";  // CGNS Base名称
-    std::string cgnsZoneName = "Zone1";  // CGNS Zone名称
-    int cgnsDimension = 3;               // CGNS物理维度（2/3）
-    // Gmsh专属选项
-    bool gmshPreservePhysicalGroups = true; // 是否保留物理组
-    // STL专属选项
-    std::string stlSolidName = "Solid";  // STL实体名称（ASCII格式）
+    // Common options
+    bool isBinary = true;                // Whether to use binary storage (default true, prioritize performance)
+    int precision = 6;                   // Floating point precision (valid for ASCII format)
+    bool compress = false;               // Whether to compress (only supported by VTK XML/CGNS)
+    // VTK-specific options
+    bool vtkPreserveAllAttributes = true; // Whether to preserve all attribute data
+    // CGNS-specific options
+    std::string cgnsBaseName = "Base1";  // CGNS Base name
+    std::string cgnsZoneName = "Zone1";  // CGNS Zone name
+    int cgnsDimension = 3;               // CGNS physical dimension (2/3)
+    // Gmsh-specific options
+    bool gmshPreservePhysicalGroups = true; // Whether to preserve physical groups
+    // STL-specific options
+    std::string stlSolidName = "Solid";  // STL solid name (ASCII format)
 };
 
 /**
- * @brief 网格核心数据（几何+拓扑+属性）
+ * @brief Mesh core data (geometry + topology + attributes)
  */
 class MeshData {
 public:
-    // 几何数据：点坐标（x,y,z），连续存储
-    std::vector<float> points; // 长度=pointCount*3，索引：i*3=x, i*3+1=y, i*3+2=z
+    // Geometry data: point coordinates (x,y,z), stored contiguously
+    std::vector<float> points; // Length = pointCount*3, index: i*3=x, i*3+1=y, i*3+2=z
     
-    // 拓扑数据：单元连接关系
+    // Topology data: cell connectivity
     struct Cell {
-        VtkCellType type;      // 单元类型
-        std::vector<uint32_t> pointIndices; // 单元包含的点索引（从0开始）
+        VtkCellType type;      // Cell type
+        std::vector<uint32_t> pointIndices; // Point indices contained in the cell (starting from 0)
     };
-    std::vector<Cell> cells;   // 所有单元
+    std::vector<Cell> cells;   // All cells
     
-    // 属性数据：点属性（名称->值列表）
+    // Attribute data: point attributes (name->value list)
     std::unordered_map<std::string, std::vector<float>> pointData;
     
-    // 属性数据：单元属性（名称->值列表）
+    // Attribute data: cell attributes (name->value list)
     std::unordered_map<std::string, std::vector<float>> cellData;
     
-    // 元数据
+    // Metadata
     MeshMetadata metadata;
 
-    // 基础操作
-    void clear();                          // 清空所有数据
-    bool isEmpty() const;                  // 判断是否为空
-    void calculateMetadata();              // 从几何/拓扑数据计算元数据
+    // Basic operations
+    void clear();                          // Clear all data
+    bool isEmpty() const;                  // Check if empty
+    void calculateMetadata();              // Calculate metadata from geometry/topology data
 };

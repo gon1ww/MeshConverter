@@ -86,11 +86,13 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;D:\code\Project\QtProject\ConverterTrae\extern\CGNS\include;D:\code\Project\QtProject\ConverterTrae\extern\gmsh\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5" /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5/token" /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5/vtknlohmannjson/include" /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5/vtknlohmannjson" /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5/vtkkissfft" /utf-8</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MinimalRebuild></MinimalRebuild>
@@ -99,16 +101,16 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_WIN32_WINNT=0x0601;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_WIN32_WINNT=0x0601;HAVE_CGNS;HAVE_GMSH;kiss_fft_scalar=double;KISSFFT_DLL_IMPORT=1;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_WIN32_WINNT=0x0601;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_WIN32_WINNT=0x0601;HAVE_CGNS;HAVE_GMSH;kiss_fft_scalar=double;KISSFFT_DLL_IMPORT=1;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;D:\code\Project\QtProject\ConverterTrae\extern\CGNS\include;D:\code\Project\QtProject\ConverterTrae\extern\gmsh\include;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\token;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtknlohmannjson\include;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtknlohmannjson;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtkkissfft;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;D:\code\Project\QtProject\ConverterTrae\extern\CGNS\include;D:\code\Project\QtProject\ConverterTrae\extern\gmsh\include;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\token;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtknlohmannjson\include;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtknlohmannjson;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtkkissfft;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -116,7 +118,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\lib\Debug\MeshFormatConverter.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\lib\Debug\MeshFormatConverter.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOGeometry-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOPLY-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOCGNSReader-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOXML-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOXMLParser-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkParallelCore-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOLegacy-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOCellGrid-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOCore-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkFiltersCellGrid-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkFiltersGeometry-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkFiltersCore-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonExecutionModel-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonDataModel-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonTransforms-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonMisc-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonMath-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkkissfft-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonCore-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtktoken-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtksys-9.5.lib;ws2_32.lib;dbghelp.lib;psapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -131,10 +133,12 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;D:\code\Project\QtProject\ConverterTrae\extern\CGNS\include;D:\code\Project\QtProject\ConverterTrae\extern\gmsh\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5" /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5/token" /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5/vtknlohmannjson/include" /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5/vtknlohmannjson" /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5/vtkkissfft" /utf-8</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MinimalRebuild></MinimalRebuild>
@@ -143,18 +147,18 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;HAVE_CGNS;HAVE_GMSH;kiss_fft_scalar=double;KISSFFT_DLL_IMPORT=1;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;HAVE_CGNS;HAVE_GMSH;kiss_fft_scalar=double;KISSFFT_DLL_IMPORT=1;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;D:\code\Project\QtProject\ConverterTrae\extern\CGNS\include;D:\code\Project\QtProject\ConverterTrae\extern\gmsh\include;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\token;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtknlohmannjson\include;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtknlohmannjson;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtkkissfft;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;D:\code\Project\QtProject\ConverterTrae\extern\CGNS\include;D:\code\Project\QtProject\ConverterTrae\extern\gmsh\include;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\token;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtknlohmannjson\include;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtknlohmannjson;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtkkissfft;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -162,7 +166,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\lib\Release\MeshFormatConverter.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\lib\Release\MeshFormatConverter.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOGeometry-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOPLY-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOCGNSReader-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOXML-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOXMLParser-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkParallelCore-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOLegacy-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOCellGrid-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOCore-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkFiltersCellGrid-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkFiltersGeometry-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkFiltersCore-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonExecutionModel-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonDataModel-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonTransforms-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonMisc-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonMath-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkkissfft-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonCore-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtktoken-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtksys-9.5.lib;ws2_32.lib;dbghelp.lib;psapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -177,10 +181,12 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;D:\code\Project\QtProject\ConverterTrae\extern\CGNS\include;D:\code\Project\QtProject\ConverterTrae\extern\gmsh\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5" /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5/token" /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5/vtknlohmannjson/include" /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5/vtknlohmannjson" /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5/vtkkissfft" /utf-8</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MinimalRebuild></MinimalRebuild>
@@ -189,18 +195,18 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;HAVE_CGNS;HAVE_GMSH;kiss_fft_scalar=double;KISSFFT_DLL_IMPORT=1;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;HAVE_CGNS;HAVE_GMSH;kiss_fft_scalar=double;KISSFFT_DLL_IMPORT=1;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;D:\code\Project\QtProject\ConverterTrae\extern\CGNS\include;D:\code\Project\QtProject\ConverterTrae\extern\gmsh\include;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\token;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtknlohmannjson\include;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtknlohmannjson;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtkkissfft;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;D:\code\Project\QtProject\ConverterTrae\extern\CGNS\include;D:\code\Project\QtProject\ConverterTrae\extern\gmsh\include;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\token;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtknlohmannjson\include;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtknlohmannjson;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtkkissfft;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -208,7 +214,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\lib\MinSizeRel\MeshFormatConverter.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\lib\MinSizeRel\MeshFormatConverter.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOGeometry-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOPLY-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOCGNSReader-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOXML-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOXMLParser-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkParallelCore-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOLegacy-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOCellGrid-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOCore-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkFiltersCellGrid-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkFiltersGeometry-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkFiltersCore-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonExecutionModel-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonDataModel-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonTransforms-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonMisc-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonMath-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkkissfft-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonCore-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtktoken-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtksys-9.5.lib;ws2_32.lib;dbghelp.lib;psapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -223,11 +229,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;D:\code\Project\QtProject\ConverterTrae\extern\CGNS\include;D:\code\Project\QtProject\ConverterTrae\extern\gmsh\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5" /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5/token" /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5/vtknlohmannjson/include" /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5/vtknlohmannjson" /external:I "D:/code/lib/VTK-9.5.2-install/include/vtk-9.5/vtkkissfft" /utf-8</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MinimalRebuild></MinimalRebuild>
@@ -236,16 +244,16 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;HAVE_CGNS;HAVE_GMSH;kiss_fft_scalar=double;KISSFFT_DLL_IMPORT=1;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;HAVE_CGNS;HAVE_GMSH;kiss_fft_scalar=double;KISSFFT_DLL_IMPORT=1;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;D:\code\Project\QtProject\ConverterTrae\extern\CGNS\include;D:\code\Project\QtProject\ConverterTrae\extern\gmsh\include;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\token;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtknlohmannjson\include;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtknlohmannjson;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtkkissfft;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\code\Project\QtProject\ConverterTrae\include;D:\code\Project\QtProject\ConverterTrae\extern\CGNS\include;D:\code\Project\QtProject\ConverterTrae\extern\gmsh\include;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\token;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtknlohmannjson\include;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtknlohmannjson;D:\code\lib\VTK-9.5.2-install\include\vtk-9.5\vtkkissfft;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -253,7 +261,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\lib\RelWithDebInfo\MeshFormatConverter.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\lib\RelWithDebInfo\MeshFormatConverter.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOGeometry-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOPLY-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOCGNSReader-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOXML-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOXMLParser-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkParallelCore-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOLegacy-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOCellGrid-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkIOCore-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkFiltersCellGrid-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkFiltersGeometry-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkFiltersCore-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonExecutionModel-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonDataModel-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonTransforms-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonMisc-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonMath-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkkissfft-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtkCommonCore-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtktoken-9.5.lib;D:\code\lib\VTK-9.5.2-install\lib\vtksys-9.5.lib;ws2_32.lib;dbghelp.lib;psapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>

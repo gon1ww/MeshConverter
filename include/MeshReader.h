@@ -1,22 +1,23 @@
 #pragma once
 
 #include <string>
+#include <vtkUnstructuredGrid.h>
 #include "MeshTypes.h"
 #include "MeshException.h"
 
 /**
- * @brief 网格读取模块
- * 负责从文件读取网格数据到MeshData，支持自动格式识别和指定格式读取
+ * @brief Mesh reader module
+ * Responsible for reading mesh data from files to MeshData, supporting automatic format detection and specified format reading
  */
 class MeshReader {
 public:
     /**
-     * @brief 自动识别文件格式并读取网格数据
-     * @param filePath 文件路径（UTF-8编码）
-     * @param[out] meshData 输出的网格数据
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息（UTF-8）
-     * @return 读取是否成功（true=成功，false=失败）
+     * @brief Automatically detect file format and read mesh data
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] meshData Output mesh data
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return Whether reading is successful (true=success, false=failure)
      */
     static bool readAuto(const std::string& filePath,
                          MeshData& meshData,
@@ -24,12 +25,12 @@ public:
                          std::string& errorMsg);
 
     /**
-     * @brief 读取VTK格式文件（支持Legacy/XML自动识别）
-     * @param filePath 文件路径（UTF-8编码）
-     * @param[out] meshData 输出的网格数据
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息（UTF-8）
-     * @return 读取是否成功
+     * @brief Read VTK format file (supports Legacy/XML automatic detection)
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] meshData Output mesh data
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return Whether reading is successful
      */
     static bool readVTK(const std::string& filePath,
                         MeshData& meshData,
@@ -37,14 +38,14 @@ public:
                         std::string& errorMsg);
 
     /**
-     * @brief 读取CGNS格式文件
-     * @param filePath 文件路径（UTF-8编码）
-     * @param[out] meshData 输出的网格数据
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息（UTF-8）
-     * @param baseIndex CGNS Base索引（默认0，第一个Base）
-     * @param zoneIndex CGNS Zone索引（默认0，第一个Zone）
-     * @return 读取是否成功
+     * @brief Read CGNS format file
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] meshData Output mesh data
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @param baseIndex CGNS Base index (default 0, first Base)
+     * @param zoneIndex CGNS Zone index (default 0, first Zone)
+     * @return Whether reading is successful
      */
     static bool readCGNS(const std::string& filePath,
                          MeshData& meshData,
@@ -54,12 +55,12 @@ public:
                          int zoneIndex = 0);
 
     /**
-     * @brief 读取Gmsh格式文件（支持v2/v4自动识别）
-     * @param filePath 文件路径（UTF-8编码）
-     * @param[out] meshData 输出的网格数据
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息（UTF-8）
-     * @return 读取是否成功
+     * @brief Read Gmsh format file (supports v2/v4 automatic detection)
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] meshData Output mesh data
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return Whether reading is successful
      */
     static bool readGmsh(const std::string& filePath,
                          MeshData& meshData,
@@ -67,12 +68,12 @@ public:
                          std::string& errorMsg);
 
     /**
-     * @brief 读取STL格式文件（ASCII/Binary）
-     * @param filePath 文件路径（UTF-8编码）
-     * @param[out] meshData 输出的网格数据
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息（UTF-8）
-     * @return 读取是否成功
+     * @brief Read STL format file (ASCII/Binary)
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] meshData Output mesh data
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return Whether reading is successful
      */
     static bool readSTL(const std::string& filePath,
                         MeshData& meshData,
@@ -80,12 +81,12 @@ public:
                         std::string& errorMsg);
 
     /**
-     * @brief 读取OBJ格式文件
-     * @param filePath 文件路径（UTF-8编码）
-     * @param[out] meshData 输出的网格数据
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息（UTF-8）
-     * @return 读取是否成功
+     * @brief Read OBJ format file
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] meshData Output mesh data
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return Whether reading is successful
      */
     static bool readOBJ(const std::string& filePath,
                         MeshData& meshData,
@@ -93,12 +94,12 @@ public:
                         std::string& errorMsg);
 
     /**
-     * @brief 读取PLY格式文件（ASCII/Binary）
-     * @param filePath 文件路径（UTF-8编码）
-     * @param[out] meshData 输出的网格数据
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息（UTF-8）
-     * @return 读取是否成功
+     * @brief Read PLY format file (ASCII/Binary)
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] meshData Output mesh data
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return Whether reading is successful
      */
     static bool readPLY(const std::string& filePath,
                         MeshData& meshData,
@@ -106,12 +107,12 @@ public:
                         std::string& errorMsg);
 
     /**
-     * @brief 读取OFF格式文件
-     * @param filePath 文件路径（UTF-8编码）
-     * @param[out] meshData 输出的网格数据
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息（UTF-8）
-     * @return 读取是否成功
+     * @brief Read OFF format file
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] meshData Output mesh data
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return Whether reading is successful
      */
     static bool readOFF(const std::string& filePath,
                         MeshData& meshData,
@@ -119,12 +120,12 @@ public:
                         std::string& errorMsg);
 
     /**
-     * @brief 读取SU2格式文件
-     * @param filePath 文件路径（UTF-8编码）
-     * @param[out] meshData 输出的网格数据
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息（UTF-8）
-     * @return 读取是否成功
+     * @brief Read SU2 format file
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] meshData Output mesh data
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return Whether reading is successful
      */
     static bool readSU2(const std::string& filePath,
                         MeshData& meshData,
@@ -132,30 +133,181 @@ public:
                         std::string& errorMsg);
 
     /**
-     * @brief 读取OpenFOAM格式文件
-     * @param filePath 文件路径（UTF-8编码）
-     * @param[out] meshData 输出的网格数据
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息（UTF-8）
-     * @return 读取是否成功
+     * @brief Read OpenFOAM format file
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] meshData Output mesh data
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return Whether reading is successful
      */
     static bool readOpenFOAM(const std::string& filePath,
                              MeshData& meshData,
                              MeshErrorCode& errorCode,
                              std::string& errorMsg);
 
+    /**
+     * @brief Detect format from file header
+     * @param filePath File path
+     * @return Detected format
+     */
+    static MeshFormat detectFormatFromHeader(const std::string& filePath);
+
+    // --------------------------------------------------------------------------
+    // VTK intermediate format related methods
+    // --------------------------------------------------------------------------
+
+    /**
+     * @brief Automatically detect file format and read as vtkUnstructuredGrid
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return vtkUnstructuredGrid pointer, returns nullptr on failure
+     */
+    static vtkSmartPointer<vtkUnstructuredGrid> readAutoToVTK(const std::string& filePath,
+                                                              MeshErrorCode& errorCode,
+                                                              std::string& errorMsg);
+
+    /**
+     * @brief Read VTK format file as vtkUnstructuredGrid
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return vtkUnstructuredGrid pointer, returns nullptr on failure
+     */
+    static vtkSmartPointer<vtkUnstructuredGrid> readVTKToVTK(const std::string& filePath,
+                                                             MeshErrorCode& errorCode,
+                                                             std::string& errorMsg);
+
+    /**
+     * @brief Read CGNS format file as vtkUnstructuredGrid
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @param baseIndex CGNS Base index (default 0, first Base)
+     * @param zoneIndex CGNS Zone index (default 0, first Zone)
+     * @return vtkUnstructuredGrid pointer, returns nullptr on failure
+     */
+    static vtkSmartPointer<vtkUnstructuredGrid> readCGNSToVTK(const std::string& filePath,
+                                                              MeshErrorCode& errorCode,
+                                                              std::string& errorMsg,
+                                                              int baseIndex = 0,
+                                                              int zoneIndex = 0);
+
+    /**
+     * @brief Read Gmsh format file as vtkUnstructuredGrid
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return vtkUnstructuredGrid pointer, returns nullptr on failure
+     */
+    static vtkSmartPointer<vtkUnstructuredGrid> readGmshToVTK(const std::string& filePath,
+                                                              MeshErrorCode& errorCode,
+                                                              std::string& errorMsg);
+
+    /**
+     * @brief Read STL format file as vtkUnstructuredGrid
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return vtkUnstructuredGrid pointer, returns nullptr on failure
+     */
+    static vtkSmartPointer<vtkUnstructuredGrid> readSTLToVTK(const std::string& filePath,
+                                                             MeshErrorCode& errorCode,
+                                                             std::string& errorMsg);
+
+    /**
+     * @brief Read OBJ format file as vtkUnstructuredGrid
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return vtkUnstructuredGrid pointer, returns nullptr on failure
+     */
+    static vtkSmartPointer<vtkUnstructuredGrid> readOBJToVTK(const std::string& filePath,
+                                                             MeshErrorCode& errorCode,
+                                                             std::string& errorMsg);
+
+    /**
+     * @brief Read PLY format file as vtkUnstructuredGrid
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return vtkUnstructuredGrid pointer, returns nullptr on failure
+     */
+    static vtkSmartPointer<vtkUnstructuredGrid> readPLYToVTK(const std::string& filePath,
+                                                             MeshErrorCode& errorCode,
+                                                             std::string& errorMsg);
+
+    /**
+     * @brief Read OFF format file as vtkUnstructuredGrid
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return vtkUnstructuredGrid pointer, returns nullptr on failure
+     */
+    static vtkSmartPointer<vtkUnstructuredGrid> readOFFToVTK(const std::string& filePath,
+                                                             MeshErrorCode& errorCode,
+                                                             std::string& errorMsg);
+
+    /**
+     * @brief Read SU2 format file as vtkUnstructuredGrid
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return vtkUnstructuredGrid pointer, returns nullptr on failure
+     */
+    static vtkSmartPointer<vtkUnstructuredGrid> readSU2ToVTK(const std::string& filePath,
+                                                             MeshErrorCode& errorCode,
+                                                             std::string& errorMsg);
+
+    /**
+     * @brief Read OpenFOAM format file as vtkUnstructuredGrid
+     * @param filePath File path (UTF-8 encoded)
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return vtkUnstructuredGrid pointer, returns nullptr on failure
+     */
+    static vtkSmartPointer<vtkUnstructuredGrid> readOpenFOAMToVTK(const std::string& filePath,
+                                                                  MeshErrorCode& errorCode,
+                                                                  std::string& errorMsg);
+
 private:
     /**
-     * @brief 检查文件是否存在
-     * @param filePath 文件路径
-     * @return 是否存在
+     * @brief Check if file exists
+     * @param filePath File path
+     * @return Whether exists
      */
     static bool fileExists(const std::string& filePath);
 
     /**
-     * @brief 从文件头识别格式
-     * @param filePath 文件路径
-     * @return 识别出的格式
+     * @brief Read ASCII STL format
+     * @param file Input file stream
+     * @param[out] meshData Output mesh data
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return Whether reading is successful
      */
-    static MeshFormat detectFormatFromHeader(const std::string& filePath);
+    static bool readSTLASCII(std::ifstream& file,
+                             MeshData& meshData,
+                             MeshErrorCode& errorCode,
+                             std::string& errorMsg);
+
+    /**
+     * @brief Read Binary STL format
+     * @param file Input file stream
+     * @param[out] meshData Output mesh data
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return Whether reading is successful
+     */
+    static bool readSTLBinary(std::ifstream& file,
+                              MeshData& meshData,
+                              MeshErrorCode& errorCode,
+                              std::string& errorMsg);
+
+    /**
+     * @brief Convert MeshData to vtkUnstructuredGrid
+     * @param meshData Input mesh data
+     * @return vtkUnstructuredGrid pointer
+     */
+    static vtkSmartPointer<vtkUnstructuredGrid> meshDataToVTK(const MeshData& meshData);
 };

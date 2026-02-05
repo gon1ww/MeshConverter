@@ -5,3 +5,4 @@ D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/Release/Me
 D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/Release/MeshProcessor.obj
 D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/Release/MeshHelper.obj
 D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/Release/MeshException.obj
+D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/Release/VTKConverter.obj

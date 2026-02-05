@@ -5,3 +5,4 @@ D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/MinSizeRel
 D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/MinSizeRel/MeshProcessor.obj
 D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/MinSizeRel/MeshHelper.obj
 D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/MinSizeRel/MeshException.obj
+D:/code/Project/QtProject/ConverterTrae/build/MeshFormatConverter.dir/MinSizeRel/VTKConverter.obj

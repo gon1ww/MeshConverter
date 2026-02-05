@@ -1,24 +1,25 @@
 #pragma once
 
 #include <string>
+#include <vtkUnstructuredGrid.h>
 #include "MeshTypes.h"
 #include "MeshException.h"
 
 /**
- * @brief 网格写入模块
- * 负责将MeshData写入为指定格式的文件，支持格式特异性配置
+ * @brief Mesh writer module
+ * Responsible for writing MeshData to files in specified formats, supporting format-specific configurations
  */
 class MeshWriter {
 public:
     /**
-     * @brief 写入网格数据到指定格式文件
-     * @param meshData 输入的网格数据
-     * @param filePath 输出文件路径（UTF-8编码）
-     * @param targetFormat 目标格式
-     * @param options 写入选项（格式特异性配置）
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息（UTF-8）
-     * @return 写入是否成功
+     * @brief Write mesh data to specified format file
+     * @param meshData Input mesh data
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param targetFormat Target format
+     * @param options Write options (format-specific configurations)
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return Whether writing is successful
      */
     static bool write(const MeshData& meshData,
                       const std::string& filePath,
@@ -28,14 +29,14 @@ public:
                       std::string& errorMsg);
 
     /**
-     * @brief 写入VTK格式文件（自动区分Legacy/XML）
-     * @param meshData 输入的网格数据
-     * @param filePath 输出文件路径（UTF-8编码）
-     * @param isXml 是否写入XML格式（false=Legacy，true=XML）
-     * @param options 写入选项
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息
-     * @return 写入是否成功
+     * @brief Write VTK format file (automatically distinguish Legacy/XML)
+     * @param meshData Input mesh data
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param isXml Whether to write XML format (false=Legacy, true=XML)
+     * @param options Write options
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether writing is successful
      */
     static bool writeVTK(const MeshData& meshData,
                          const std::string& filePath,
@@ -45,13 +46,13 @@ public:
                          std::string& errorMsg);
 
     /**
-     * @brief 写入CGNS格式文件
-     * @param meshData 输入的网格数据
-     * @param filePath 输出文件路径（UTF-8编码）
-     * @param options 写入选项（需指定cgnsBaseName/cgnsZoneName等）
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息
-     * @return 写入是否成功
+     * @brief Write CGNS format file
+     * @param meshData Input mesh data
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param options Write options (need to specify cgnsBaseName/cgnsZoneName etc.)
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether writing is successful
      */
     static bool writeCGNS(const MeshData& meshData,
                           const std::string& filePath,
@@ -60,13 +61,13 @@ public:
                           std::string& errorMsg);
 
     /**
-     * @brief 写入Gmsh格式文件
-     * @param meshData 输入的网格数据
-     * @param filePath 输出文件路径（UTF-8编码）
-     * @param options 写入选项
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息
-     * @return 写入是否成功
+     * @brief Write Gmsh format file
+     * @param meshData Input mesh data
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param options Write options
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether writing is successful
      */
     static bool writeGmsh(const MeshData& meshData,
                           const std::string& filePath,
@@ -75,13 +76,13 @@ public:
                           std::string& errorMsg);
 
     /**
-     * @brief 写入STL格式文件
-     * @param meshData 输入的网格数据
-     * @param filePath 输出文件路径（UTF-8编码）
-     * @param options 写入选项
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息
-     * @return 写入是否成功
+     * @brief Write STL format file
+     * @param meshData Input mesh data
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param options Write options
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether writing is successful
      */
     static bool writeSTL(const MeshData& meshData,
                          const std::string& filePath,
@@ -90,13 +91,13 @@ public:
                          std::string& errorMsg);
 
     /**
-     * @brief 写入OBJ格式文件
-     * @param meshData 输入的网格数据
-     * @param filePath 输出文件路径（UTF-8编码）
-     * @param options 写入选项
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息
-     * @return 写入是否成功
+     * @brief Write OBJ format file
+     * @param meshData Input mesh data
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param options Write options
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether writing is successful
      */
     static bool writeOBJ(const MeshData& meshData,
                         const std::string& filePath,
@@ -105,13 +106,13 @@ public:
                         std::string& errorMsg);
 
     /**
-     * @brief 写入PLY格式文件
-     * @param meshData 输入的网格数据
-     * @param filePath 输出文件路径（UTF-8编码）
-     * @param options 写入选项
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息
-     * @return 写入是否成功
+     * @brief Write PLY format file
+     * @param meshData Input mesh data
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param options Write options
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether writing is successful
      */
     static bool writePLY(const MeshData& meshData,
                         const std::string& filePath,
@@ -120,13 +121,13 @@ public:
                         std::string& errorMsg);
 
     /**
-     * @brief 写入OFF格式文件
-     * @param meshData 输入的网格数据
-     * @param filePath 输出文件路径（UTF-8编码）
-     * @param options 写入选项
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息
-     * @return 写入是否成功
+     * @brief Write OFF format file
+     * @param meshData Input mesh data
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param options Write options
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether writing is successful
      */
     static bool writeOFF(const MeshData& meshData,
                         const std::string& filePath,
@@ -135,13 +136,13 @@ public:
                         std::string& errorMsg);
 
     /**
-     * @brief 写入SU2格式文件
-     * @param meshData 输入的网格数据
-     * @param filePath 输出文件路径（UTF-8编码）
-     * @param options 写入选项
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息
-     * @return 写入是否成功
+     * @brief Write SU2 format file
+     * @param meshData Input mesh data
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param options Write options
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether writing is successful
      */
     static bool writeSU2(const MeshData& meshData,
                         const std::string& filePath,
@@ -150,13 +151,13 @@ public:
                         std::string& errorMsg);
 
     /**
-     * @brief 写入OpenFOAM格式文件
-     * @param meshData 输入的网格数据
-     * @param filePath 输出文件路径（UTF-8编码）
-     * @param options 写入选项
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息
-     * @return 写入是否成功
+     * @brief Write OpenFOAM format file
+     * @param meshData Input mesh data
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param options Write options
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether writing is successful
      */
     static bool writeOpenFOAM(const MeshData& meshData,
                              const std::string& filePath,
@@ -164,18 +165,185 @@ public:
                              MeshErrorCode& errorCode,
                              std::string& errorMsg);
 
+    // --------------------------------------------------------------------------
+    // VTK intermediate format related methods
+    // --------------------------------------------------------------------------
+
+    /**
+     * @brief Write vtkUnstructuredGrid to specified format file
+     * @param grid Input vtkUnstructuredGrid
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param targetFormat Target format
+     * @param options Write options (format-specific configurations)
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message (UTF-8)
+     * @return Whether writing is successful
+     */
+    static bool writeVTK(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                        const std::string& filePath,
+                        MeshFormat targetFormat,
+                        const FormatWriteOptions& options,
+                        MeshErrorCode& errorCode,
+                        std::string& errorMsg);
+
+    /**
+     * @brief Write vtkUnstructuredGrid to VTK format file
+     * @param grid Input vtkUnstructuredGrid
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param isXml Whether to write XML format (false=Legacy, true=XML)
+     * @param options Write options
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether writing is successful
+     */
+    static bool writeVTKToVTK(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                              const std::string& filePath,
+                              bool isXml,
+                              const FormatWriteOptions& options,
+                              MeshErrorCode& errorCode,
+                              std::string& errorMsg);
+
+    /**
+     * @brief Write vtkUnstructuredGrid to CGNS format file
+     * @param grid Input vtkUnstructuredGrid
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param options Write options (need to specify cgnsBaseName/cgnsZoneName etc.)
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether writing is successful
+     */
+    static bool writeVTKToCGNS(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                               const std::string& filePath,
+                               const FormatWriteOptions& options,
+                               MeshErrorCode& errorCode,
+                               std::string& errorMsg);
+
+    /**
+     * @brief Write vtkUnstructuredGrid to Gmsh format file
+     * @param grid Input vtkUnstructuredGrid
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param options Write options
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether writing is successful
+     */
+    static bool writeVTKToGmsh(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                               const std::string& filePath,
+                               const FormatWriteOptions& options,
+                               MeshErrorCode& errorCode,
+                               std::string& errorMsg);
+
+    /**
+     * @brief Write vtkUnstructuredGrid to STL format file
+     * @param grid Input vtkUnstructuredGrid
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param options Write options
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether writing is successful
+     */
+    static bool writeVTKToSTL(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                              const std::string& filePath,
+                              const FormatWriteOptions& options,
+                              MeshErrorCode& errorCode,
+                              std::string& errorMsg);
+
+    /**
+     * @brief Write vtkUnstructuredGrid to OBJ format file
+     * @param grid Input vtkUnstructuredGrid
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param options Write options
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether writing is successful
+     */
+    static bool writeVTKToOBJ(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                              const std::string& filePath,
+                              const FormatWriteOptions& options,
+                              MeshErrorCode& errorCode,
+                              std::string& errorMsg);
+
+    /**
+     * @brief Write vtkUnstructuredGrid to PLY format file
+     * @param grid Input vtkUnstructuredGrid
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param options Write options
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether writing is successful
+     */
+    static bool writeVTKToPLY(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                              const std::string& filePath,
+                              const FormatWriteOptions& options,
+                              MeshErrorCode& errorCode,
+                              std::string& errorMsg);
+
+    /**
+     * @brief Write vtkUnstructuredGrid to OFF format file
+     * @param grid Input vtkUnstructuredGrid
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param options Write options
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether writing is successful
+     */
+    static bool writeVTKToOFF(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                              const std::string& filePath,
+                              const FormatWriteOptions& options,
+                              MeshErrorCode& errorCode,
+                              std::string& errorMsg);
+
+    /**
+     * @brief Write vtkUnstructuredGrid to SU2 format file
+     * @param grid Input vtkUnstructuredGrid
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param options Write options
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether writing is successful
+     */
+    static bool writeVTKToSU2(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                              const std::string& filePath,
+                              const FormatWriteOptions& options,
+                              MeshErrorCode& errorCode,
+                              std::string& errorMsg);
+
+    /**
+     * @brief Write vtkUnstructuredGrid to OpenFOAM format file
+     * @param grid Input vtkUnstructuredGrid
+     * @param filePath Output file path (UTF-8 encoded)
+     * @param options Write options
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether writing is successful
+     */
+    static bool writeVTKToOpenFOAM(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                                   const std::string& filePath,
+                                   const FormatWriteOptions& options,
+                                   MeshErrorCode& errorCode,
+                                   std::string& errorMsg);
+
 private:
     /**
-     * @brief 确保目录存在
-     * @param filePath 文件路径
-     * @return 是否成功
+     * @brief Ensure directory exists
+     * @param filePath File path
+     * @return Whether successful
      */
     static bool ensureDirectoryExists(const std::string& filePath);
 
     /**
-     * @brief 检查网格数据是否为空
-     * @param meshData 网格数据
-     * @return 是否为空
+     * @brief Check if mesh data is empty
+     * @param meshData Mesh data
+     * @return Whether empty
      */
     static bool isMeshEmpty(const MeshData& meshData);
+
+    /**
+     * @brief Convert vtkUnstructuredGrid to MeshData
+     * @param grid Input vtkUnstructuredGrid
+     * @param[out] meshData Output mesh data
+     * @return Whether successful
+     */
+    static bool vtkToMeshData(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                             MeshData& meshData);
 };

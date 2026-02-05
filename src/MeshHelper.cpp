@@ -4,9 +4,9 @@
 #include <algorithm>
 
 /**
- * @brief 从文件路径获取扩展名
- * @param filePath 文件路径
- * @return 文件扩展名（小写，带点号）
+ * @brief Get file extension from file path
+ * @param filePath File path
+ * @return File extension (lowercase, with dot)
  */
 std::string MeshHelper::getFileExtension(const std::string& filePath) {
     std::filesystem::path path(filePath);
@@ -16,17 +16,14 @@ std::string MeshHelper::getFileExtension(const std::string& filePath) {
 }
 
 /**
- * @brief 从文件头识别网格格式
- * @param filePath 文件路径（UTF-8）
- * @return 识别出的格式（MeshFormat::UNKNOWN=无法识别）
+ * @brief Detect mesh format from file header
+ * @param filePath File path (UTF-8)
+ * @return Detected format (MeshFormat::UNKNOWN=unable to detect)
  */
 MeshFormat MeshHelper::detectFormat(const std::string& filePath) {
-    // 首先检查文件是否存在
-    if (!std::filesystem::exists(filePath)) {
-        return MeshFormat::UNKNOWN;
-    }
+    bool fileExists = std::filesystem::exists(filePath);
 
-    // 尝试从文件扩展名判断
+    // Try to determine from file extension first (works for both existing and non-existing files)
     std::string ext = getFileExtension(filePath);
     if (ext == ".vtk") {
         return MeshFormat::VTK_LEGACY;
@@ -35,70 +32,76 @@ MeshFormat MeshHelper::detectFormat(const std::string& filePath) {
     } else if (ext == ".cgns") {
         return MeshFormat::CGNS;
     } else if (ext == ".msh") {
-        // 需要进一步检查Gmsh版本
-        std::ifstream file(filePath);
-        if (file.is_open()) {
-            std::string line;
-            while (std::getline(file, line)) {
-                if (line.find("$MeshFormat") != std::string::npos) {
-                    if (std::getline(file, line)) {
-                        if (line.find("4.") != std::string::npos) {
-                            return MeshFormat::GMSH_V4;
-                        } else {
-                            return MeshFormat::GMSH_V2;
+        // Need to further check Gmsh version if file exists
+        if (fileExists) {
+            std::ifstream file(filePath);
+            if (file.is_open()) {
+                std::string line;
+                while (std::getline(file, line)) {
+                    if (line.find("$MeshFormat") != std::string::npos) {
+                        if (std::getline(file, line)) {
+                            if (line.find("4.") != std::string::npos) {
+                                return MeshFormat::GMSH_V4;
+                            } else {
+                                return MeshFormat::GMSH_V2;
+                            }
                         }
+                        break;
                     }
-                    break;
                 }
+                file.close();
             }
-            file.close();
         }
-        return MeshFormat::GMSH_V2; // 默认返回v2
+        return MeshFormat::GMSH_V2; // Default to v2
     } else if (ext == ".stl") {
-        // 检查STL是ASCII还是Binary
-        std::ifstream file(filePath, std::ios::binary);
-        if (file.is_open()) {
-            char header[80] = {0};
-            file.read(header, sizeof(header));
-            std::string headerStr(header);
-            if (headerStr.find("solid") != std::string::npos || headerStr.find("SOLID") != std::string::npos) {
-                return MeshFormat::STL_ASCII;
-            } else {
-                return MeshFormat::STL_BINARY;
+        // Check if STL is ASCII or Binary if file exists
+        if (fileExists) {
+            std::ifstream file(filePath, std::ios::binary);
+            if (file.is_open()) {
+                char header[80] = {0};
+                file.read(header, sizeof(header));
+                std::string headerStr(header);
+                if (headerStr.find("solid") != std::string::npos || headerStr.find("SOLID") != std::string::npos) {
+                    return MeshFormat::STL_ASCII;
+                } else {
+                    return MeshFormat::STL_BINARY;
+                }
+                file.close();
             }
-            file.close();
         }
-        return MeshFormat::STL_BINARY; // 默认返回binary
+        return MeshFormat::STL_BINARY; // Default to binary
     } else if (ext == ".obj") {
         return MeshFormat::OBJ;
     } else if (ext == ".ply") {
-        // 检查PLY是ASCII还是Binary
-        std::ifstream file(filePath);
-        if (file.is_open()) {
-            std::string line;
-            if (std::getline(file, line) && line == "ply") {
-                while (std::getline(file, line)) {
-                    if (line.find("format") != std::string::npos) {
-                        if (line.find("ascii") != std::string::npos) {
-                            return MeshFormat::PLY_ASCII;
-                        } else {
-                            return MeshFormat::PLY_BINARY;
+        // Check if PLY is ASCII or Binary if file exists
+        if (fileExists) {
+            std::ifstream file(filePath);
+            if (file.is_open()) {
+                std::string line;
+                if (std::getline(file, line) && line == "ply") {
+                    while (std::getline(file, line)) {
+                        if (line.find("format") != std::string::npos) {
+                            if (line.find("ascii") != std::string::npos) {
+                                return MeshFormat::PLY_ASCII;
+                            } else {
+                                return MeshFormat::PLY_BINARY;
+                            }
                         }
                     }
                 }
+                file.close();
             }
-            file.close();
         }
-        return MeshFormat::PLY_ASCII; // 默认返回ascii
+        return MeshFormat::PLY_ASCII; // Default to ascii
     } else if (ext == ".off") {
         return MeshFormat::OFF;
     } else if (ext == ".su2") {
         return MeshFormat::SU2;
-    } else if (std::filesystem::is_directory(filePath) && std::filesystem::exists(filePath + "/polyMesh")) {
+    } else if (fileExists && std::filesystem::is_directory(filePath) && std::filesystem::exists(filePath + "/polyMesh")) {
         return MeshFormat::OPENFOAM;
     }
 
-    // 如果无法从扩展名判断，尝试从文件头判断
+    // If cannot determine from extension, try from file header
     std::ifstream file(filePath, std::ios::binary);
     if (file.is_open()) {
         char header[128] = {0};
@@ -112,7 +115,7 @@ MeshFormat MeshHelper::detectFormat(const std::string& filePath) {
         } else if (headerStr.find("CGNS") != std::string::npos) {
             return MeshFormat::CGNS;
         } else if (headerStr.find("$MeshFormat") != std::string::npos) {
-            return MeshFormat::GMSH_V2; // 默认返回v2
+            return MeshFormat::GMSH_V2; // Default to v2
         } else if (headerStr.find("solid") != std::string::npos || headerStr.find("SOLID") != std::string::npos) {
             return MeshFormat::STL_ASCII;
         } else if (headerStr.find("ply") != std::string::npos) {
@@ -130,41 +133,41 @@ MeshFormat MeshHelper::detectFormat(const std::string& filePath) {
 }
 
 /**
- * @brief 提取网格元数据（不加载完整几何/拓扑数据，提升性能）
- * @param filePath 文件路径（UTF-8）
- * @param[out] metadata 输出元数据
- * @param[out] errorCode 输出错误码
- * @param[out] errorMsg 输出错误信息
- * @return 提取是否成功
+ * @brief Extract mesh metadata (without loading full geometry/topology data, improve performance)
+ * @param filePath File path (UTF-8)
+ * @param[out] metadata Output metadata
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether extraction is successful
  */
 bool MeshHelper::extractMetadata(const std::string& filePath,
                                MeshMetadata& metadata,
                                MeshErrorCode& errorCode,
                                std::string& errorMsg) {
-    // 检查文件是否存在
+    // Check if file exists
     if (!std::filesystem::exists(filePath)) {
         errorCode = MeshErrorCode::FILE_NOT_EXIST;
-        errorMsg = "文件不存在: " + filePath;
+        errorMsg = "File not exist: " + filePath;
         return false;
     }
 
-    // 识别格式
+    // Detect format
     MeshFormat format = detectFormat(filePath);
     if (format == MeshFormat::UNKNOWN) {
         errorCode = MeshErrorCode::FORMAT_UNSUPPORTED;
-        errorMsg = "无法识别文件格式: " + filePath;
+        errorMsg = "Unable to detect file format: " + filePath;
         return false;
     }
 
-    // 填充基本元数据
+    // Fill basic metadata
     metadata.fileName = std::filesystem::path(filePath).filename().string();
     metadata.format = format;
 
-    // 根据格式提取详细元数据
-    // 这里实现基本的元数据提取逻辑
-    // 对于复杂格式，需要使用相应的库
+    // Extract detailed metadata based on format
+    // Basic metadata extraction logic here
+    // For complex formats, need to use corresponding libraries
 
-    // 暂时返回成功，但只填充基本信息
+    // Temporarily return success, but only fill basic information
     metadata.meshType = MeshType::UNKNOWN;
     metadata.pointCount = 0;
     metadata.cellCount = 0;
@@ -174,9 +177,9 @@ bool MeshHelper::extractMetadata(const std::string& filePath,
 }
 
 /**
- * @brief 获取格式的文件扩展名
- * @param format 网格格式
- * @return 文件扩展名（带点号，如".vtk"）
+ * @brief Get file extension for format
+ * @param format Mesh format
+ * @return File extension (with dot, e.g., ".vtk")
  */
 std::string MeshHelper::getFormatExtension(MeshFormat format) {
     switch (format) {
@@ -209,9 +212,9 @@ std::string MeshHelper::getFormatExtension(MeshFormat format) {
 }
 
 /**
- * @brief 获取格式的可读名称
- * @param format 网格格式
- * @return 格式的可读名称（如"VTK Legacy"）
+ * @brief Get readable name for format
+ * @param format Mesh format
+ * @return Readable name for format (e.g., "VTK Legacy")
  */
 std::string MeshHelper::getFormatName(MeshFormat format) {
     switch (format) {
@@ -247,11 +250,171 @@ std::string MeshHelper::getFormatName(MeshFormat format) {
 }
 
 /**
- * @brief 检查文件是否为指定格式
- * @param filePath 文件路径
- * @param format 目标格式
- * @return 是否为指定格式
+ * @brief Check if file is of specified format
+ * @param filePath File path
+ * @param format Target format
+ * @return Whether file is of specified format
  */
 bool MeshHelper::isFormat(const std::string& filePath, MeshFormat format) {
     return detectFormat(filePath) == format;
+}
+
+/**
+ * @brief Detect format from file extension only (works for non-existent files)
+ * @param filePath File path (UTF-8)
+ * @return Detected format (MeshFormat::UNKNOWN=unable to detect)
+ */
+MeshFormat MeshHelper::detectFormatFromExtension(const std::string& filePath) {
+    try {
+        std::string ext = getFileExtension(filePath);
+        if (ext == ".vtk") {
+            return MeshFormat::VTK_LEGACY;
+        } else if (ext == ".vtu" || ext == ".vtp" || ext == ".vti" || ext == ".vts") {
+            return MeshFormat::VTK_XML;
+        } else if (ext == ".cgns") {
+            return MeshFormat::CGNS;
+        } else if (ext == ".msh") {
+            return MeshFormat::GMSH_V4;
+        } else if (ext == ".stl") {
+            return MeshFormat::STL_BINARY;
+        } else if (ext == ".obj") {
+            return MeshFormat::OBJ;
+        } else if (ext == ".ply") {
+            return MeshFormat::PLY_ASCII;
+        } else if (ext == ".off") {
+            return MeshFormat::OFF;
+        } else if (ext == ".su2") {
+            return MeshFormat::SU2;
+        }
+        
+        return MeshFormat::UNKNOWN;
+    } catch (const std::exception& e) {
+        return MeshFormat::UNKNOWN;
+    }
+}
+
+/**
+ * @brief Check if a format is supported
+ * @param format Mesh format to check
+ * @return Whether the format is supported
+ */
+bool MeshHelper::isSupportedFormat(MeshFormat format) {
+    switch (format) {
+        case MeshFormat::VTK_LEGACY:
+        case MeshFormat::VTK_XML:
+        case MeshFormat::CGNS:
+        case MeshFormat::GMSH_V2:
+        case MeshFormat::GMSH_V4:
+        case MeshFormat::SU2:
+        case MeshFormat::OPENFOAM:
+        case MeshFormat::STL_ASCII:
+        case MeshFormat::STL_BINARY:
+        case MeshFormat::OBJ:
+        case MeshFormat::PLY_ASCII:
+        case MeshFormat::PLY_BINARY:
+        case MeshFormat::OFF:
+            return true;
+        default:
+            return false;
+    }
+}
+
+/**
+ * @brief Get list of all supported formats
+ * @return Vector of supported formats
+ */
+std::vector<MeshFormat> MeshHelper::getSupportedFormats() {
+    return {
+        MeshFormat::VTK_LEGACY,
+        MeshFormat::VTK_XML,
+        MeshFormat::CGNS,
+        MeshFormat::GMSH_V2,
+        MeshFormat::GMSH_V4,
+        MeshFormat::SU2,
+        MeshFormat::OPENFOAM,
+        MeshFormat::STL_ASCII,
+        MeshFormat::STL_BINARY,
+        MeshFormat::OBJ,
+        MeshFormat::PLY_ASCII,
+        MeshFormat::PLY_BINARY,
+        MeshFormat::OFF
+    };
+}
+
+/**
+ * @brief Get list of supported format names for display
+ * @return Vector of readable format names
+ */
+std::vector<std::string> MeshHelper::getSupportedFormatNames() {
+    return {
+        "VTK Legacy (.vtk)",
+        "VTK XML (.vtu/.vtp/.vti/.vts)",
+        "CGNS (.cgns)",
+        "Gmsh v2 (.msh)",
+        "Gmsh v4 (.msh)",
+        "SU2 (.su2)",
+        "OpenFOAM",
+        "STL ASCII (.stl)",
+        "STL Binary (.stl)",
+        "OBJ (.obj)",
+        "PLY ASCII (.ply)",
+        "PLY Binary (.ply)",
+        "OFF (.off)"
+    };
+}
+
+/**
+ * @brief Validate output file format
+ * @param filePath Output file path
+ * @param[out] errorMsg Error message if validation fails
+ * @return Whether the format is valid
+ */
+bool MeshHelper::validateOutputFormat(const std::string& filePath, std::string& errorMsg) {
+    try {
+        MeshFormat format = detectFormatFromExtension(filePath);
+        
+        if (format == MeshFormat::UNKNOWN) {
+            errorMsg = getUnsupportedFormatMessage(filePath);
+            return false;
+        }
+        
+        if (!isSupportedFormat(format)) {
+            errorMsg = getUnsupportedFormatMessage(filePath);
+            return false;
+        }
+        
+        return true;
+    } catch (const std::exception& e) {
+        errorMsg = std::string("Error validating output format: ") + e.what();
+        return false;
+    }
+}
+
+/**
+ * @brief Get comprehensive error message for unsupported format
+ * @param filePath File path that caused the error
+ * @return Detailed error message with guidance
+ */
+std::string MeshHelper::getUnsupportedFormatMessage(const std::string& filePath) {
+    std::string ext = getFileExtension(filePath);
+    std::string message = "Error: Cannot detect output file format for \"" + filePath + "\"\n";
+    
+    if (ext.empty()) {
+        message += "  - No file extension found in the output path\n";
+    } else {
+        message += "  - Unsupported file extension: \"" + ext + "\"\n";
+    }
+    
+    message += "\nSupported output formats and extensions:\n";
+    std::vector<std::string> formatNames = getSupportedFormatNames();
+    for (const auto& name : formatNames) {
+        message += "  - " + name + "\n";
+    }
+    
+    message += "\nSolutions:\n";
+    message += "  1. Use one of the supported file extensions listed above\n";
+    message += "  2. Or specify the target format explicitly using --target-format option\n";
+    message += "     Example: --target-format vtk\n";
+    
+    return message;
 }

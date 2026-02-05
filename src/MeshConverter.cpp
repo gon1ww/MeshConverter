@@ -4,11 +4,11 @@
 #include <mutex>
 
 /**
- * @brief 生成目标文件路径
- * @param srcFilePath 源文件路径
- * @param dstDir 目标目录
- * @param dstFormat 目标格式
- * @return 目标文件路径
+ * @brief Generate target file path
+ * @param srcFilePath Source file path
+ * @param dstDir Target directory
+ * @param dstFormat Target format
+ * @return Target file path
  */
 std::string MeshConverter::generateDstFilePath(const std::string& srcFilePath,
                                               const std::string& dstDir,
@@ -22,9 +22,9 @@ std::string MeshConverter::generateDstFilePath(const std::string& srcFilePath,
 }
 
 /**
- * @brief 确保目标目录存在
- * @param dstDir 目标目录
- * @return 是否成功
+ * @brief Ensure target directory exists
+ * @param dstDir Target directory
+ * @return Whether successful
  */
 bool MeshConverter::ensureDstDirExists(const std::string& dstDir) {
     if (!std::filesystem::exists(dstDir)) {
@@ -39,15 +39,15 @@ bool MeshConverter::ensureDstDirExists(const std::string& dstDir) {
 }
 
 /**
- * @brief 单文件格式转换
- * @param srcFilePath 源文件路径（UTF-8）
- * @param dstFilePath 目标文件路径（UTF-8）
- * @param srcFormat 源格式（MeshFormat::UNKNOWN=自动识别）
- * @param dstFormat 目标格式
- * @param writeOptions 目标格式写入选项
- * @param[out] errorCode 输出错误码
- * @param[out] errorMsg 输出错误信息
- * @return 转换是否成功
+ * @brief Single file format conversion
+ * @param srcFilePath Source file path (UTF-8)
+ * @param dstFilePath Target file path (UTF-8)
+ * @param srcFormat Source format (MeshFormat::UNKNOWN=auto-detect)
+ * @param dstFormat Target format
+ * @param writeOptions Target format write options
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether conversion is successful
  */
 bool MeshConverter::convert(const std::string& srcFilePath,
                            const std::string& dstFilePath,
@@ -56,14 +56,14 @@ bool MeshConverter::convert(const std::string& srcFilePath,
                            const FormatWriteOptions& writeOptions,
                            MeshErrorCode& errorCode,
                            std::string& errorMsg) {
-    // 检查源文件是否存在
+    // Check if source file exists
     if (!std::filesystem::exists(srcFilePath)) {
         errorCode = MeshErrorCode::FILE_NOT_EXIST;
-        errorMsg = "源文件不存在: " + srcFilePath;
+        errorMsg = "Source file does not exist: " + srcFilePath;
         return false;
     }
 
-    // 确保目标目录存在
+    // Ensure target directory exists
     std::filesystem::path dstPath(dstFilePath);
     std::filesystem::path dstDir = dstPath.parent_path();
     if (!dstDir.empty() && !std::filesystem::exists(dstDir)) {
@@ -71,41 +71,41 @@ bool MeshConverter::convert(const std::string& srcFilePath,
             std::filesystem::create_directories(dstDir);
         } catch (...) {
             errorCode = MeshErrorCode::WRITE_FAILED;
-            errorMsg = "无法创建目标目录: " + dstDir.string();
+            errorMsg = "Cannot create target directory: " + dstDir.string();
             return false;
         }
     }
 
-    // 读取网格数据
+    // Read mesh data
     MeshData meshData;
     MeshErrorCode readErrorCode;
     std::string readErrorMsg;
 
     bool readSuccess = false;
     if (srcFormat == MeshFormat::UNKNOWN) {
-        // 自动识别格式并读取
+        // Auto-detect format and read
         readSuccess = MeshReader::readAuto(srcFilePath, meshData, readErrorCode, readErrorMsg);
     } else {
-        // 根据指定格式读取
-        // 这里需要根据具体格式调用对应的读取方法
-        // 暂时使用readAuto作为默认实现
+        // Read according to specified format
+        // Need to call corresponding read method based on specific format
+        // Temporarily use readAuto as default implementation
         readSuccess = MeshReader::readAuto(srcFilePath, meshData, readErrorCode, readErrorMsg);
     }
 
     if (!readSuccess) {
         errorCode = readErrorCode;
-        errorMsg = "读取失败: " + readErrorMsg;
+        errorMsg = "Read failed: " + readErrorMsg;
         return false;
     }
 
-    // 写入网格数据
+    // Write mesh data
     MeshErrorCode writeErrorCode;
     std::string writeErrorMsg;
     bool writeSuccess = MeshWriter::write(meshData, dstFilePath, dstFormat, writeOptions, writeErrorCode, writeErrorMsg);
 
     if (!writeSuccess) {
         errorCode = writeErrorCode;
-        errorMsg = "写入失败: " + writeErrorMsg;
+        errorMsg = "Write failed: " + writeErrorMsg;
         return false;
     }
 
@@ -113,33 +113,33 @@ bool MeshConverter::convert(const std::string& srcFilePath,
 }
 
 /**
- * @brief 批量转换多个文件
- * @param srcFilePaths 源文件路径列表（UTF-8）
- * @param dstDir 目标目录（UTF-8）
- * @param dstFormat 目标格式
- * @param writeOptions 目标格式写入选项
- * @param[out] errorMap 输出每个文件的错误信息（key=源文件路径，value=(errorCode, errorMsg)）
- * @return 成功转换的文件数量
+ * @brief Batch convert multiple files
+ * @param srcFilePaths Source file path list (UTF-8)
+ * @param dstDir Target directory (UTF-8)
+ * @param dstFormat Target format
+ * @param writeOptions Target format write options
+ * @param[out] errorMap Output error information for each file (key=source file path, value=(errorCode, errorMsg))
+ * @return Number of successfully converted files
  */
 uint64_t MeshConverter::batchConvert(const std::vector<std::string>& srcFilePaths,
                                     const std::string& dstDir,
                                     MeshFormat dstFormat,
                                     const FormatWriteOptions& writeOptions,
                                     std::unordered_map<std::string, std::pair<MeshErrorCode, std::string>>& errorMap) {
-    // 确保目标目录存在
+    // Ensure target directory exists
     if (!ensureDstDirExists(dstDir)) {
         errorMap.clear();
         for (const auto& filePath : srcFilePaths) {
-            errorMap[filePath] = {MeshErrorCode::WRITE_FAILED, "无法创建目标目录: " + dstDir};
+            errorMap[filePath] = {MeshErrorCode::WRITE_FAILED, "Cannot create target directory: " + dstDir};
         }
         return 0;
     }
 
-    // 成功转换的文件数量
+    // Number of successfully converted files
     uint64_t successCount = 0;
     std::mutex errorMapMutex;
 
-    // 使用多线程批量转换
+    // Use multi-threading for batch conversion
     std::vector<std::thread> threads;
     const size_t maxThreads = std::thread::hardware_concurrency();
     size_t currentThread = 0;
@@ -171,7 +171,7 @@ uint64_t MeshConverter::batchConvert(const std::vector<std::string>& srcFilePath
         }
     }
 
-    // 等待剩余线程完成
+    // Wait for remaining threads to complete
     for (auto& thread : threads) {
         thread.join();
     }

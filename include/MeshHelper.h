@@ -1,29 +1,64 @@
 #pragma once
 
 #include <string>
+#include <vector>
 #include "MeshTypes.h"
 #include "MeshException.h"
 
 /**
- * @brief 辅助接口模块
- * 提供格式识别、元数据提取等辅助能力
+ * @brief Helper interface module
+ * Provides format detection, metadata extraction and other auxiliary capabilities
  */
 class MeshHelper {
 public:
     /**
-     * @brief 从文件头识别网格格式
-     * @param filePath 文件路径（UTF-8）
-     * @return 识别出的格式（MeshFormat::UNKNOWN=无法识别）
+     * @brief Detect mesh format from file header or extension
+     * @param filePath File path (UTF-8)
+     * @return Detected format (MeshFormat::UNKNOWN=unable to detect)
      */
     static MeshFormat detectFormat(const std::string& filePath);
 
     /**
-     * @brief 提取网格元数据（不加载完整几何/拓扑数据，提升性能）
-     * @param filePath 文件路径（UTF-8）
-     * @param[out] metadata 输出元数据
-     * @param[out] errorCode 输出错误码
-     * @param[out] errorMsg 输出错误信息
-     * @return 提取是否成功
+     * @brief Detect format from file extension only (works for non-existent files)
+     * @param filePath File path (UTF-8)
+     * @return Detected format (MeshFormat::UNKNOWN=unable to detect)
+     */
+    static MeshFormat detectFormatFromExtension(const std::string& filePath);
+
+    /**
+     * @brief Check if a format is supported
+     * @param format Mesh format to check
+     * @return Whether the format is supported
+     */
+    static bool isSupportedFormat(MeshFormat format);
+
+    /**
+     * @brief Get list of all supported formats
+     * @return Vector of supported formats
+     */
+    static std::vector<MeshFormat> getSupportedFormats();
+
+    /**
+     * @brief Get list of supported format names for display
+     * @return Vector of readable format names
+     */
+    static std::vector<std::string> getSupportedFormatNames();
+
+    /**
+     * @brief Validate output file format
+     * @param filePath Output file path
+     * @param[out] errorMsg Error message if validation fails
+     * @return Whether the format is valid
+     */
+    static bool validateOutputFormat(const std::string& filePath, std::string& errorMsg);
+
+    /**
+     * @brief Extract mesh metadata (without loading complete geometry/topology data, improves performance)
+     * @param filePath File path (UTF-8)
+     * @param[out] metadata Output metadata
+     * @param[out] errorCode Output error code
+     * @param[out] errorMsg Output error message
+     * @return Whether extraction is successful
      */
     static bool extractMetadata(const std::string& filePath,
                                MeshMetadata& metadata,
@@ -31,32 +66,39 @@ public:
                                std::string& errorMsg);
 
     /**
-     * @brief 获取格式的文件扩展名
-     * @param format 网格格式
-     * @return 文件扩展名（带点号，如".vtk"）
+     * @brief Get file extension for format
+     * @param format Mesh format
+     * @return File extension (with dot, e.g., ".vtk")
      */
     static std::string getFormatExtension(MeshFormat format);
 
     /**
-     * @brief 获取格式的可读名称
-     * @param format 网格格式
-     * @return 格式的可读名称（如"VTK Legacy"）
+     * @brief Get readable name for format
+     * @param format Mesh format
+     * @return Readable format name (e.g., "VTK Legacy")
      */
     static std::string getFormatName(MeshFormat format);
 
     /**
-     * @brief 检查文件是否为指定格式
-     * @param filePath 文件路径
-     * @param format 目标格式
-     * @return 是否为指定格式
+     * @brief Check if file is of specified format
+     * @param filePath File path
+     * @param format Target format
+     * @return Whether it is the specified format
      */
     static bool isFormat(const std::string& filePath, MeshFormat format);
 
+    /**
+     * @brief Get comprehensive error message for unsupported format
+     * @param filePath File path that caused the error
+     * @return Detailed error message with guidance
+     */
+    static std::string getUnsupportedFormatMessage(const std::string& filePath);
+
 private:
     /**
-     * @brief 从文件路径获取扩展名
-     * @param filePath 文件路径
-     * @return 文件扩展名（小写，带点号）
+     * @brief Get file extension from file path
+     * @param filePath File path
+     * @return File extension (lowercase, with dot)
      */
     static std::string getFileExtension(const std::string& filePath);
 };

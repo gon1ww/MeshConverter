@@ -3,16 +3,16 @@
 #include <filesystem>
 
 /**
- * @brief 确保目录存在
- * @param filePath 文件路径
- * @return 是否成功
+ * @brief Ensure directory exists
+ * @param filePath File path
+ * @return Whether successful
  */
 bool MeshWriter::ensureDirectoryExists(const std::string& filePath) {
     std::filesystem::path path(filePath);
     std::filesystem::path dir = path.parent_path();
     
     if (dir.empty()) {
-        return true; // 目录为空，不需要创建
+        return true; // Directory is empty, no need to create
     }
     
     if (!std::filesystem::exists(dir)) {
@@ -28,23 +28,23 @@ bool MeshWriter::ensureDirectoryExists(const std::string& filePath) {
 }
 
 /**
- * @brief 检查网格数据是否为空
- * @param meshData 网格数据
- * @return 是否为空
+ * @brief Check if mesh data is empty
+ * @param meshData Mesh data
+ * @return Whether empty
  */
 bool MeshWriter::isMeshEmpty(const MeshData& meshData) {
     return meshData.isEmpty();
 }
 
 /**
- * @brief 写入网格数据到指定格式文件
- * @param meshData 输入的网格数据
- * @param filePath 输出文件路径（UTF-8编码）
- * @param targetFormat 目标格式
- * @param options 写入选项（格式特异性配置）
- * @param[out] errorCode 输出错误码
- * @param[out] errorMsg 输出错误信息（UTF-8）
- * @return 写入是否成功
+ * @brief Write mesh data to specified format file
+ * @param meshData Input mesh data
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param targetFormat Target format
+ * @param options Write options (format-specific configurations)
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message (UTF-8)
+ * @return Whether writing is successful
  */
 bool MeshWriter::write(const MeshData& meshData,
                       const std::string& filePath,
@@ -52,21 +52,21 @@ bool MeshWriter::write(const MeshData& meshData,
                       const FormatWriteOptions& options,
                       MeshErrorCode& errorCode,
                       std::string& errorMsg) {
-    // 检查网格数据是否为空
+    // Check if mesh data is empty
     if (isMeshEmpty(meshData)) {
         errorCode = MeshErrorCode::MESH_EMPTY;
-        errorMsg = "网格数据为空";
+        errorMsg = "Mesh data is empty";
         return false;
     }
 
-    // 确保目录存在
+    // Ensure directory exists
     if (!ensureDirectoryExists(filePath)) {
         errorCode = MeshErrorCode::WRITE_FAILED;
-        errorMsg = "无法创建输出目录";
+        errorMsg = "Cannot create output directory";
         return false;
     }
 
-    // 根据格式调用对应的写入方法
+    // Call corresponding write method based on format
     switch (targetFormat) {
         case MeshFormat::VTK_LEGACY:
             return writeVTK(meshData, filePath, false, options, errorCode, errorMsg);
@@ -93,20 +93,20 @@ bool MeshWriter::write(const MeshData& meshData,
             return writeOpenFOAM(meshData, filePath, options, errorCode, errorMsg);
         default:
             errorCode = MeshErrorCode::FORMAT_UNSUPPORTED;
-            errorMsg = "格式不支持";
+            errorMsg = "Format not supported";
             return false;
     }
 }
 
 /**
- * @brief 写入VTK格式文件（自动区分Legacy/XML）
- * @param meshData 输入的网格数据
- * @param filePath 输出文件路径（UTF-8编码）
- * @param isXml 是否写入XML格式（false=Legacy，true=XML）
- * @param options 写入选项
- * @param[out] errorCode 输出错误码
- * @param[out] errorMsg 输出错误信息
- * @return 写入是否成功
+ * @brief Write VTK format file (automatically distinguish Legacy/XML)
+ * @param meshData Input mesh data
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param isXml Whether to write XML format (false=Legacy, true=XML)
+ * @param options Write options
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether writing is successful
  */
 bool MeshWriter::writeVTK(const MeshData& meshData,
                          const std::string& filePath,
@@ -114,191 +114,565 @@ bool MeshWriter::writeVTK(const MeshData& meshData,
                          const FormatWriteOptions& options,
                          MeshErrorCode& errorCode,
                          std::string& errorMsg) {
-    // 这里使用VTK库实现具体的写入逻辑
-    // 暂时返回未实现
+    // Use VTK library to implement specific write logic
+    // Temporarily return unimplemented
     errorCode = MeshErrorCode::FORMAT_VERSION_INVALID;
-    errorMsg = "VTK格式写入未实现";
+    errorMsg = "VTK format write not implemented";
     return false;
 }
 
 /**
- * @brief 写入CGNS格式文件
- * @param meshData 输入的网格数据
- * @param filePath 输出文件路径（UTF-8编码）
- * @param options 写入选项（需指定cgnsBaseName/cgnsZoneName等）
- * @param[out] errorCode 输出错误码
- * @param[out] errorMsg 输出错误信息
- * @return 写入是否成功
+ * @brief Write CGNS format file
+ * @param meshData Input mesh data
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param options Write options (need to specify cgnsBaseName/cgnsZoneName, etc.)
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether writing is successful
  */
 bool MeshWriter::writeCGNS(const MeshData& meshData,
                           const std::string& filePath,
                           const FormatWriteOptions& options,
                           MeshErrorCode& errorCode,
                           std::string& errorMsg) {
-    // 检查是否有CGNS依赖
+    // Check if there is CGNS dependency
 #ifndef HAVE_CGNS
     errorCode = MeshErrorCode::DEPENDENCY_MISSING;
-    errorMsg = "CGNS依赖库缺失";
+    errorMsg = "CGNS dependency library missing";
     return false;
 #endif
 
-    // 这里使用CGNS库实现具体的写入逻辑
-    // 暂时返回未实现
+    // Use CGNS library to implement specific write logic
+    // Temporarily return unimplemented
     errorCode = MeshErrorCode::FORMAT_VERSION_INVALID;
-    errorMsg = "CGNS格式写入未实现";
+    errorMsg = "CGNS format write not implemented";
     return false;
 }
 
 /**
- * @brief 写入Gmsh格式文件
- * @param meshData 输入的网格数据
- * @param filePath 输出文件路径（UTF-8编码）
- * @param options 写入选项
- * @param[out] errorCode 输出错误码
- * @param[out] errorMsg 输出错误信息
- * @return 写入是否成功
+ * @brief Write Gmsh format file
+ * @param meshData Input mesh data
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param options Write options
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether writing is successful
  */
 bool MeshWriter::writeGmsh(const MeshData& meshData,
                           const std::string& filePath,
                           const FormatWriteOptions& options,
                           MeshErrorCode& errorCode,
                           std::string& errorMsg) {
-    // 检查是否有Gmsh依赖
+    // Check if there is Gmsh dependency
 #ifndef HAVE_GMSH
     errorCode = MeshErrorCode::DEPENDENCY_MISSING;
-    errorMsg = "Gmsh依赖库缺失";
+    errorMsg = "Gmsh dependency library missing";
     return false;
 #endif
 
-    // 这里使用Gmsh库实现具体的写入逻辑
-    // 暂时返回未实现
+    // Use Gmsh library to implement specific write logic
+    // Temporarily return unimplemented
     errorCode = MeshErrorCode::FORMAT_VERSION_INVALID;
-    errorMsg = "Gmsh格式写入未实现";
+    errorMsg = "Gmsh format write not implemented";
     return false;
 }
 
 /**
- * @brief 写入STL格式文件
- * @param meshData 输入的网格数据
- * @param filePath 输出文件路径（UTF-8编码）
- * @param options 写入选项
- * @param[out] errorCode 输出错误码
- * @param[out] errorMsg 输出错误信息
- * @return 写入是否成功
+ * @brief Write STL format file
+ * @param meshData Input mesh data
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param options Write options
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether writing is successful
  */
 bool MeshWriter::writeSTL(const MeshData& meshData,
                          const std::string& filePath,
                          const FormatWriteOptions& options,
                          MeshErrorCode& errorCode,
                          std::string& errorMsg) {
-    // 这里实现STL格式写入逻辑
-    // 暂时返回未实现
+    // Implement STL format write logic here
+    // Temporarily return unimplemented
     errorCode = MeshErrorCode::FORMAT_VERSION_INVALID;
-    errorMsg = "STL格式写入未实现";
+    errorMsg = "STL format write not implemented";
     return false;
 }
 
 /**
- * @brief 写入OBJ格式文件
- * @param meshData 输入的网格数据
- * @param filePath 输出文件路径（UTF-8编码）
- * @param options 写入选项
- * @param[out] errorCode 输出错误码
- * @param[out] errorMsg 输出错误信息
- * @return 写入是否成功
+ * @brief Write OBJ format file
+ * @param meshData Input mesh data
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param options Write options
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether writing is successful
  */
 bool MeshWriter::writeOBJ(const MeshData& meshData,
                         const std::string& filePath,
                         const FormatWriteOptions& options,
                         MeshErrorCode& errorCode,
                         std::string& errorMsg) {
-    // 这里实现OBJ格式写入逻辑
-    // 暂时返回未实现
+    // Implement OBJ format write logic here
+    // Temporarily return unimplemented
     errorCode = MeshErrorCode::FORMAT_VERSION_INVALID;
-    errorMsg = "OBJ格式写入未实现";
+    errorMsg = "OBJ format write not implemented";
     return false;
 }
 
 /**
- * @brief 写入PLY格式文件
- * @param meshData 输入的网格数据
- * @param filePath 输出文件路径（UTF-8编码）
- * @param options 写入选项
- * @param[out] errorCode 输出错误码
- * @param[out] errorMsg 输出错误信息
- * @return 写入是否成功
+ * @brief Write PLY format file
+ * @param meshData Input mesh data
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param options Write options
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether writing is successful
  */
 bool MeshWriter::writePLY(const MeshData& meshData,
                         const std::string& filePath,
                         const FormatWriteOptions& options,
                         MeshErrorCode& errorCode,
                         std::string& errorMsg) {
-    // 这里实现PLY格式写入逻辑
-    // 暂时返回未实现
+    // Implement PLY format write logic here
+    // Temporarily return unimplemented
     errorCode = MeshErrorCode::FORMAT_VERSION_INVALID;
-    errorMsg = "PLY格式写入未实现";
+    errorMsg = "PLY format write not implemented";
     return false;
 }
 
 /**
- * @brief 写入OFF格式文件
- * @param meshData 输入的网格数据
- * @param filePath 输出文件路径（UTF-8编码）
- * @param options 写入选项
- * @param[out] errorCode 输出错误码
- * @param[out] errorMsg 输出错误信息
- * @return 写入是否成功
+ * @brief Write OFF format file
+ * @param meshData Input mesh data
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param options Write options
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether writing is successful
  */
 bool MeshWriter::writeOFF(const MeshData& meshData,
                         const std::string& filePath,
                         const FormatWriteOptions& options,
                         MeshErrorCode& errorCode,
                         std::string& errorMsg) {
-    // 这里实现OFF格式写入逻辑
-    // 暂时返回未实现
+    // Implement OFF format write logic here
+    // Temporarily return unimplemented
     errorCode = MeshErrorCode::FORMAT_VERSION_INVALID;
-    errorMsg = "OFF格式写入未实现";
+    errorMsg = "OFF format write not implemented";
     return false;
 }
 
 /**
- * @brief 写入SU2格式文件
- * @param meshData 输入的网格数据
- * @param filePath 输出文件路径（UTF-8编码）
- * @param options 写入选项
- * @param[out] errorCode 输出错误码
- * @param[out] errorMsg 输出错误信息
- * @return 写入是否成功
+ * @brief Write SU2 format file
+ * @param meshData Input mesh data
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param options Write options
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether writing is successful
  */
 bool MeshWriter::writeSU2(const MeshData& meshData,
                         const std::string& filePath,
                         const FormatWriteOptions& options,
                         MeshErrorCode& errorCode,
                         std::string& errorMsg) {
-    // 这里实现SU2格式写入逻辑
-    // 暂时返回未实现
+    // Implement SU2 format write logic here
+    // Temporarily return unimplemented
     errorCode = MeshErrorCode::FORMAT_VERSION_INVALID;
-    errorMsg = "SU2格式写入未实现";
+    errorMsg = "SU2 format write not implemented";
     return false;
 }
 
 /**
- * @brief 写入OpenFOAM格式文件
- * @param meshData 输入的网格数据
- * @param filePath 输出文件路径（UTF-8编码）
- * @param options 写入选项
- * @param[out] errorCode 输出错误码
- * @param[out] errorMsg 输出错误信息
- * @return 写入是否成功
+ * @brief Write OpenFOAM format file
+ * @param meshData Input mesh data
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param options Write options
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether writing is successful
  */
 bool MeshWriter::writeOpenFOAM(const MeshData& meshData,
                              const std::string& filePath,
                              const FormatWriteOptions& options,
                              MeshErrorCode& errorCode,
                              std::string& errorMsg) {
-    // 这里实现OpenFOAM格式写入逻辑
-    // 暂时返回未实现
+    // Implement OpenFOAM format write logic here
+    // Temporarily return unimplemented
     errorCode = MeshErrorCode::FORMAT_VERSION_INVALID;
-    errorMsg = "OpenFOAM格式写入未实现";
+    errorMsg = "OpenFOAM format write not implemented";
     return false;
+}
+
+// --------------------------------------------------------------------------
+// VTK intermediate format related method implementations
+// --------------------------------------------------------------------------
+
+/**
+ * @brief Convert vtkUnstructuredGrid to MeshData
+ * @param grid Input vtkUnstructuredGrid
+ * @param[out] meshData Output mesh data
+ * @return Whether successful
+ */
+bool MeshWriter::vtkToMeshData(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                             MeshData& meshData) {
+    // Clear existing data
+    meshData.points.clear();
+    meshData.cells.clear();
+    meshData.pointData.clear();
+    meshData.cellData.clear();
+    
+    // Reset metadata
+    meshData.metadata = MeshMetadata();
+    
+    // Get point set
+    vtkPoints* points = grid->GetPoints();
+    if (!points) {
+        return false;
+    }
+    
+    // Add points
+    vtkIdType numPoints = points->GetNumberOfPoints();
+    for (vtkIdType i = 0; i < numPoints; ++i) {
+        double coords[3];
+        points->GetPoint(i, coords);
+        
+        meshData.points.push_back(static_cast<float>(coords[0]));
+        meshData.points.push_back(static_cast<float>(coords[1]));
+        meshData.points.push_back(static_cast<float>(coords[2]));
+    }
+    
+    // Add cells
+    vtkIdType numCells = grid->GetNumberOfCells();
+    for (vtkIdType i = 0; i < numCells; ++i) {
+        vtkCell* cell = grid->GetCell(i);
+        if (!cell) {
+            continue;
+        }
+        
+        MeshData::Cell newCell;
+        
+        // Determine cell type
+        int cellType = cell->GetCellType();
+        switch (cellType) {
+        case VTK_TETRA:
+            newCell.type = VtkCellType::TETRA;
+            break;
+        case VTK_HEXAHEDRON:
+            newCell.type = VtkCellType::HEXAHEDRON;
+            break;
+        case VTK_WEDGE:
+            newCell.type = VtkCellType::WEDGE;
+            break;
+        case VTK_PYRAMID:
+            newCell.type = VtkCellType::PYRAMID;
+            break;
+        case VTK_TRIANGLE:
+            newCell.type = VtkCellType::TRIANGLE;
+            break;
+        case VTK_QUAD:
+            newCell.type = VtkCellType::QUAD;
+            break;
+        case VTK_LINE:
+            newCell.type = VtkCellType::LINE;
+            break;
+        case VTK_VERTEX:
+            newCell.type = VtkCellType::VERTEX;
+            break;
+        case VTK_TRIANGLE_STRIP:
+            newCell.type = VtkCellType::TRIANGLE_STRIP;
+            break;
+        case VTK_POLYGON:
+            newCell.type = VtkCellType::POLYGON;
+            break;
+        default:
+            continue;
+        }
+        
+        // Add node IDs
+        vtkIdType numCellPoints = cell->GetNumberOfPoints();
+        for (vtkIdType j = 0; j < numCellPoints; ++j) {
+            newCell.pointIndices.push_back(static_cast<uint32_t>(cell->GetPointId(j)));
+        }
+        
+        meshData.cells.push_back(newCell);
+    }
+    
+    // Calculate metadata
+    meshData.calculateMetadata();
+    
+    return true;
+}
+
+/**
+ * @brief Write vtkUnstructuredGrid to specified format file
+ * @param grid Input vtkUnstructuredGrid
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param targetFormat Target format
+ * @param options Write options (format-specific configurations)
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message (UTF-8)
+ * @return Whether writing is successful
+ */
+bool MeshWriter::writeVTK(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                        const std::string& filePath,
+                        MeshFormat targetFormat,
+                        const FormatWriteOptions& options,
+                        MeshErrorCode& errorCode,
+                        std::string& errorMsg) {
+    // First convert vtkUnstructuredGrid to MeshData
+    MeshData meshData;
+    bool convertSuccess = vtkToMeshData(grid, meshData);
+    if (!convertSuccess) {
+        errorCode = MeshErrorCode::FORMAT_UNSUPPORTED;
+        errorMsg = "Cannot convert vtkUnstructuredGrid to MeshData";
+        return false;
+    }
+    
+    // Use existing write method to write to specified format
+    return write(meshData, filePath, targetFormat, options, errorCode, errorMsg);
+}
+
+/**
+ * @brief Write vtkUnstructuredGrid to VTK format file
+ * @param grid Input vtkUnstructuredGrid
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param isXml Whether to write XML format (false=Legacy, true=XML)
+ * @param options Write options
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether writing is successful
+ */
+bool MeshWriter::writeVTKToVTK(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                              const std::string& filePath,
+                              bool isXml,
+                              const FormatWriteOptions& options,
+                              MeshErrorCode& errorCode,
+                              std::string& errorMsg) {
+    // First convert vtkUnstructuredGrid to MeshData
+    MeshData meshData;
+    bool convertSuccess = vtkToMeshData(grid, meshData);
+    if (!convertSuccess) {
+        errorCode = MeshErrorCode::FORMAT_UNSUPPORTED;
+        errorMsg = "Cannot convert vtkUnstructuredGrid to MeshData";
+        return false;
+    }
+    
+    // Use existing writeVTK method to write
+    return writeVTK(meshData, filePath, isXml, options, errorCode, errorMsg);
+}
+
+/**
+ * @brief Write vtkUnstructuredGrid to CGNS format file
+ * @param grid Input vtkUnstructuredGrid
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param options Write options (need to specify cgnsBaseName/cgnsZoneName, etc.)
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether writing is successful
+ */
+bool MeshWriter::writeVTKToCGNS(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                               const std::string& filePath,
+                               const FormatWriteOptions& options,
+                               MeshErrorCode& errorCode,
+                               std::string& errorMsg) {
+    // First convert vtkUnstructuredGrid to MeshData
+    MeshData meshData;
+    bool convertSuccess = vtkToMeshData(grid, meshData);
+    if (!convertSuccess) {
+        errorCode = MeshErrorCode::FORMAT_UNSUPPORTED;
+        errorMsg = "Cannot convert vtkUnstructuredGrid to MeshData";
+        return false;
+    }
+    
+    // Use existing writeCGNS method to write
+    return writeCGNS(meshData, filePath, options, errorCode, errorMsg);
+}
+
+/**
+ * @brief Write vtkUnstructuredGrid to Gmsh format file
+ * @param grid Input vtkUnstructuredGrid
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param options Write options
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether writing is successful
+ */
+bool MeshWriter::writeVTKToGmsh(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                               const std::string& filePath,
+                               const FormatWriteOptions& options,
+                               MeshErrorCode& errorCode,
+                               std::string& errorMsg) {
+    // First convert vtkUnstructuredGrid to MeshData
+    MeshData meshData;
+    bool convertSuccess = vtkToMeshData(grid, meshData);
+    if (!convertSuccess) {
+        errorCode = MeshErrorCode::FORMAT_UNSUPPORTED;
+        errorMsg = "Cannot convert vtkUnstructuredGrid to MeshData";
+        return false;
+    }
+    
+    // Use existing writeGmsh method to write
+    return writeGmsh(meshData, filePath, options, errorCode, errorMsg);
+}
+
+/**
+ * @brief Write vtkUnstructuredGrid to STL format file
+ * @param grid Input vtkUnstructuredGrid
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param options Write options
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether writing is successful
+ */
+bool MeshWriter::writeVTKToSTL(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                              const std::string& filePath,
+                              const FormatWriteOptions& options,
+                              MeshErrorCode& errorCode,
+                              std::string& errorMsg) {
+    // First convert vtkUnstructuredGrid to MeshData
+    MeshData meshData;
+    bool convertSuccess = vtkToMeshData(grid, meshData);
+    if (!convertSuccess) {
+        errorCode = MeshErrorCode::FORMAT_UNSUPPORTED;
+        errorMsg = "Cannot convert vtkUnstructuredGrid to MeshData";
+        return false;
+    }
+    
+    // Use existing writeSTL method to write
+    return writeSTL(meshData, filePath, options, errorCode, errorMsg);
+}
+
+/**
+ * @brief Write vtkUnstructuredGrid to OBJ format file
+ * @param grid Input vtkUnstructuredGrid
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param options Write options
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether writing is successful
+ */
+bool MeshWriter::writeVTKToOBJ(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                              const std::string& filePath,
+                              const FormatWriteOptions& options,
+                              MeshErrorCode& errorCode,
+                              std::string& errorMsg) {
+    // First convert vtkUnstructuredGrid to MeshData
+    MeshData meshData;
+    bool convertSuccess = vtkToMeshData(grid, meshData);
+    if (!convertSuccess) {
+        errorCode = MeshErrorCode::FORMAT_UNSUPPORTED;
+        errorMsg = "Cannot convert vtkUnstructuredGrid to MeshData";
+        return false;
+    }
+    
+    // Use existing writeOBJ method to write
+    return writeOBJ(meshData, filePath, options, errorCode, errorMsg);
+}
+
+/**
+ * @brief Write vtkUnstructuredGrid to PLY format file
+ * @param grid Input vtkUnstructuredGrid
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param options Write options
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether writing is successful
+ */
+bool MeshWriter::writeVTKToPLY(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                              const std::string& filePath,
+                              const FormatWriteOptions& options,
+                              MeshErrorCode& errorCode,
+                              std::string& errorMsg) {
+    // First convert vtkUnstructuredGrid to MeshData
+    MeshData meshData;
+    bool convertSuccess = vtkToMeshData(grid, meshData);
+    if (!convertSuccess) {
+        errorCode = MeshErrorCode::FORMAT_UNSUPPORTED;
+        errorMsg = "Cannot convert vtkUnstructuredGrid to MeshData";
+        return false;
+    }
+    
+    // Use existing writePLY method to write
+    return writePLY(meshData, filePath, options, errorCode, errorMsg);
+}
+
+/**
+ * @brief Write vtkUnstructuredGrid to OFF format file
+ * @param grid Input vtkUnstructuredGrid
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param options Write options
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether writing is successful
+ */
+bool MeshWriter::writeVTKToOFF(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                              const std::string& filePath,
+                              const FormatWriteOptions& options,
+                              MeshErrorCode& errorCode,
+                              std::string& errorMsg) {
+    // First convert vtkUnstructuredGrid to MeshData
+    MeshData meshData;
+    bool convertSuccess = vtkToMeshData(grid, meshData);
+    if (!convertSuccess) {
+        errorCode = MeshErrorCode::FORMAT_UNSUPPORTED;
+        errorMsg = "Cannot convert vtkUnstructuredGrid to MeshData";
+        return false;
+    }
+    
+    // Use existing writeOFF method to write
+    return writeOFF(meshData, filePath, options, errorCode, errorMsg);
+}
+
+/**
+ * @brief Write vtkUnstructuredGrid to SU2 format file
+ * @param grid Input vtkUnstructuredGrid
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param options Write options
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether writing is successful
+ */
+bool MeshWriter::writeVTKToSU2(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                              const std::string& filePath,
+                              const FormatWriteOptions& options,
+                              MeshErrorCode& errorCode,
+                              std::string& errorMsg) {
+    // First convert vtkUnstructuredGrid to MeshData
+    MeshData meshData;
+    bool convertSuccess = vtkToMeshData(grid, meshData);
+    if (!convertSuccess) {
+        errorCode = MeshErrorCode::FORMAT_UNSUPPORTED;
+        errorMsg = "Cannot convert vtkUnstructuredGrid to MeshData";
+        return false;
+    }
+    
+    // Use existing writeSU2 method to write
+    return writeSU2(meshData, filePath, options, errorCode, errorMsg);
+}
+
+/**
+ * @brief Write vtkUnstructuredGrid to OpenFOAM format file
+ * @param grid Input vtkUnstructuredGrid
+ * @param filePath Output file path (UTF-8 encoded)
+ * @param options Write options
+ * @param[out] errorCode Output error code
+ * @param[out] errorMsg Output error message
+ * @return Whether writing is successful
+ */
+bool MeshWriter::writeVTKToOpenFOAM(const vtkSmartPointer<vtkUnstructuredGrid>& grid,
+                                   const std::string& filePath,
+                                   const FormatWriteOptions& options,
+                                   MeshErrorCode& errorCode,
+                                   std::string& errorMsg) {
+    // First convert vtkUnstructuredGrid to MeshData
+    MeshData meshData;
+    bool convertSuccess = vtkToMeshData(grid, meshData);
+    if (!convertSuccess) {
+        errorCode = MeshErrorCode::FORMAT_UNSUPPORTED;
+        errorMsg = "Cannot convert vtkUnstructuredGrid to MeshData";
+        return false;
+    }
+    
+    // Use existing writeOpenFOAM method to write
+    return writeOpenFOAM(meshData, filePath, options, errorCode, errorMsg);
 }

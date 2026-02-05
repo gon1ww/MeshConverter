@@ -28,6 +28,9 @@
     <None Include="D:\code\Project\QtProject\ConverterTrae\include\MeshException.h">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="D:\code\Project\QtProject\ConverterTrae\include\VTKConverter.h">
+      <Filter>Header Files</Filter>
+    </None>
     <None Include="D:\code\Project\QtProject\ConverterTrae\src\MeshTypes.cpp">
       <Filter>Source Files</Filter>
     </None>
@@ -47,6 +50,9 @@
       <Filter>Source Files</Filter>
     </None>
     <None Include="D:\code\Project\QtProject\ConverterTrae\src\MeshException.cpp">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="D:\code\Project\QtProject\ConverterTrae\src\VTKConverter.cpp">
       <Filter>Source Files</Filter>
     </None>
     <None Include="D:\code\Project\QtProject\ConverterTrae\build\CMakeFiles\docs" />

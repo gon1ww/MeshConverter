@@ -1,57 +1,57 @@
 #include "MeshTypes.h"
 
 /**
- * @brief 清空所有数据
+ * @brief Clear all data
  */
 void MeshData::clear() {
     points.clear();
     cells.clear();
     pointData.clear();
     cellData.clear();
-    metadata = MeshMetadata(); // 重置为默认值
+    metadata = MeshMetadata(); // Reset to default values
 }
 
 /**
- * @brief 判断是否为空
- * @return 是否为空
+ * @brief Check if mesh is empty
+ * @return Whether empty
  */
 bool MeshData::isEmpty() const {
     return points.empty() && cells.empty();
 }
 
 /**
- * @brief 从几何/拓扑数据计算元数据
+ * @brief Calculate metadata from geometry/topology data
  */
 void MeshData::calculateMetadata() {
-    // 计算点数量
+    // Calculate point count
     metadata.pointCount = points.size() / 3;
     
-    // 计算单元数量
+    // Calculate cell count
     metadata.cellCount = cells.size();
     
-    // 计算各单元类型数量
+    // Calculate count of each cell type
     metadata.cellTypeCount.clear();
     for (const auto& cell : cells) {
         metadata.cellTypeCount[cell.type]++;
     }
     
-    // 提取点属性名称
+    // Extract point attribute names
     metadata.pointDataNames.clear();
     for (const auto& [name, _] : pointData) {
         metadata.pointDataNames.push_back(name);
     }
     
-    // 提取单元属性名称
+    // Extract cell attribute names
     metadata.cellDataNames.clear();
     for (const auto& [name, _] : cellData) {
         metadata.cellDataNames.push_back(name);
     }
     
-    // 确定网格类型
+    // Determine mesh type
     if (cells.empty()) {
         metadata.meshType = MeshType::UNKNOWN;
     } else {
-        // 简单判断：如果包含体单元则为体网格，否则为面网格
+        // Simple判断：如果包含体单元则为体网格，否则为面网格
         bool hasVolumeCells = false;
         for (const auto& cell : cells) {
             switch (cell.type) {

@@ -5,7 +5,7 @@
 #include "MeshTypes.h"
 
 /**
- * @brief 网格异常类
+ * @brief Mesh exception class
  */
 class MeshException : public std::exception {
 private:
@@ -14,21 +14,21 @@ private:
 
 public:
     /**
-     * @brief 构造函数
-     * @param code 错误码
-     * @param msg 错误信息
+     * @brief Constructor
+     * @param code Error code
+     * @param msg Error message
      */
     MeshException(MeshErrorCode code, const std::string& msg);
 
     /**
-     * @brief 获取错误码
-     * @return 错误码
+     * @brief Get error code
+     * @return Error code
      */
     MeshErrorCode getErrorCode() const;
 
     /**
-     * @brief 获取错误信息
-     * @return 错误信息
+     * @brief Get error message
+     * @return Error message
      */
     const char* what() const noexcept override;
 };

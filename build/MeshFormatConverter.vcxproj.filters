@@ -22,6 +22,9 @@
     <ClCompile Include="D:\code\Project\QtProject\ConverterTrae\src\MeshException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\code\Project\QtProject\ConverterTrae\src\VTKConverter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\code\Project\QtProject\ConverterTrae\include\MeshTypes.h">
@@ -43,6 +46,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\code\Project\QtProject\ConverterTrae\include\MeshException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\code\Project\QtProject\ConverterTrae\include\VTKConverter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

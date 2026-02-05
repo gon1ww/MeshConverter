@@ -1,0 +1,2 @@
+# This file ensures the extern directory is tracked in Git.
+# Actual library files should be placed here but ignored by Git.
