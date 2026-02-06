@@ -12,6 +12,7 @@ add_executable(unit_tests
     unit/MeshProcessorTest.cpp
     unit/MeshHelperTest.cpp
     unit/MeshExceptionTest.cpp
+    unit/MeshFormatTest.cpp
 )
 
 # 集成测试

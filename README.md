@@ -40,6 +40,8 @@ MeshFormatConverter/
 ├── extern/           # 外部依赖
 ├── build/            # 构建目录
 ├── build_new/        # 替代构建目录
+├── QtTransformApp/   # Qt GUI应用程序
+├── tests/            # 单元测试和集成测试
 ├── CMakeLists.txt    # CMake配置
 └── README.md         # 项目说明
 ```
@@ -175,6 +177,78 @@ MeshReaderTest.exe data/src/stl/aneurysm_data.stl
 
 # 测试VTK文件转换
 VTKConverterTest.exe data/src/vtk/legacy/unstructuredTime1.vtk
+```
+
+### QtTransformApp图形界面应用
+
+项目提供了一个基于Qt的图形界面应用程序 `QtTransformApp`，用于可视化网格文件并执行格式转换操作。
+
+#### 支持的文件格式
+
+QtTransformApp支持以下文件格式的读写操作：
+
+- **体网格格式**：
+  - VTK Legacy (.vtk)
+  - VTK XML (.vtu)
+  - CGNS (.cgns)
+  - Gmsh (.msh)
+
+- **面网格格式**：
+  - STL (.stl)
+  - OBJ (.obj)
+  - PLY (.ply)
+  - OFF (.off)
+
+#### 使用方法
+
+1. **打开网格文件**：
+   - 通过菜单栏的"文件" -> "打开文件"选项选择一个或多个网格文件
+   - 直接将网格文件拖放到文件浏览器中
+   - 双击文件浏览器中的网格文件
+
+2. **查看网格信息**：
+   - 导入网格后，应用程序会显示网格的基本信息，包括文件名、类型、格式、大小、导入时间和维度
+   - 在"单元统计"面板中查看单元类型和数量
+   - 在"属性信息"面板中查看点属性、单元属性和物理区域
+
+3. **导出网格文件**：
+   - 在文件浏览器中选择一个网格文件
+   - 在"导出设置"面板中选择目标格式
+   - 选择导出选项（体网格/面网格、二进制/ASCII）
+   - 点击"导出"按钮执行转换操作
+
+4. **文件格式过滤**：
+   - 使用"格式过滤"下拉菜单筛选特定类型的网格文件
+   - 支持筛选"全部支持格式"、"VTK系列（vtk/vtu）"、"CGNS（cgns）"和"Gmsh（msh）"
+
+5. **批量转换**：
+   - 选择多个网格文件
+   - 通过右键菜单添加到批量转换列表
+   - 统一设置导出格式和选项
+   - 执行批量转换操作
+
+#### 性能优化
+
+- 采用QtConcurrent实现异步文件处理，确保在处理大型模型文件时保持良好的响应速度
+- 支持二进制格式导出，减小文件大小并提高读写速度
+- 实现了文件格式验证机制，对不支持的文件格式或损坏的文件提供明确错误提示
+
+#### 构建和运行
+
+QtTransformApp的构建依赖于主项目的核心库，因此需要先构建MeshFormatConverter核心库，然后再构建QtTransformApp：
+
+```bash
+# 构建核心库
+mkdir build
+cd build
+cmake ..
+cmake --build . --config Release
+
+# 构建QtTransformApp
+cmake --build . --target QtTransformApp --config Release
+
+# 运行应用程序
+bin/Release/QtTransformApp.exe
 ```
 
 ## API 文档

@@ -1,6 +1,7 @@
 #pragma once
 #include <QMainWindow>
 #include <QStringList>
+#include <MeshTypes.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class transform; }
@@ -35,6 +36,9 @@ private slots:
     void onExportNowClicked();
 
 private:
+    void showMeshDetailedInfo(const MeshData& meshData, const QString& filePath);
+
+private:
     void setupFileBrowser();
     void setupExportPanel();
     void updateExportPathForFormat();
@@ -47,6 +51,8 @@ private:
     void selectFilesInTree(const QStringList& filePaths, bool clearSelection = true);
     void importMeshFile(const QString& filePath);
     bool isSupportedMeshFile(const QString& filePath) const;
+    void updateCellStats(const MeshData& meshData);
+    void updateAttributeInfo(const MeshData& meshData);
 
 private:
     Ui::transform* ui;

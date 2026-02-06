@@ -16,6 +16,7 @@
 #include <QHeaderView>
 #include <QLineEdit>
 #include <QItemSelection>
+#include <QListWidget>
 #include <QMenu>
 #include <QMessageBox>
 #include <QMimeData>
@@ -26,6 +27,7 @@
 #include <QSortFilterProxyModel>
 #include <QStatusBar>
 #include <QStandardPaths>
+#include <QTableWidget>
 #include <QToolButton>
 #include <QTreeView>
 #include <QUrl>
@@ -39,6 +41,11 @@
 #include <vtkDataSetSurfaceFilter.h>
 #include <vtkDataSetWriter.h>
 #include <vtkMultiBlockDataSet.h>
+#include <vtkOBJReader.h>
+#include <vtkOBJWriter.h>
+#include <vtkOFFReader.h>
+#include <vtkPLYReader.h>
+#include <vtkPLYWriter.h>
 #include <vtkPolyData.h>
 #include <vtkSmartPointer.h>
 #include <vtkSTLReader.h>
@@ -46,6 +53,13 @@
 #include <vtkUnstructuredGrid.h>
 #include <vtkXMLUnstructuredGridReader.h>
 #include <vtkXMLUnstructuredGridWriter.h>
+
+// Include MeshReader from src directory
+#include "MeshReader.h"
+#include "MeshTypes.h"
+#include "MeshException.h"
+#include "VTKConverter.h"
+#include "MeshHelper.h"
 
 #ifdef HAS_VTK_IOCGNS
 #include <vtkCGNSReader.h>
@@ -63,7 +77,7 @@
 #endif
 #endif
 
-const QSet<QString> kSupportedExtensions = {"vtk", "vtu", "cgns", "msh"};
+const QSet<QString> kSupportedExtensions = {"vtk", "vtu", "cgns", "msh", "obj", "off", "stl", "ply"};
 
 struct ExportResult {
     bool ok = false;
@@ -90,48 +104,92 @@ vtkSmartPointer<vtkDataSet> extractFirstDataSet(vtkMultiBlockDataSet* multiBlock
 
 vtkSmartPointer<vtkDataSet> loadMeshDataSet(const QString& filePath, QString* errorMessage)
 {
-    const QString suffix = QFileInfo(filePath).suffix().toLower();
-
-    if (suffix == "vtk") {
-        auto reader = vtkSmartPointer<vtkDataSetReader>::New();
-        reader->SetFileName(filePath.toLocal8Bit().constData());
-        reader->Update();
-        return reader->GetOutput();
+    // 使用MeshReader::readAuto方法读取网格文件
+    const std::string filePathStd = filePath.toUtf8().toStdString();
+    MeshData meshData;
+    MeshErrorCode errorCode;
+    std::string errorMsg;
+    
+    bool success = MeshReader::readAuto(filePathStd, meshData, errorCode, errorMsg);
+    if (!success) {
+        if (errorMessage) {
+            *errorMessage = QString::fromStdString(errorMsg);
+        }
+        return nullptr;
     }
-    if (suffix == "vtu") {
-        auto reader = vtkSmartPointer<vtkXMLUnstructuredGridReader>::New();
-        reader->SetFileName(filePath.toLocal8Bit().constData());
-        reader->Update();
-        return reader->GetOutput();
+    
+    // 检查网格数据是否为空
+    if (meshData.isEmpty()) {
+        if (errorMessage) {
+            *errorMessage = "网格数据为空";
+        }
+        return nullptr;
     }
-    if (suffix == "stl") {
-        auto reader = vtkSmartPointer<vtkSTLReader>::New();
-        reader->SetFileName(filePath.toLocal8Bit().constData());
-        reader->Update();
-        return reader->GetOutput();
+    
+    // 将MeshData转换为vtkUnstructuredGrid
+    vtkSmartPointer<vtkUnstructuredGrid> grid = vtkSmartPointer<vtkUnstructuredGrid>::New();
+    
+    // 设置点数据
+    vtkSmartPointer<vtkPoints> points = vtkSmartPointer<vtkPoints>::New();
+    size_t pointCount = meshData.points.size() / 3;
+    for (size_t i = 0; i < pointCount; ++i) {
+        float x = meshData.points[i * 3];
+        float y = meshData.points[i * 3 + 1];
+        float z = meshData.points[i * 3 + 2];
+        points->InsertNextPoint(x, y, z);
     }
-#ifdef HAS_VTK_IOCGNS
-    if (suffix == "cgns") {
-        auto reader = vtkSmartPointer<vtkCGNSReader>::New();
-        reader->SetFileName(filePath.toLocal8Bit().constData());
-        reader->Update();
-        auto* mb = reader->GetOutput();
-        return extractFirstDataSet(mb);
+    grid->SetPoints(points);
+    
+    // 设置单元数据
+    for (const auto& cell : meshData.cells) {
+        vtkIdType* pointIds = new vtkIdType[cell.pointIndices.size()];
+        for (size_t i = 0; i < cell.pointIndices.size(); ++i) {
+            pointIds[i] = cell.pointIndices[i];
+        }
+        
+        // 转换单元类型
+        int vtkCellType = 0;
+        switch (cell.type) {
+        case VtkCellType::VERTEX:
+            vtkCellType = VTK_VERTEX;
+            break;
+        case VtkCellType::LINE:
+            vtkCellType = VTK_LINE;
+            break;
+        case VtkCellType::TRIANGLE:
+            vtkCellType = VTK_TRIANGLE;
+            break;
+        case VtkCellType::QUAD:
+            vtkCellType = VTK_QUAD;
+            break;
+        case VtkCellType::TETRA:
+            vtkCellType = VTK_TETRA;
+            break;
+        case VtkCellType::HEXAHEDRON:
+            vtkCellType = VTK_HEXAHEDRON;
+            break;
+        case VtkCellType::WEDGE:
+            vtkCellType = VTK_WEDGE;
+            break;
+        case VtkCellType::PYRAMID:
+            vtkCellType = VTK_PYRAMID;
+            break;
+        case VtkCellType::TRIANGLE_STRIP:
+            vtkCellType = VTK_TRIANGLE_STRIP;
+            break;
+        case VtkCellType::POLYGON:
+            vtkCellType = VTK_POLYGON;
+            break;
+        default:
+            delete[] pointIds;
+            continue;
+        }
+        
+        grid->InsertNextCell(vtkCellType, static_cast<int>(cell.pointIndices.size()), pointIds);
+        delete[] pointIds;
     }
-#endif
-#ifdef HAS_VTK_GMSH
-    if (suffix == "msh") {
-        auto reader = vtkSmartPointer<vtkGmshReader>::New();
-        reader->SetFileName(filePath.toLocal8Bit().constData());
-        reader->Update();
-        return reader->GetOutput();
-    }
-#endif
-
-    if (errorMessage) {
-        *errorMessage = "不支持的网格格式";
-    }
-    return nullptr;
+    
+    return grid;
 }
 
 vtkSmartPointer<vtkPolyData> toSurfaceMesh(vtkDataSet* dataSet)
@@ -167,124 +225,63 @@ ExportResult exportMeshFile(const QString& sourcePath,
 {
     ExportResult result;
 
-    QString error;
-    vtkSmartPointer<vtkDataSet> dataSet = loadMeshDataSet(sourcePath, &error);
-    if (!dataSet) {
-        result.message = error.isEmpty() ? "读取网格失败" : error;
+    // Convert paths to std::string
+    const std::string srcPath = sourcePath.toUtf8().toStdString();
+    const std::string dstPath = outputPath.toUtf8().toStdString();
+    const std::string ext = formatExt.toLower().toStdString();
+
+    // Detect source format
+    MeshFormat srcFormat = MeshHelper::detectFormat(srcPath);
+    if (srcFormat == MeshFormat::UNKNOWN) {
+        result.message = "无法检测源文件格式";
         return result;
     }
 
-    vtkSmartPointer<vtkDataSet> exportDataSet = dataSet;
-    vtkSmartPointer<vtkPolyData> surfaceData;
-
-    if (exportSurface) {
-        surfaceData = toSurfaceMesh(dataSet);
-        if (!surfaceData) {
-            result.message = "提取面网格失败";
-            return result;
-        }
-    }
-
-    const QString ext = formatExt.toLower();
-    const std::string outPath = outputPath.toLocal8Bit().toStdString();
-
+    // Determine target format based on extension
+    MeshFormat dstFormat = MeshFormat::UNKNOWN;
     if (ext == "vtk") {
-        auto writer = vtkSmartPointer<vtkDataSetWriter>::New();
-        writer->SetFileName(outPath.c_str());
-        vtkDataSet* dataToWrite = exportSurface
-            ? static_cast<vtkDataSet*>(surfaceData)
-            : exportDataSet.GetPointer();
-        writer->SetInputData(dataToWrite);
-        binary ? writer->SetFileTypeToBinary() : writer->SetFileTypeToASCII();
-        if (writer->Write()) {
-            result.ok = true;
-            return result;
-        }
-        result.message = "VTK 写出失败";
+        dstFormat = MeshFormat::VTK_LEGACY;
+    } else if (ext == "vtu") {
+        dstFormat = MeshFormat::VTK_XML;
+    } else if (ext == "cgns") {
+        dstFormat = MeshFormat::CGNS;
+    } else if (ext == "msh") {
+        dstFormat = MeshFormat::GMSH_V4;
+    } else if (ext == "obj") {
+        dstFormat = MeshFormat::OBJ;
+    } else if (ext == "off") {
+        dstFormat = MeshFormat::OFF;
+    } else if (ext == "stl") {
+        dstFormat = binary ? MeshFormat::STL_BINARY : MeshFormat::STL_ASCII;
+    } else if (ext == "ply") {
+        dstFormat = binary ? MeshFormat::PLY_BINARY : MeshFormat::PLY_ASCII;
+    } else {
+        result.message = "不支持的目标格式";
         return result;
     }
 
-    if (ext == "vtu") {
-        vtkSmartPointer<vtkUnstructuredGrid> grid = exportSurface
-            ? toUnstructuredGrid(surfaceData)
-            : toUnstructuredGrid(exportDataSet);
-        if (!grid) {
-            result.message = "VTU 需要非结构网格";
-            return result;
-        }
-        auto writer = vtkSmartPointer<vtkXMLUnstructuredGridWriter>::New();
-        writer->SetFileName(outPath.c_str());
-        writer->SetInputData(grid);
-        binary ? writer->SetDataModeToBinary() : writer->SetDataModeToAscii();
-        if (writer->Write()) {
-            result.ok = true;
-            return result;
-        }
-        result.message = "VTU 写出失败";
-        return result;
+    // Create processing options
+    VTKConverter::VTKProcessingOptions processingOptions;
+    if (exportSurface) {
+        // Enable surface extraction if needed
+        processingOptions.enableTriangulation = true;
     }
 
-    if (ext == "stl") {
-        vtkSmartPointer<vtkPolyData> polyData = exportSurface ? surfaceData : toSurfaceMesh(exportDataSet);
-        if (!polyData) {
-            result.message = "STL 需要面网格";
-            return result;
-        }
-        auto writer = vtkSmartPointer<vtkSTLWriter>::New();
-        writer->SetFileName(outPath.c_str());
-        writer->SetInputData(polyData);
-        binary ? writer->SetFileTypeToBinary() : writer->SetFileTypeToASCII();
-        if (writer->Write()) {
-            result.ok = true;
-            return result;
-        }
-        result.message = "STL 写出失败";
-        return result;
+    // Create write options
+    FormatWriteOptions writeOptions;
+    writeOptions.isBinary = binary;
+
+    // Perform conversion using VTKConverter
+    MeshErrorCode errorCode;
+    std::string errorMsg;
+    bool success = VTKConverter::convert(srcPath, dstPath, srcFormat, dstFormat, processingOptions, writeOptions, errorCode, errorMsg);
+
+    if (success) {
+        result.ok = true;
+    } else {
+        result.message = QString::fromStdString(errorMsg);
     }
 
-#ifdef HAS_VTK_CGNS_WRITER
-    if (ext == "cgns") {
-        vtkSmartPointer<vtkUnstructuredGrid> grid = exportSurface
-            ? toUnstructuredGrid(surfaceData)
-            : toUnstructuredGrid(exportDataSet);
-        if (!grid) {
-            result.message = "CGNS 需要非结构网格";
-            return result;
-        }
-        auto writer = vtkSmartPointer<vtkCGNSWriter>::New();
-        writer->SetFileName(outPath.c_str());
-        writer->SetInputData(grid);
-        if (writer->Write()) {
-            result.ok = true;
-            return result;
-        }
-        result.message = "CGNS 写出失败";
-        return result;
-    }
-#endif
-
-#ifdef HAS_VTK_GMSH_WRITER
-    if (ext == "msh") {
-        vtkSmartPointer<vtkUnstructuredGrid> grid = exportSurface
-            ? toUnstructuredGrid(surfaceData)
-            : toUnstructuredGrid(exportDataSet);
-        if (!grid) {
-            result.message = "Gmsh 需要非结构网格";
-            return result;
-        }
-        auto writer = vtkSmartPointer<vtkGmshWriter>::New();
-        writer->SetFileName(outPath.c_str());
-        writer->SetInputData(grid);
-        if (writer->Write()) {
-            result.ok = true;
-            return result;
-        }
-        result.message = "Gmsh 写出失败";
-        return result;
-    }
-#endif
-
-    result.message = "当前构建未包含该格式写出支持";
     return result;
 }
 
@@ -555,6 +552,9 @@ void transform::setupExportPanel()
     ui->exportFormatCombo->addItem("CGNS (.cgns)", "cgns");
     ui->exportFormatCombo->addItem("Gmsh (.msh)", "msh");
     ui->exportFormatCombo->addItem("STL (.stl)", "stl");
+    ui->exportFormatCombo->addItem("OBJ (.obj)", "obj");
+    ui->exportFormatCombo->addItem("OFF (.off)", "off");
+    ui->exportFormatCombo->addItem("PLY (.ply)", "ply");
 
     if (ui->surfaceMeshRadio) {
         ui->surfaceMeshRadio->setToolTip("仅保留面单元");
@@ -755,11 +755,99 @@ void transform::selectFilesInTree(const QStringList& filePaths, bool clearSelect
     }
 }
 
+struct ImportResult {
+    bool success;
+    MeshData meshData;
+    QString errorMessage;
+};
+
+ImportResult importMeshFileAsync(const QString& filePath)
+{
+    ImportResult result;
+    result.success = false;
+    
+    try {
+        // 使用 MeshReader 读取文件
+        MeshData meshData;
+        MeshErrorCode errorCode;
+        std::string errorMsg;
+        
+        const std::string filePathStd = filePath.toStdString();
+        bool success = MeshReader::readAuto(filePathStd, meshData, errorCode, errorMsg);
+        
+        if (success) {
+            result.success = true;
+            result.meshData = meshData;
+        } else {
+            result.errorMessage = QString::fromStdString(errorMsg);
+        }
+    } catch (const std::exception& e) {
+        result.errorMessage = QString::fromStdString(e.what());
+    } catch (...) {
+        result.errorMessage = "导入过程中发生未知错误";
+    }
+    
+    return result;
+}
+
 void transform::importMeshFile(const QString& filePath)
 {
-    statusBar()->showMessage(QString("已触发导入：%1").arg(QFileInfo(filePath).fileName()), 5000);
-    updateMeshInfo(filePath);
-    // TODO: 调用 MeshReader 读取文件，加载到已加载网格区域，并通知 3D 视图区刷新。
+    statusBar()->showMessage(QString("正在导入：%1").arg(QFileInfo(filePath).fileName()), 5000);
+    
+    // 首先检查文件是否存在
+    QFileInfo fileInfo(filePath);
+    if (!fileInfo.exists()) {
+        QString errorMessage = QString("文件不存在：%1").arg(filePath);
+        statusBar()->showMessage(QString("导入失败：%1").arg(errorMessage), 5000);
+        QMessageBox::warning(this, "导入失败", errorMessage);
+        return;
+    }
+    
+    // 检查文件是否可读
+    if (!fileInfo.isReadable()) {
+        QString errorMessage = QString("文件不可读：%1").arg(filePath);
+        statusBar()->showMessage(QString("导入失败：%1").arg(errorMessage), 5000);
+        QMessageBox::warning(this, "导入失败", errorMessage);
+        return;
+    }
+    
+    // 检查文件扩展名是否支持
+    QString suffix = fileInfo.suffix().toLower();
+    if (!isSupportedExtension(suffix)) {
+        QString errorMessage = QString("不支持的文件格式：%1").arg(suffix);
+        statusBar()->showMessage(QString("导入失败：%1").arg(errorMessage), 5000);
+        QMessageBox::warning(this, "导入失败", errorMessage);
+        return;
+    }
+    
+    // 使用QtConcurrent异步执行导入操作
+    auto future = QtConcurrent::run(importMeshFileAsync, filePath);
+    
+    auto* watcher = new QFutureWatcher<ImportResult>(this);
+    connect(watcher, &QFutureWatcher<ImportResult>::finished, this, [this, filePath, watcher] {
+        ImportResult result = watcher->result();
+        watcher->deleteLater();
+        
+        if (result.success) {
+            // 读取成功，更新网格信息
+            updateMeshInfo(filePath);
+            statusBar()->showMessage(QString("导入成功：%1").arg(QFileInfo(filePath).fileName()), 5000);
+            
+            // 更新单元统计信息
+            updateCellStats(result.meshData);
+            
+            // 更新属性信息
+            updateAttributeInfo(result.meshData);
+            
+            // TODO: 加载到已加载网格区域，并通知 3D 视图区刷新
+        } else {
+            // 读取失败，显示错误信息
+            statusBar()->showMessage(QString("导入失败：%1").arg(result.errorMessage), 5000);
+            QMessageBox::warning(this, "导入失败", result.errorMessage);
+        }
+    });
+    
+    watcher->setFuture(future);
 }
 
 void transform::updateMeshInfo(const QString& filePath)
@@ -814,6 +902,126 @@ void transform::updateMeshInfo(const QString& filePath)
     }
 }
 
+void transform::updateCellStats(const MeshData& meshData)
+{
+    if (!ui->cellStatsTable) {
+        return;
+    }
+    
+    // 清空表格
+    ui->cellStatsTable->clear();
+    ui->cellStatsTable->setRowCount(0);
+    
+    // 设置表头
+    ui->cellStatsTable->setHorizontalHeaderLabels({"单元类型", "数量"});
+    
+    if (meshData.metadata.cellTypeCount.empty()) {
+        // 无单元类型数据
+        ui->cellStatsTable->setRowCount(1);
+        ui->cellStatsTable->setColumnCount(2);
+        ui->cellStatsTable->setItem(0, 0, new QTableWidgetItem("无单元类型数据"));
+        ui->cellStatsTable->setSpan(0, 0, 1, 2);
+    } else {
+        // 填充单元类型数据
+        int row = 0;
+        for (const auto& pair : meshData.metadata.cellTypeCount) {
+            QString cellTypeText;
+            switch (pair.first) {
+                case VtkCellType::VERTEX:
+                    cellTypeText = "顶点";
+                    break;
+                case VtkCellType::LINE:
+                    cellTypeText = "线段";
+                    break;
+                case VtkCellType::TRIANGLE:
+                    cellTypeText = "三角形";
+                    break;
+                case VtkCellType::QUAD:
+                    cellTypeText = "四边形";
+                    break;
+                case VtkCellType::TETRA:
+                    cellTypeText = "四面体";
+                    break;
+                case VtkCellType::HEXAHEDRON:
+                    cellTypeText = "六面体";
+                    break;
+                case VtkCellType::WEDGE:
+                    cellTypeText = "楔形";
+                    break;
+                case VtkCellType::PYRAMID:
+                    cellTypeText = "金字塔";
+                    break;
+                case VtkCellType::TRIANGLE_STRIP:
+                    cellTypeText = "三角形带";
+                    break;
+                case VtkCellType::POLYGON:
+                    cellTypeText = "多边形";
+                    break;
+                default:
+                    cellTypeText = "未知";
+                    break;
+            }
+            
+            ui->cellStatsTable->insertRow(row);
+            ui->cellStatsTable->setItem(row, 0, new QTableWidgetItem(cellTypeText));
+            ui->cellStatsTable->setItem(row, 1, new QTableWidgetItem(QString::number(pair.second)));
+            row++;
+        }
+    }
+    
+    // 调整列宽
+    ui->cellStatsTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+}
+
+void transform::updateAttributeInfo(const MeshData& meshData)
+{
+    if (!ui->attrTree) {
+        return;
+    }
+    
+    // 清空树形控件
+    ui->attrTree->clear();
+    
+    // 设置表头
+    ui->attrTree->setHeaderLabels({"属性类型", "属性名称"});
+    
+    // 添加点属性
+    QTreeWidgetItem* pointDataItem = new QTreeWidgetItem(ui->attrTree, {"点属性"});
+    if (meshData.metadata.pointDataNames.empty()) {
+        new QTreeWidgetItem(pointDataItem, {"无点属性数据"});
+    } else {
+        for (const auto& name : meshData.metadata.pointDataNames) {
+            new QTreeWidgetItem(pointDataItem, {QString::fromStdString(name)});
+        }
+    }
+    
+    // 添加单元属性
+    QTreeWidgetItem* cellDataItem = new QTreeWidgetItem(ui->attrTree, {"单元属性"});
+    if (meshData.metadata.cellDataNames.empty()) {
+        new QTreeWidgetItem(cellDataItem, {"无单元属性数据"});
+    } else {
+        for (const auto& name : meshData.metadata.cellDataNames) {
+            new QTreeWidgetItem(cellDataItem, {QString::fromStdString(name)});
+        }
+    }
+    
+    // 添加物理区域
+    QTreeWidgetItem* physicalItem = new QTreeWidgetItem(ui->attrTree, {"物理区域"});
+    if (meshData.metadata.physicalRegions.empty()) {
+        new QTreeWidgetItem(physicalItem, {"无物理区域数据"});
+    } else {
+        for (const auto& region : meshData.metadata.physicalRegions) {
+            new QTreeWidgetItem(physicalItem, {QString::fromStdString(region)});
+        }
+    }
+    
+    // 展开所有节点
+    ui->attrTree->expandAll();
+    
+    // 调整列宽
+    ui->attrTree->header()->setSectionResizeMode(QHeaderView::Stretch);
+}
+
 bool transform::isSupportedMeshFile(const QString& filePath) const
 {
     return isSupportedExtension(QFileInfo(filePath).suffix());
@@ -825,7 +1033,7 @@ void transform::onOpenFileClicked()
         this,
         "打开网格文件",
         currentRootPath.isEmpty() ? QDir::homePath() : currentRootPath,
-        "网格文件 (*.vtk *.vtu *.cgns *.msh)"
+        "网格文件 (*.vtk *.vtu *.cgns *.msh *.obj *.off *.stl *.ply);;VTK文件 (*.vtk *.vtu);;CGNS文件 (*.cgns);;Gmsh文件 (*.msh);;OBJ文件 (*.obj);;OFF文件 (*.off);;STL文件 (*.stl);;PLY文件 (*.ply);;所有文件 (*.*)"
     );
 
     if (files.isEmpty()) {

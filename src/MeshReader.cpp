@@ -36,6 +36,58 @@
 #include <vtkPolyData.h>
 #include <vtkPLYReader.h>
 
+#ifdef _WIN32
+#include <windows.h>
+
+/**
+ * @brief Convert UTF-8 string to wide string
+ * @param utf8 UTF-8 string
+ * @return Wide string
+ */
+std::wstring utf8ToWide(const std::string& utf8) {
+    if (utf8.empty()) {
+        return std::wstring();
+    }
+    int size_needed = MultiByteToWideChar(CP_UTF8, 0, utf8.c_str(), (int)utf8.size(), NULL, 0);
+    std::wstring wide(size_needed, 0);
+    MultiByteToWideChar(CP_UTF8, 0, utf8.c_str(), (int)utf8.size(), &wide[0], size_needed);
+    return wide;
+}
+
+/**
+ * @brief Set VTK reader file name with UTF-8 support
+ * @param reader VTK reader
+ * @param filePath UTF-8 encoded file path
+ */
+template<typename ReaderType>
+void setVTKReaderFileName(vtkSmartPointer<ReaderType> reader, const std::string& filePath) {
+#ifdef _WIN32
+    // Use SetFileName with UTF-8 encoded path
+    // VTK's SetFileName should handle UTF-8 correctly
+    reader->SetFileName(filePath.c_str());
+#else
+    reader->SetFileName(filePath.c_str());
+#endif
+}
+
+/**
+ * @brief Set VTK reader file name with UTF-8 support (raw pointer version)
+ * @param reader VTK reader
+ * @param filePath UTF-8 encoded file path
+ */
+template<typename ReaderType>
+void setVTKReaderFileName(ReaderType* reader, const std::string& filePath) {
+#ifdef _WIN32
+    // Use SetFileName with UTF-8 encoded path
+    // VTK's SetFileName should handle UTF-8 correctly
+    reader->SetFileName(filePath.c_str());
+#else
+    reader->SetFileName(filePath.c_str());
+#endif
+}
+
+#endif
+
 // Try to include Gmsh API header
 #ifdef HAVE_GMSH
 #ifdef __cplusplus
@@ -266,7 +318,7 @@ bool MeshReader::readVTK(const std::string& filePath,
             if (datasetType == "UNSTRUCTURED_GRID") {
                 // Use unstructured grid reader
                 vtkSmartPointer<vtkUnstructuredGridReader> ugReader = vtkSmartPointer<vtkUnstructuredGridReader>::New();
-                ugReader->SetFileName(filePath.c_str());
+                setVTKReaderFileName(ugReader, filePath);
                 ugReader->Update();
                 
                 if (ugReader->GetOutput() && ugReader->GetOutput()->GetNumberOfPoints() > 0) {
@@ -279,7 +331,7 @@ bool MeshReader::readVTK(const std::string& filePath,
             } else if (datasetType == "STRUCTURED_GRID") {
                 // Use structured grid reader
                 vtkSmartPointer<vtkStructuredGridReader> sgReader = vtkSmartPointer<vtkStructuredGridReader>::New();
-                sgReader->SetFileName(filePath.c_str());
+                setVTKReaderFileName(sgReader, filePath);
                 sgReader->Update();
                 
                 if (sgReader->GetOutput() && sgReader->GetOutput()->GetNumberOfPoints() > 0) {
@@ -347,7 +399,7 @@ bool MeshReader::readVTK(const std::string& filePath,
             } else if (datasetType == "RECTILINEAR_GRID") {
                 // Use rectilinear grid reader
                 vtkSmartPointer<vtkRectilinearGridReader> rgReader = vtkSmartPointer<vtkRectilinearGridReader>::New();
-                rgReader->SetFileName(filePath.c_str());
+                setVTKReaderFileName(rgReader, filePath);
                 rgReader->Update();
                 
                 if (rgReader->GetOutput() && rgReader->GetOutput()->GetNumberOfPoints() > 0) {
@@ -430,7 +482,7 @@ bool MeshReader::readVTK(const std::string& filePath,
             } else if (datasetType == "POLYDATA") {
                 // Use polydata reader
                 vtkSmartPointer<vtkPolyDataReader> pdReader = vtkSmartPointer<vtkPolyDataReader>::New();
-                pdReader->SetFileName(filePath.c_str());
+                setVTKReaderFileName(pdReader, filePath);
                 pdReader->Update();
                 
                 if (pdReader->GetOutput() && pdReader->GetOutput()->GetNumberOfPoints() > 0) {
@@ -468,7 +520,7 @@ bool MeshReader::readVTK(const std::string& filePath,
             
             // First try as unstructured grid
             vtkSmartPointer<vtkXMLUnstructuredGridReader> ugReader = vtkSmartPointer<vtkXMLUnstructuredGridReader>::New();
-            ugReader->SetFileName(filePath.c_str());
+            setVTKReaderFileName(ugReader, filePath);
             ugReader->Update();
             
             if (ugReader->GetOutput() && ugReader->GetOutput()->GetNumberOfPoints() > 0) {
@@ -476,7 +528,7 @@ bool MeshReader::readVTK(const std::string& filePath,
             } else {
                 // Try as structured grid
                 vtkSmartPointer<vtkXMLStructuredGridReader> sgReader = vtkSmartPointer<vtkXMLStructuredGridReader>::New();
-                sgReader->SetFileName(filePath.c_str());
+                setVTKReaderFileName(sgReader, filePath);
                 sgReader->Update();
                 
                 if (sgReader->GetOutput() && sgReader->GetOutput()->GetNumberOfPoints() > 0) {
@@ -539,7 +591,7 @@ bool MeshReader::readVTK(const std::string& filePath,
                 } else {
                     // Try as rectilinear grid
                     vtkSmartPointer<vtkXMLRectilinearGridReader> rgReader = vtkSmartPointer<vtkXMLRectilinearGridReader>::New();
-                    rgReader->SetFileName(filePath.c_str());
+                    setVTKReaderFileName(rgReader, filePath);
                     rgReader->Update();
                     
                     if (rgReader->GetOutput() && rgReader->GetOutput()->GetNumberOfPoints() > 0) {
@@ -814,7 +866,7 @@ bool MeshReader::readCGNS(const std::string& filePath,
     try {
         // Use VTK's CGNS reader to read the file
         vtkSmartPointer<vtkCGNSReader> reader = vtkSmartPointer<vtkCGNSReader>::New();
-        reader->SetFileName(filePath.c_str());
+        setVTKReaderFileName(reader, filePath);
         reader->Update();
         
         vtkSmartPointer<vtkMultiBlockDataSet> output = reader->GetOutput();
@@ -966,7 +1018,12 @@ bool MeshReader::readGmsh(const std::string& filePath,
     
     try {
         // Open the Gmsh file
+#ifdef _WIN32
+        // Gmsh API expects const char* even on Windows
+        gmshOpen(reinterpret_cast<const char*>(filePath.c_str()), &ierr);
+#else
         gmshOpen(filePath.c_str(), &ierr);
+#endif
         if (ierr != 0) {
             errorCode = MeshErrorCode::READ_FAILED;
             errorMsg = "Error opening Gmsh file: " + filePath;

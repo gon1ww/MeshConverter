@@ -46,6 +46,7 @@ find_package(VTK REQUIRED COMPONENTS
     IOGeometry
     IOLegacy
     IOXML
+    IOPLY
     OPTIONAL_COMPONENTS IOCGNS
 )
 
@@ -81,6 +82,7 @@ add_executable(QtTransformApp ${SOURCES} ${HEADERS} ${UIS})
 target_link_libraries(QtTransformApp PRIVATE 
     Qt6::Widgets 
     Qt6::Concurrent
+    MeshFormatConverter
     VTK::CommonCore
     VTK::CommonDataModel
     VTK::FiltersCore
@@ -90,6 +92,7 @@ target_link_libraries(QtTransformApp PRIVATE
     VTK::IOGeometry
     VTK::IOLegacy
     VTK::IOXML
+    VTK::IOPLY
 )
 
 # 检查并链接CGNS支持
@@ -113,5 +116,6 @@ endif()
 target_include_directories(QtTransformApp PRIVATE 
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_SOURCE_DIR}/include
     ${VTK_INCLUDE_DIRS}
 )
