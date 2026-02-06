@@ -13,6 +13,7 @@ class QItemSelection;
 class QModelIndex;
 class QPoint;
 class QTimer;
+class QTreeWidgetItem;
 
 class transform : public QMainWindow {
     Q_OBJECT
@@ -23,6 +24,8 @@ public:
 
 protected:
     bool eventFilter(QObject* obj, QEvent* event) override;
+    void resizeEvent(QResizeEvent* event) override;
+    void showEvent(QShowEvent* event) override;
 
 private slots:
     void onOpenFileClicked();
@@ -41,6 +44,8 @@ private:
 private:
     void setupFileBrowser();
     void setupExportPanel();
+    void setupVTKWidget();
+    void setupSplitterSizes();
     void updateExportPathForFormat();
     QString buildDefaultExportPath(const QString& ext, const QString& baseDirOverride = QString()) const;
     bool isPathWritable(const QString& path) const;
@@ -53,6 +58,19 @@ private:
     bool isSupportedMeshFile(const QString& filePath) const;
     void updateCellStats(const MeshData& meshData);
     void updateAttributeInfo(const MeshData& meshData);
+    void appendExportLog(const QString& message);
+    void appendExportLog(const QString& message, const QString& level);
+    void copyExportLog();
+    void saveExportLog();
+
+private:
+    // 网格数据结构
+    struct LoadedMesh {
+        QString filePath;
+        QString fileName;
+        QString format;
+        MeshData meshData;
+    };
 
 private:
     Ui::transform* ui;
@@ -64,4 +82,18 @@ private:
     QTimer* exportProgressTimer = nullptr;
     int exportProgressValue = 0;
     bool exportInProgress = false;
+    
+    // 已加载网格数据
+    QList<LoadedMesh> loadedMeshes;
+    QHash<QTreeWidgetItem*, int> meshItemMap;
+
+private:
+    void setupLoadedMeshesTab();
+    void addLoadedMesh(const QString& filePath, const MeshData& meshData);
+    void updateLoadedMeshesTree();
+    void onLoadedMeshSelected(QTreeWidgetItem* item, int column);
+    void onLoadedMeshContextMenuRequested(const QPoint& pos);
+    void exportSelectedMesh();
+    void removeSelectedMesh();
+    void viewSelectedMeshProperties();
 };

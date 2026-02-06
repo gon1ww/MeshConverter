@@ -28,10 +28,13 @@
 #include <QStatusBar>
 #include <QStandardPaths>
 #include <QTableWidget>
+#include <QTextEdit>
 #include <QToolButton>
 #include <QTreeView>
 #include <QUrl>
 #include <QtConcurrent/QtConcurrent>
+
+
 
 #include <cmath>
 
@@ -366,7 +369,7 @@ public:
 class MeshFilterProxyModel : public QSortFilterProxyModel
 {
 public:
-    enum class FilterType { All, Vtk, Cgns, Gmsh };
+    enum class FilterType { All, Vtk, Cgns, Gmsh, Obj, Off, Stl, Ply };
 
     explicit MeshFilterProxyModel(QObject* parent = nullptr)
         : QSortFilterProxyModel(parent)
@@ -415,6 +418,14 @@ protected:
             return suffix == "cgns";
         case FilterType::Gmsh:
             return suffix == "msh";
+        case FilterType::Obj:
+            return suffix == "obj";
+        case FilterType::Off:
+            return suffix == "off";
+        case FilterType::Stl:
+            return suffix == "stl";
+        case FilterType::Ply:
+            return suffix == "ply";
         default:
             return true;
         }
@@ -429,8 +440,450 @@ transform::transform(QWidget* parent)
     , ui(new Ui::transform)
 {
     ui->setupUi(this);
+    // 设置默认窗口大小
+    resize(1200, 800);
     setupFileBrowser();
     setupExportPanel();
+    setupVTKWidget();
+    setupLoadedMeshesTab();
+    setupSplitterSizes();
+}
+
+void transform::setupSplitterSizes()
+{
+    if (!ui->mainSplitter) {
+        return;
+    }
+
+    // 设置左、中、右三个区域的宽度比例为2:3:2
+    QList<int> sizes;
+    int totalWidth = ui->mainSplitter->width();
+    int leftWidth = totalWidth * 2 / 7;
+    int centerWidth = totalWidth * 3 / 7;
+    int rightWidth = totalWidth * 2 / 7;
+
+    sizes << leftWidth << centerWidth << rightWidth;
+    ui->mainSplitter->setSizes(sizes);
+}
+
+void transform::resizeEvent(QResizeEvent* event)
+{
+    QMainWindow::resizeEvent(event);
+    setupSplitterSizes();
+}
+
+void transform::showEvent(QShowEvent* event)
+{
+    QMainWindow::showEvent(event);
+    setupSplitterSizes();
+}
+
+void transform::setupLoadedMeshesTab()
+{
+    if (!ui->loadedMeshesTreeWidget) {
+        return;
+    }
+
+    // 设置列宽
+    ui->loadedMeshesTreeWidget->header()->setSectionResizeMode(0, QHeaderView::Stretch);
+    ui->loadedMeshesTreeWidget->header()->setSectionResizeMode(1, QHeaderView::Fixed);
+    ui->loadedMeshesTreeWidget->header()->resizeSection(1, 80);
+
+    // 连接信号
+    connect(ui->loadedMeshesTreeWidget, &QTreeWidget::itemClicked,
+            this, &transform::onLoadedMeshSelected);
+    connect(ui->loadedMeshesTreeWidget, &QTreeWidget::customContextMenuRequested,
+            this, &transform::onLoadedMeshContextMenuRequested);
+}
+
+void transform::addLoadedMesh(const QString& filePath, const MeshData& meshData)
+{
+    QFileInfo info(filePath);
+    QString fileName = info.fileName();
+    QString format = info.suffix().toUpper();
+
+    LoadedMesh mesh;
+    mesh.filePath = filePath;
+    mesh.fileName = fileName;
+    mesh.format = format;
+    mesh.meshData = meshData;
+
+    loadedMeshes.append(mesh);
+    updateLoadedMeshesTree();
+}
+
+void transform::updateLoadedMeshesTree()
+{
+    if (!ui->loadedMeshesTreeWidget) {
+        return;
+    }
+
+    // 清空树形控件
+    ui->loadedMeshesTreeWidget->clear();
+    meshItemMap.clear();
+
+    // 添加已加载的网格
+    for (int i = 0; i < loadedMeshes.size(); ++i) {
+        const LoadedMesh& mesh = loadedMeshes[i];
+        QTreeWidgetItem* item = new QTreeWidgetItem(ui->loadedMeshesTreeWidget);
+        item->setText(0, mesh.fileName);
+        item->setText(1, mesh.format);
+        meshItemMap.insert(item, i);
+    }
+
+    // 展开所有节点
+    ui->loadedMeshesTreeWidget->expandAll();
+}
+
+void transform::onLoadedMeshSelected(QTreeWidgetItem* item, int column)
+{
+    if (!item || !meshItemMap.contains(item)) {
+        return;
+    }
+
+    int index = meshItemMap[item];
+    if (index < 0 || index >= loadedMeshes.size()) {
+        return;
+    }
+
+    const LoadedMesh& mesh = loadedMeshes[index];
+
+    // 直接使用已加载的网格数据更新界面，避免重新加载文件
+    QFileInfo info(mesh.filePath);
+    QString suffix = info.suffix().toLower();
+
+    QString formatText = suffix;
+    if (suffix == "vtk") {
+        formatText = "VTK Legacy";
+    } else if (suffix == "vtu") {
+        formatText = "VTK XML";
+    } else if (suffix == "cgns") {
+        formatText = "CGNS";
+    } else if (suffix == "msh") {
+        formatText = "Gmsh";
+    } else if (suffix == "stl") {
+        formatText = "STL";
+    } else if (suffix == "obj") {
+        formatText = "OBJ";
+    } else if (suffix == "off") {
+        formatText = "OFF";
+    } else if (suffix == "ply") {
+        formatText = "PLY";
+    }
+
+    const QString sizeText = formatFileSize(info.size());
+    const QString importTime = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
+
+    // 计算网格维度
+    QString dimensionText = "-";
+    if (!mesh.meshData.cells.empty()) {
+        // 简单判断维度：如果有四面体、六面体等3D单元，则为3D网格
+        bool has3DCells = false;
+        for (const auto& cell : mesh.meshData.cells) {
+            switch (cell.type) {
+            case VtkCellType::TETRA:
+            case VtkCellType::HEXAHEDRON:
+            case VtkCellType::WEDGE:
+            case VtkCellType::PYRAMID:
+                has3DCells = true;
+                break;
+            default:
+                break;
+            }
+        }
+        dimensionText = has3DCells ? "3D" : "2D";
+    }
+
+    // 更新基础信息
+    if (ui->meshNameValue) {
+        ui->meshNameValue->setText(info.fileName());
+    }
+    if (ui->meshTypeValue) {
+        ui->meshTypeValue->setText(formatText);
+    }
+    if (ui->meshFormatValue) {
+        ui->meshFormatValue->setText(formatText);
+    }
+    if (ui->meshSizeValue) {
+        ui->meshSizeValue->setText(sizeText);
+    }
+    if (ui->meshImportTimeValue) {
+        ui->meshImportTimeValue->setText(importTime);
+    }
+    if (ui->meshDimensionValue) {
+        ui->meshDimensionValue->setText(dimensionText);
+    }
+
+    // 更新单元统计信息
+    updateCellStats(mesh.meshData);
+
+    // 更新属性信息
+    updateAttributeInfo(mesh.meshData);
+
+    // 自动填充导出格式和路径
+    if (ui->exportFormatCombo) {
+        // 根据网格文件格式设置默认导出格式
+        int formatIndex = -1;
+        for (int i = 0; i < ui->exportFormatCombo->count(); ++i) {
+            if (ui->exportFormatCombo->itemData(i).toString() == suffix) {
+                formatIndex = i;
+                break;
+            }
+        }
+        if (formatIndex != -1) {
+            ui->exportFormatCombo->setCurrentIndex(formatIndex);
+        } else {
+            // 默认选择第一个格式
+            ui->exportFormatCombo->setCurrentIndex(0);
+        }
+    }
+
+    if (ui->exportPathEdit) {
+        // 设置默认导出路径，基于选中的网格文件
+        QString ext = currentExportExt();
+        QString baseName = info.completeBaseName();
+        QString dirPath = info.absolutePath();
+        QString exportPath = QDir(dirPath).filePath(QString("%1_导出.%2").arg(baseName, ext));
+        ui->exportPathEdit->setText(exportPath);
+        validateExportPath();
+    }
+
+    // 切换到右侧面板的「网格信息」标签页
+    if (ui->rightPanelTabs) {
+        // 查找「网格信息」标签页的索引
+        int tabIndex = -1;
+        for (int i = 0; i < ui->rightPanelTabs->count(); ++i) {
+            if (ui->rightPanelTabs->tabText(i) == "网格信息") {
+                tabIndex = i;
+                break;
+            }
+        }
+        if (tabIndex != -1) {
+            ui->rightPanelTabs->setCurrentIndex(tabIndex);
+        }
+    }
+
+    // TODO: 更新3D视图，聚焦并高亮显示当前选中的网格对象
+}
+
+void transform::onLoadedMeshContextMenuRequested(const QPoint& pos)
+{
+    QTreeWidgetItem* item = ui->loadedMeshesTreeWidget->itemAt(pos);
+    if (!item || !meshItemMap.contains(item)) {
+        return;
+    }
+
+    QMenu menu(this);
+    QAction* exportAction = menu.addAction("导出");
+    QAction* removeAction = menu.addAction("移除");
+    QAction* propertiesAction = menu.addAction("查看属性");
+
+    QAction* selectedAction = menu.exec(ui->loadedMeshesTreeWidget->viewport()->mapToGlobal(pos));
+    if (!selectedAction) {
+        return;
+    }
+
+    if (selectedAction == exportAction) {
+        exportSelectedMesh();
+    } else if (selectedAction == removeAction) {
+        removeSelectedMesh();
+    } else if (selectedAction == propertiesAction) {
+        viewSelectedMeshProperties();
+    }
+}
+
+void transform::exportSelectedMesh()
+{
+    QTreeWidgetItem* selectedItem = ui->loadedMeshesTreeWidget->currentItem();
+    if (!selectedItem || !meshItemMap.contains(selectedItem)) {
+        return;
+    }
+
+    int index = meshItemMap[selectedItem];
+    if (index < 0 || index >= loadedMeshes.size()) {
+        return;
+    }
+
+    const LoadedMesh& mesh = loadedMeshes[index];
+
+    // 设置导出路径
+    if (ui->exportPathEdit) {
+        QString exportPath = buildDefaultExportPath(currentExportExt());
+        ui->exportPathEdit->setText(exportPath);
+        validateExportPath();
+    }
+
+    // 切换到导出配置标签页
+    if (ui->rightPanelTabs) {
+        // 查找「导出配置」标签页的索引
+        int tabIndex = -1;
+        for (int i = 0; i < ui->rightPanelTabs->count(); ++i) {
+            if (ui->rightPanelTabs->tabText(i) == "导出配置") {
+                tabIndex = i;
+                break;
+            }
+        }
+        if (tabIndex != -1) {
+            ui->rightPanelTabs->setCurrentIndex(tabIndex);
+        }
+    }
+}
+
+void transform::removeSelectedMesh()
+{
+    QTreeWidgetItem* selectedItem = ui->loadedMeshesTreeWidget->currentItem();
+    if (!selectedItem || !meshItemMap.contains(selectedItem)) {
+        return;
+    }
+
+    int index = meshItemMap[selectedItem];
+    if (index < 0 || index >= loadedMeshes.size()) {
+        return;
+    }
+
+    // 从列表中移除
+    loadedMeshes.removeAt(index);
+    updateLoadedMeshesTree();
+
+    // 清空网格信息
+    if (ui->meshNameValue) {
+        ui->meshNameValue->setText("-");
+    }
+    if (ui->meshTypeValue) {
+        ui->meshTypeValue->setText("-");
+    }
+    if (ui->meshFormatValue) {
+        ui->meshFormatValue->setText("-");
+    }
+    if (ui->meshSizeValue) {
+        ui->meshSizeValue->setText("-");
+    }
+    if (ui->meshImportTimeValue) {
+        ui->meshImportTimeValue->setText("-");
+    }
+    if (ui->meshDimensionValue) {
+        ui->meshDimensionValue->setText("-");
+    }
+    if (ui->cellStatsTable) {
+        ui->cellStatsTable->clearContents();
+        ui->cellStatsTable->setRowCount(0);
+    }
+    if (ui->attrTree) {
+        ui->attrTree->clear();
+    }
+}
+
+void transform::viewSelectedMeshProperties()
+{
+    QTreeWidgetItem* selectedItem = ui->loadedMeshesTreeWidget->currentItem();
+    if (!selectedItem || !meshItemMap.contains(selectedItem)) {
+        return;
+    }
+
+    int index = meshItemMap[selectedItem];
+    if (index < 0 || index >= loadedMeshes.size()) {
+        return;
+    }
+
+    const LoadedMesh& mesh = loadedMeshes[index];
+
+    // 显示网格属性信息
+    QMessageBox::information(this, "网格属性",
+        QString("文件路径: %1\n").arg(mesh.filePath) +
+        QString("文件名称: %1\n").arg(mesh.fileName) +
+        QString("文件格式: %1\n").arg(mesh.format) +
+        QString("点数量: %1\n").arg(mesh.meshData.points.size() / 3) +
+        QString("单元数量: %1").arg(mesh.meshData.cells.size()));
+}
+
+void transform::setupVTKWidget()
+{
+    // TODO: 实现VTK 3D视图的初始化
+    // 由于当前环境配置问题，暂时作为占位符
+}
+
+void transform::appendExportLog(const QString& message, const QString& level)
+{
+    if (!ui->exportTerminalTextEdit) {
+        return;
+    }
+
+    // 确保在UI线程中执行
+    if (QThread::currentThread() != ui->exportTerminalTextEdit->thread()) {
+        QMetaObject::invokeMethod(this, "appendExportLog", Qt::QueuedConnection,
+                                  Q_ARG(QString, message), Q_ARG(QString, level));
+        return;
+    }
+
+    QString timestamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
+    QString levelText = level.isEmpty() ? "INFO" : level;
+    QString logMessage;
+
+    // 根据日志级别设置不同的格式
+    if (levelText == "ERROR" || levelText == "FAILED") {
+        logMessage = QString("<font color='red'>[%1] [%2] %3</font><br/>")
+                     .arg(timestamp, levelText, message);
+    } else if (levelText == "WARNING") {
+        logMessage = QString("<font color='orange'>[%1] [%2] %3</font><br/>")
+                     .arg(timestamp, levelText, message);
+    } else if (levelText == "SUCCESS") {
+        logMessage = QString("<font color='green'>[%1] [%2] %3</font><br/>")
+                     .arg(timestamp, levelText, message);
+    } else if (levelText == "IMPORTANT") {
+        logMessage = QString("<b>[%1] [%2] %3</b><br/>")
+                     .arg(timestamp, levelText, message);
+    } else {
+        logMessage = QString("[%1] [%2] %3<br/>")
+                     .arg(timestamp, levelText, message);
+    }
+
+    ui->exportTerminalTextEdit->append(logMessage);
+
+    // 自动滚动到底部
+    QTextCursor cursor = ui->exportTerminalTextEdit->textCursor();
+    cursor.movePosition(QTextCursor::End);
+    ui->exportTerminalTextEdit->setTextCursor(cursor);
+}
+
+void transform::appendExportLog(const QString& message)
+{
+    appendExportLog(message, "INFO");
+}
+
+void transform::copyExportLog()
+{
+    if (!ui->exportTerminalTextEdit) {
+        return;
+    }
+
+    ui->exportTerminalTextEdit->selectAll();
+    ui->exportTerminalTextEdit->copy();
+    statusBar()->showMessage("日志已复制到剪贴板", 3000);
+}
+
+void transform::saveExportLog()
+{
+    if (!ui->exportTerminalTextEdit) {
+        return;
+    }
+
+    QString fileName = QFileDialog::getSaveFileName(this, "保存日志", 
+                                                   QDir::homePath() + "/export_log.txt",
+                                                   "文本文件 (*.txt);;所有文件 (*.*)");
+
+    if (fileName.isEmpty()) {
+        return;
+    }
+
+    QFile file(fileName);
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QTextStream out(&file);
+        out << ui->exportTerminalTextEdit->toPlainText();
+        file.close();
+        statusBar()->showMessage("日志已保存", 3000);
+    } else {
+        statusBar()->showMessage("保存日志失败", 3000);
+    }
 }
 
 transform::~transform()
@@ -516,6 +969,10 @@ void transform::setupFileBrowser()
     ui->formatFilterCombo->addItem("VTK 系列（vtk/vtu）");
     ui->formatFilterCombo->addItem("CGNS（cgns）");
     ui->formatFilterCombo->addItem("Gmsh（msh）");
+    ui->formatFilterCombo->addItem("OBJ（obj）");
+    ui->formatFilterCombo->addItem("OFF（off）");
+    ui->formatFilterCombo->addItem("STL（stl）");
+    ui->formatFilterCombo->addItem("PLY（ply）");
 
     connect(ui->formatFilterCombo, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &transform::onFilterChanged);
@@ -537,8 +994,9 @@ void transform::setupFileBrowser()
     treeView->installEventFilter(this);
     treeView->viewport()->installEventFilter(this);
 
-    setRootPath(QDir::rootPath());
+    // 不设置默认根路径，需要用户自行打开文件夹或者打开网格文件
 }
+
 
 void transform::setupExportPanel()
 {
@@ -576,6 +1034,21 @@ void transform::setupExportPanel()
         ui->exportNowButton->setText("导出");
         connect(ui->exportNowButton, &QPushButton::clicked,
                 this, &transform::onExportNowClicked);
+    }
+    if (ui->clearLogButton) {
+        connect(ui->clearLogButton, &QPushButton::clicked, this, [this] {
+            if (ui->exportTerminalTextEdit) {
+                ui->exportTerminalTextEdit->clear();
+            }
+        });
+    }
+
+    if (ui->copyLogButton) {
+        connect(ui->copyLogButton, &QPushButton::clicked, this, &transform::copyExportLog);
+    }
+
+    if (ui->saveLogButton) {
+        connect(ui->saveLogButton, &QPushButton::clicked, this, &transform::saveExportLog);
     }
 
     if (ui->exportPathEdit) {
@@ -720,7 +1193,14 @@ void transform::validateExportPath()
 
 void transform::setRootPath(const QString& path)
 {
-    const QString resolvedPath = path.isEmpty() ? QDir::rootPath() : QDir(path).absolutePath();
+    if (path.isEmpty()) {
+        // 空路径时，设置一个无效的根索引，使文件树视图保持空白
+        currentRootPath = "";
+        ui->fileTreeView->setRootIndex(QModelIndex());
+        return;
+    }
+
+    const QString resolvedPath = QDir(path).absolutePath();
     currentRootPath = resolvedPath;
 
     QModelIndex sourceIndex = fileModel->setRootPath(resolvedPath);
@@ -839,7 +1319,10 @@ void transform::importMeshFile(const QString& filePath)
             // 更新属性信息
             updateAttributeInfo(result.meshData);
             
-            // TODO: 加载到已加载网格区域，并通知 3D 视图区刷新
+            // 加载到已加载网格区域
+            addLoadedMesh(filePath, result.meshData);
+            
+            // TODO: 通知 3D 视图区刷新
         } else {
             // 读取失败，显示错误信息
             statusBar()->showMessage(QString("导入失败：%1").arg(result.errorMessage), 5000);
@@ -1062,7 +1545,9 @@ void transform::onOpenFolderClicked()
 void transform::onRefreshClicked()
 {
     if (currentRootPath.isEmpty()) {
-        currentRootPath = QDir::rootPath();
+        // 当currentRootPath为空时，保持文件树视图空白
+        statusBar()->showMessage("请先打开文件夹或文件", 3000);
+        return;
     }
 
     fileModel->setRootPath(currentRootPath);
@@ -1085,6 +1570,18 @@ void transform::onFilterChanged(int index)
         break;
     case 3:
         proxy->setFilterType(MeshFilterProxyModel::FilterType::Gmsh);
+        break;
+    case 4:
+        proxy->setFilterType(MeshFilterProxyModel::FilterType::Obj);
+        break;
+    case 5:
+        proxy->setFilterType(MeshFilterProxyModel::FilterType::Off);
+        break;
+    case 6:
+        proxy->setFilterType(MeshFilterProxyModel::FilterType::Stl);
+        break;
+    case 7:
+        proxy->setFilterType(MeshFilterProxyModel::FilterType::Ply);
         break;
     default:
         proxy->setFilterType(MeshFilterProxyModel::FilterType::All);
@@ -1140,6 +1637,17 @@ void transform::onExportNowClicked()
             if (info.isFile()) {
                 sourcePath = info.absoluteFilePath();
                 break;
+            }
+        }
+    }
+
+    // 如果文件浏览器中没有选中文件，检查已加载网格中是否有选中项
+    if (sourcePath.isEmpty() && ui->loadedMeshesTreeWidget) {
+        QTreeWidgetItem* selectedItem = ui->loadedMeshesTreeWidget->currentItem();
+        if (selectedItem && meshItemMap.contains(selectedItem)) {
+            int index = meshItemMap[selectedItem];
+            if (index >= 0 && index < loadedMeshes.size()) {
+                sourcePath = loadedMeshes[index].filePath;
             }
         }
     }
@@ -1200,12 +1708,27 @@ void transform::onExportNowClicked()
         exportProgressTimer->start();
     }
 
+    appendExportLog(QString("开始导出：%1").arg(QFileInfo(sourcePath).fileName()), "INFO");
+    appendExportLog(QString("目标格式：%1").arg(ui->exportFormatCombo->currentText()), "INFO");
+    appendExportLog(QString("导出路径：%1").arg(exportPath), "INFO");
+    appendExportLog(QString("网格类型：%1").arg(isVolume ? "体网格" : "面网格"), "INFO");
+    appendExportLog(QString("输出模式：%1").arg(isBinary ? "二进制" : "ASCII"), "INFO");
+    appendExportLog("正在准备导出数据...", "INFO");
+    appendExportLog("正在读取源文件...", "INFO");
+    appendExportLog(QString("进度：10%"), "INFO");
+    appendExportLog("正在处理网格数据...", "INFO");
+    appendExportLog(QString("进度：30%"), "INFO");
+    appendExportLog("正在转换格式...", "INFO");
+    appendExportLog(QString("进度：60%"), "INFO");
+    appendExportLog("正在写入目标文件...", "INFO");
+    appendExportLog(QString("进度：80%"), "INFO");
+
     auto future = QtConcurrent::run([sourcePath, exportPath, formatExt, isVolume, isBinary]() {
         return exportMeshFile(sourcePath, exportPath, formatExt, !isVolume, isBinary);
     });
 
     auto* watcher = new QFutureWatcher<ExportResult>(this);
-    connect(watcher, &QFutureWatcher<ExportResult>::finished, this, [this, watcher] {
+    connect(watcher, &QFutureWatcher<ExportResult>::finished, this, [this, watcher, exportPath] {
         const ExportResult result = watcher->result();
         watcher->deleteLater();
 
@@ -1219,10 +1742,19 @@ void transform::onExportNowClicked()
             ui->exportNowButton->setEnabled(true);
         }
 
+        appendExportLog(QString("进度：100%"), "INFO");
+
         if (result.ok) {
+            // 导出成功，绿色显示结果
             statusBar()->showMessage("导出成功", 3000);
+            appendExportLog("导出成功！", "SUCCESS");
+            appendExportLog(QString("文件已保存至：%1").arg(exportPath), "SUCCESS");
+            appendExportLog("导出操作已完成。", "SUCCESS");
         } else {
+            // 导出失败，红色显示结果
             statusBar()->showMessage("导出失败", 3000);
+            appendExportLog(QString("导出失败：%1").arg(result.message.isEmpty() ? "未知错误" : result.message), "ERROR");
+            appendExportLog("导出操作已终止。", "ERROR");
             QMessageBox::warning(this, "导出失败", result.message.isEmpty() ? "导出失败" : result.message);
         }
     });

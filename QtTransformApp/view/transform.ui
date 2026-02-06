@@ -42,264 +42,96 @@
       <layout class="QVBoxLayout" name="leftLayout">
        <item>
         <widget class="QTabWidget" name="fileTabWidget">
-         <property name="currentIndex">
-          <number>0</number>
-         </property>
-         <widget class="QWidget" name="fileBrowserTab">
-          <attribute name="title">
-           <string>文件浏览器</string>
-          </attribute>
-          <layout class="QVBoxLayout" name="fileBrowserLayout">
-           <item>
-            <widget class="QComboBox" name="formatFilterCombo"/>
-           </item>
-           <item>
-            <widget class="QTreeView" name="fileTreeView">
-             <property name="dragEnabled">
-              <bool>false</bool>
-             </property>
-             <property name="acceptDrops">
-              <bool>true</bool>
-             </property>
-             <property name="dragDropMode">
-              <enum>QAbstractItemView::DropOnly</enum>
-             </property>
-            </widget>
-           </item>
-          </layout>
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="fileBrowserTab">
+           <attribute name="title">
+            <string>文件浏览器</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="fileBrowserLayout">
+            <item>
+             <widget class="QComboBox" name="formatFilterCombo"/>
+            </item>
+            <item>
+             <widget class="QTreeView" name="fileTreeView">
+              <property name="dragEnabled">
+               <bool>false</bool>
+              </property>
+              <property name="acceptDrops">
+               <bool>true</bool>
+              </property>
+              <property name="dragDropMode">
+               <enum>QAbstractItemView::DropOnly</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="loadedMeshesTab">
+           <attribute name="title">
+            <string>已加载网格</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="loadedMeshesLayout">
+            <item>
+             <widget class="QTreeWidget" name="loadedMeshesTreeWidget">
+              <property name="columnCount">
+               <number>2</number>
+              </property>
+              <property name="headerLabels">
+               <stringlist>
+                <string>网格名称</string>
+                <string>格式</string>
+               </stringlist>
+              </property>
+              <property name="editTriggers">
+               <set>QAbstractItemView::NoEditTriggers</set>
+              </property>
+              <property name="selectionMode">
+               <enum>QAbstractItemView::SingleSelection</enum>
+              </property>
+              <property name="contextMenuPolicy">
+               <enum>Qt::CustomContextMenu</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </widget>
-        </widget>
        </item>
       </layout>
 
       </widget>
-      <widget class="QSplitter" name="centerSplitter">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="handleWidth">
-        <number>3</number>
-       </property>
-       <property name="childrenCollapsible">
-        <bool>false</bool>
-       </property>
-       <widget class="QFrame" name="centerTopFrame">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>220</height>
-         </size>
-        </property>
+      <widget class="QFrame" name="centerFrame">
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Plain</enum>
         </property>
-        <layout class="QVBoxLayout" name="centerTopLayout">
+        <layout class="QVBoxLayout" name="centerLayout">
          <item>
-          <widget class="QLabel" name="centerTopLabel">
-           <property name="text">
-            <string>中央3D视图区：网格可视化</string>
+          <widget class="QWidget" name="vtkWidget">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(30, 60, 90);
+color: white;
+font-size: 14px;</string>
            </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="wordWrap">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QFrame" name="centerBottomFrame">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>140</height>
-         </size>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Plain</enum>
-        </property>
-        <layout class="QVBoxLayout" name="centerBottomLayout">
-         <item>
-          <widget class="QWidget" name="centerBottomInfoWidget">
-           <layout class="QVBoxLayout" name="centerBottomInfoLayout">
-            <property name="spacing">
-             <number>6</number>
-            </property>
+           <layout class="QVBoxLayout" name="vtkWidgetLayout">
             <item>
-             <widget class="QGroupBox" name="basicInfoGroup">
-              <property name="title">
-               <string>基础信息</string>
+             <widget class="QLabel" name="vtkWidgetLabel">
+              <property name="text">
+               <string>3D视图区（QVTKOpenGLNativeWidget）</string>
               </property>
-              <layout class="QFormLayout" name="basicInfoLayout">
-               <property name="horizontalSpacing">
-                <number>6</number>
-               </property>
-               <property name="verticalSpacing">
-                <number>4</number>
-               </property>
-               <item row="0" column="0">
-                <widget class="QLabel" name="meshNameLabel">
-                 <property name="text">
-                  <string>名称</string>
-                 </property>
-                </widget>
-               </item>
-                      <item row="0" column="1">
-                        <widget class="QLabel" name="meshNameValue">
-                         <property name="text">
-                           <string>-</string>
-                         </property>
-                         <property name="alignment">
-                           <set>Qt::AlignRight|Qt::AlignVCenter</set>
-                         </property>
-                        </widget>
-                      </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="meshTypeLabel">
-                 <property name="text">
-                  <string>类型</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="QLabel" name="meshTypeValue">
-                 <property name="text">
-                  <string>-</string>
-                 </property>
-                         <property name="alignment">
-                           <set>Qt::AlignRight|Qt::AlignVCenter</set>
-                         </property>
-                </widget>
-               </item>
-                      <item row="2" column="0">
-                        <widget class="QLabel" name="meshFormatLabel">
-                         <property name="text">
-                           <string>格式</string>
-                         </property>
-                        </widget>
-                      </item>
-                      <item row="2" column="1">
-                        <widget class="QLabel" name="meshFormatValue">
-                         <property name="text">
-                           <string>-</string>
-                         </property>
-                         <property name="alignment">
-                           <set>Qt::AlignRight|Qt::AlignVCenter</set>
-                         </property>
-                        </widget>
-                      </item>
-                      <item row="3" column="0">
-                        <widget class="QLabel" name="meshSizeLabel">
-                         <property name="text">
-                           <string>大小</string>
-                         </property>
-                        </widget>
-                      </item>
-                      <item row="3" column="1">
-                        <widget class="QLabel" name="meshSizeValue">
-                         <property name="text">
-                           <string>-</string>
-                         </property>
-                         <property name="alignment">
-                           <set>Qt::AlignRight|Qt::AlignVCenter</set>
-                         </property>
-                        </widget>
-                      </item>
-                      <item row="4" column="0">
-                        <widget class="QLabel" name="meshImportTimeLabel">
-                         <property name="text">
-                           <string>导入时间</string>
-                         </property>
-                        </widget>
-                      </item>
-                      <item row="4" column="1">
-                        <widget class="QLabel" name="meshImportTimeValue">
-                         <property name="text">
-                           <string>-</string>
-                         </property>
-                         <property name="alignment">
-                           <set>Qt::AlignRight|Qt::AlignVCenter</set>
-                         </property>
-                        </widget>
-                      </item>
-                      <item row="5" column="0">
-                        <widget class="QLabel" name="meshDimensionLabel">
-                         <property name="text">
-                           <string>维度</string>
-                         </property>
-                        </widget>
-                      </item>
-                      <item row="5" column="1">
-                        <widget class="QLabel" name="meshDimensionValue">
-                         <property name="text">
-                           <string>-</string>
-                         </property>
-                         <property name="alignment">
-                           <set>Qt::AlignRight|Qt::AlignVCenter</set>
-                         </property>
-                        </widget>
-                      </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="QGroupBox" name="cellStatsGroup">
-              <property name="title">
-               <string>单元统计</string>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
               </property>
-              <layout class="QVBoxLayout" name="cellStatsLayout">
-               <property name="spacing">
-                <number>4</number>
-               </property>
-               <item>
-                <widget class="QTableWidget" name="cellStatsTable">
-                 <property name="rowCount">
-                  <number>0</number>
-                 </property>
-                 <property name="columnCount">
-                  <number>2</number>
-                 </property>
-                 <property name="editTriggers">
-                  <set>QAbstractItemView::NoEditTriggers</set>
-                 </property>
-                 <property name="selectionMode">
-                  <enum>QAbstractItemView::NoSelection</enum>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="QGroupBox" name="attrInfoGroup">
-              <property name="title">
-               <string>属性信息</string>
+              <property name="wordWrap">
+               <bool>true</bool>
               </property>
-              <layout class="QVBoxLayout" name="attrInfoLayout">
-               <property name="spacing">
-                <number>4</number>
-               </property>
-               <item>
-                <widget class="QTreeWidget" name="attrTree">
-                 <property name="columnCount">
-                  <number>2</number>
-                 </property>
-                 <property name="editTriggers">
-                  <set>QAbstractItemView::NoEditTriggers</set>
-                 </property>
-                 <property name="selectionMode">
-                  <enum>QAbstractItemView::NoSelection</enum>
-                 </property>
-                </widget>
-               </item>
-              </layout>
+              <property name="styleSheet">
+               <string notr="true">color: white;</string>
+              </property>
              </widget>
             </item>
            </layout>
@@ -307,7 +139,6 @@
          </item>
         </layout>
        </widget>
-      </widget>
       <widget class="QSplitter" name="rightSplitter">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -343,101 +174,359 @@
            <property name="documentMode">
             <bool>true</bool>
            </property>
-           <widget class="QWidget" name="exportTab">
+           <widget class="QWidget" name="meshInfoTab">
             <attribute name="title">
-             <string>导出</string>
+             <string>网格信息</string>
             </attribute>
-            <layout class="QVBoxLayout" name="exportTabLayout">
+            <layout class="QVBoxLayout" name="meshInfoTabLayout">
              <property name="spacing">
               <number>6</number>
              </property>
              <item>
+              <widget class="QWidget" name="meshInfoWidget">
+               <layout class="QVBoxLayout" name="meshInfoLayout">
+                <property name="spacing">
+                 <number>6</number>
+                </property>
+                <item>
+                 <widget class="QGroupBox" name="basicInfoGroup">
+                  <property name="title">
+                   <string>基础信息</string>
+                  </property>
+                  <layout class="QFormLayout" name="basicInfoLayout">
+                   <property name="horizontalSpacing">
+                    <number>12</number>
+                   </property>
+                   <property name="verticalSpacing">
+                    <number>6</number>
+                   </property>
+                   <property name="formAlignment">
+                    <set>Qt::AlignRight|Qt::AlignTop</set>
+                   </property>
+                   <property name="labelAlignment">
+                    <set>Qt::AlignRight|Qt::AlignVCenter</set>
+                   </property>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="meshNameLabel">
+                     <property name="text">
+                      <string>名称</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QLabel" name="meshNameValue">
+                     <property name="text">
+                      <string>-</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="textInteractionFlags">
+                      <set>Qt::TextSelectableByMouse</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="meshTypeLabel">
+                     <property name="text">
+                      <string>类型</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QLabel" name="meshTypeValue">
+                     <property name="text">
+                      <string>-</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="textInteractionFlags">
+                      <set>Qt::TextSelectableByMouse</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="meshFormatLabel">
+                     <property name="text">
+                      <string>格式</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QLabel" name="meshFormatValue">
+                     <property name="text">
+                      <string>-</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="textInteractionFlags">
+                      <set>Qt::TextSelectableByMouse</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QLabel" name="meshSizeLabel">
+                     <property name="text">
+                      <string>大小</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="1">
+                    <widget class="QLabel" name="meshSizeValue">
+                     <property name="text">
+                      <string>-</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="textInteractionFlags">
+                      <set>Qt::TextSelectableByMouse</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="0">
+                    <widget class="QLabel" name="meshImportTimeLabel">
+                     <property name="text">
+                      <string>导入时间</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="1">
+                    <widget class="QLabel" name="meshImportTimeValue">
+                     <property name="text">
+                      <string>-</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="textInteractionFlags">
+                      <set>Qt::TextSelectableByMouse</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="0">
+                    <widget class="QLabel" name="meshDimensionLabel">
+                     <property name="text">
+                      <string>维度</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="5" column="1">
+                    <widget class="QLabel" name="meshDimensionValue">
+                     <property name="text">
+                      <string>-</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="textInteractionFlags">
+                      <set>Qt::TextSelectableByMouse</set>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="cellStatsGroup">
+                  <property name="title">
+                   <string>单元统计</string>
+                  </property>
+                  <layout class="QVBoxLayout" name="cellStatsLayout">
+                   <property name="spacing">
+                    <number>4</number>
+                   </property>
+                   <item>
+                    <widget class="QTableWidget" name="cellStatsTable">
+                     <property name="rowCount">
+                      <number>0</number>
+                     </property>
+                     <property name="columnCount">
+                      <number>2</number>
+                     </property>
+                     <property name="horizontalHeaderLabels">
+                      <stringlist>
+                       <string>类型</string>
+                       <string>数量</string>
+                      </stringlist>
+                     </property>
+                     <property name="editTriggers">
+                      <set>QAbstractItemView::NoEditTriggers</set>
+                     </property>
+                     <property name="selectionMode">
+                      <enum>QAbstractItemView::NoSelection</enum>
+                     </property>
+                     <property name="showGrid">
+                      <bool>true</bool>
+                     </property>
+                     <property name="gridStyle">
+                      <enum>Qt::DotLine</enum>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="attrInfoGroup">
+                  <property name="title">
+                   <string>属性信息</string>
+                  </property>
+                  <layout class="QVBoxLayout" name="attrInfoLayout">
+                   <property name="spacing">
+                    <number>4</number>
+                   </property>
+                   <item>
+                    <widget class="QTreeWidget" name="attrTree">
+                     <property name="columnCount">
+                      <number>2</number>
+                     </property>
+                     <property name="headerLabels">
+                      <stringlist>
+                       <string>属性类型</string>
+                       <string>属性名称</string>
+                      </stringlist>
+                     </property>
+                     <property name="editTriggers">
+                      <set>QAbstractItemView::NoEditTriggers</set>
+                     </property>
+                     <property name="selectionMode">
+                      <enum>QAbstractItemView::NoSelection</enum>
+                     </property>
+                     <property name="indentation">
+                      <number>20</number>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="exportTab">
+            <attribute name="title">
+             <string>导出配置</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="exportTabLayout">
+             <property name="spacing">
+              <number>8</number>
+             </property>
+             <item>
               <widget class="QLabel" name="exportTitleLabel">
                <property name="text">
-            <string>网格导出</string>
+                <string>网格导出</string>
                </property>
                <property name="alignment">
-            <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+                <set>Qt::AlignLeft|Qt::AlignVCenter</set>
                </property>
                <property name="wordWrap">
-            <bool>false</bool>
+                <bool>false</bool>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QComboBox" name="exportFormatCombo">
                <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Fixed"/>
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed"/>
+               </property>
+               <property name="toolTip">
+                <string>选择要导出的文件格式</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QGroupBox" name="meshTypeGroup">
-               <property name="title">
-            <string>网格类型</string>
-               </property>
-               <layout class="QVBoxLayout" name="meshTypeLayout">
-            <property name="spacing">
-             <number>4</number>
-            </property>
-            <item>
-             <widget class="QRadioButton" name="volumeMeshRadio">
-              <property name="text">
-               <string>体网格</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QRadioButton" name="surfaceMeshRadio">
-              <property name="text">
-               <string>面网格</string>
-              </property>
-             </widget>
-            </item>
+              <widget class="QWidget" name="meshTypeWidget">
+               <layout class="QHBoxLayout" name="meshTypeLayout">
+                <property name="spacing">
+                 <number>12</number>
+                </property>
+                <item>
+                 <widget class="QRadioButton" name="volumeMeshRadio">
+                  <property name="text">
+                   <string>体网格</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                  <property name="toolTip">
+                   <string>导出包含所有单元类型的完整网格</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="surfaceMeshRadio">
+                  <property name="text">
+                   <string>面网格</string>
+                  </property>
+                  <property name="toolTip">
+                   <string>仅导出网格的表面单元</string>
+                  </property>
+                 </widget>
+                </item>
                </layout>
               </widget>
              </item>
              <item>
               <widget class="QCheckBox" name="binaryExportCheck">
                <property name="text">
-            <string>二进制输出（取消为 ASCII）</string>
+                <string>二进制输出</string>
                </property>
                <property name="checked">
-            <bool>true</bool>
+                <bool>true</bool>
+               </property>
+               <property name="toolTip">
+                <string>二进制格式文件更小，加载更快；取消选择则使用 ASCII 格式</string>
                </property>
               </widget>
              </item>
              <item>
               <layout class="QHBoxLayout" name="exportPathLayout">
                <property name="spacing">
-            <number>6</number>
+                <number>8</number>
                </property>
                <item>
-            <widget class="QLineEdit" name="exportPathEdit">
-             <property name="placeholderText">
-              <string>选择导出路径...</string>
-             </property>
-            </widget>
+                <widget class="QLineEdit" name="exportPathEdit">
+                 <property name="placeholderText">
+                  <string>选择导出路径...</string>
+                 </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed"/>
+                 </property>
+                </widget>
                </item>
                <item>
-            <widget class="QToolButton" name="browseExportPathButton">
-             <property name="text">
-              <string>浏览</string>
-             </property>
-            </widget>
+                <widget class="QToolButton" name="browseExportPathButton">
+                 <property name="text">
+                  <string>浏览</string>
+                 </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed"/>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>60</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                </widget>
                </item>
               </layout>
              </item>
              <item>
               <widget class="QPushButton" name="exportNowButton">
                <property name="text">
-            <string>导出</string>
+                <string>导出</string>
                </property>
                <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Fixed"/>
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed"/>
+               </property>
+               <property name="toolTip">
+                <string>开始导出网格文件</string>
                </property>
               </widget>
              </item>
@@ -462,16 +551,90 @@
         </property>
         <layout class="QVBoxLayout" name="rightBottomLayout">
          <item>
-          <widget class="QLabel" name="rightBottomLabel">
-           <property name="text">
-            <string>导出终端区：显示打印导出信息等</string>
+          <widget class="QGroupBox" name="exportTerminalGroup">
+           <property name="title">
+            <string>导出终端</string>
            </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="wordWrap">
-            <bool>true</bool>
-           </property>
+           <layout class="QVBoxLayout" name="exportTerminalLayout">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QTextEdit" name="exportTerminalTextEdit">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="placeholderText">
+               <string>导出日志将显示在此处...</string>
+              </property>
+              <property name="lineWrapMode">
+               <enum>QTextEdit::WidgetWidth</enum>
+              </property>
+              <property name="verticalScrollBarPolicy">
+               <enum>Qt::ScrollBarAlwaysOn</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="exportTerminalButtonLayout">
+              <property name="spacing">
+               <number>6</number>
+              </property>
+              <item>
+               <widget class="QPushButton" name="copyLogButton">
+                <property name="text">
+                 <string>复制日志</string>
+                </property>
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed"/>
+                </property>
+                <property name="toolTip">
+                 <string>复制导出终端的日志内容到剪贴板</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="saveLogButton">
+                <property name="text">
+                 <string>保存日志</string>
+                </property>
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed"/>
+                </property>
+                <property name="toolTip">
+                 <string>将导出终端的日志内容保存到文件</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="clearLogButton">
+                <property name="text">
+                 <string>清空日志</string>
+                </property>
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed"/>
+                </property>
+                <property name="toolTip">
+                 <string>清空导出终端的日志内容</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
           </widget>
          </item>
         </layout>
@@ -484,13 +647,13 @@
       <property name="minimumSize">
        <size>
         <width>0</width>
-        <height>28</height>
+        <height>56</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
         <width>16777215</width>
-        <height>28</height>
+        <height>56</height>
        </size>
       </property>
       <property name="frameShape">

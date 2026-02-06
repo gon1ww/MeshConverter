@@ -81,6 +81,7 @@ add_executable(QtTransformApp ${SOURCES} ${HEADERS} ${UIS})
 # 链接依赖
 target_link_libraries(QtTransformApp PRIVATE 
     Qt6::Widgets 
+    Qt6::OpenGLWidgets
     Qt6::Concurrent
     MeshFormatConverter
     VTK::CommonCore
