@@ -20,8 +20,6 @@ add_executable(MeshReaderCellDataTest MeshReaderCellDataTest.cpp)
 target_link_libraries(MeshReaderCellDataTest PRIVATE MeshFormatConverter ${VTK_LIBRARIES})
 target_include_directories(MeshReaderCellDataTest PRIVATE ${VTK_INCLUDE_DIRS})
 
-
-
 # 命令行工具
 add_executable(meshconv CommandLineTool.cpp)
 target_link_libraries(meshconv PRIVATE MeshFormatConverter ${VTK_LIBRARIES})

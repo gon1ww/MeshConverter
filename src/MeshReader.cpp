@@ -2097,11 +2097,152 @@ bool MeshReader::readSU2(const std::string& filePath,
                         MeshData& meshData,
                         MeshErrorCode& errorCode,
                         std::string& errorMsg) {
-    // Implement SU2 format read logic here
-    // Temporarily return unimplemented
-    errorCode = MeshErrorCode::FORMAT_VERSION_INVALID;
-    errorMsg = "SU2 format read not implemented";
-    return false;
+    meshData.clear();
+
+    if (!fileExists(filePath)) {
+        errorCode = MeshErrorCode::FILE_NOT_EXIST;
+        errorMsg = "File does not exist: " + filePath;
+        return false;
+    }
+
+    std::ifstream file(filePath);
+    if (!file.is_open()) {
+        errorCode = MeshErrorCode::READ_FAILED;
+        errorMsg = "Failed to open file: " + filePath;
+        return false;
+    }
+
+    try {
+        std::string line;
+        int ndime = 3;
+        int nelem = 0;
+        int npoin = 0;
+
+        while (std::getline(file, line)) {
+            if (line.empty() || line[0] == '%') {
+                continue;
+            }
+
+            std::istringstream iss(line);
+            std::string key;
+            if (std::getline(iss, key, '=')) {
+                key.erase(0, key.find_first_not_of(" \t"));
+                key.erase(key.find_last_not_of(" \t") + 1);
+                
+                std::string valueStr;
+                if (std::getline(iss, valueStr)) {
+                    valueStr.erase(0, valueStr.find_first_not_of(" \t"));
+                    valueStr.erase(valueStr.find_last_not_of(" \t") + 1);
+                    
+                    if (key == "NDIME") {
+                        ndime = std::stoi(valueStr);
+                    } else if (key == "NELEM") {
+                        nelem = std::stoi(valueStr);
+                        meshData.cells.reserve(nelem);
+
+                        for (int i = 0; i < nelem; ++i) {
+                            if (!std::getline(file, line)) {
+                                errorCode = MeshErrorCode::READ_FAILED;
+                                errorMsg = "Unexpected end of file while reading elements";
+                                return false;
+                            }
+
+                            std::istringstream elemStream(line);
+                            int elemType;
+                            if (!(elemStream >> elemType)) {
+                                continue;
+                            }
+
+                            MeshData::Cell cell;
+                            switch (elemType) {
+                                case 1:
+                                    cell.type = VtkCellType::VERTEX;
+                                    break;
+                                case 3:
+                                    cell.type = VtkCellType::LINE;
+                                    break;
+                                case 5:
+                                    cell.type = VtkCellType::TRIANGLE;
+                                    break;
+                                case 9:
+                                    cell.type = VtkCellType::QUAD;
+                                    break;
+                                case 10:
+                                    cell.type = VtkCellType::TETRA;
+                                    break;
+                                case 12:
+                                    cell.type = VtkCellType::HEXAHEDRON;
+                                    break;
+                                case 13:
+                                    cell.type = VtkCellType::WEDGE;
+                                    break;
+                                case 14:
+                                    cell.type = VtkCellType::PYRAMID;
+                                    break;
+                                default:
+                                    continue;
+                            }
+
+                            int pointIndex;
+                            while (elemStream >> pointIndex) {
+                                cell.pointIndices.push_back(static_cast<uint32_t>(pointIndex));
+                            }
+
+                            if (!cell.pointIndices.empty()) {
+                                cell.pointIndices.pop_back();
+                            }
+
+                            meshData.cells.push_back(cell);
+                        }
+                    } else if (key == "NPOIN") {
+                        npoin = std::stoi(valueStr);
+                        meshData.points.reserve(npoin * 3);
+
+                        for (int i = 0; i < npoin; ++i) {
+                            if (!std::getline(file, line)) {
+                                errorCode = MeshErrorCode::READ_FAILED;
+                                errorMsg = "Unexpected end of file while reading points";
+                                return false;
+                            }
+
+                            std::istringstream pointStream(line);
+                            float x = 0.0f, y = 0.0f, z = 0.0f;
+                            int pointId;
+
+                            if (ndime == 2) {
+                                if (!(pointStream >> x >> y >> pointId)) {
+                                    continue;
+                                }
+                            } else {
+                                if (!(pointStream >> x >> y >> z >> pointId)) {
+                                    continue;
+                                }
+                            }
+
+                            meshData.points.push_back(x);
+                            meshData.points.push_back(y);
+                            meshData.points.push_back(z);
+                        }
+                    }
+                }
+            }
+        }
+
+        file.close();
+
+        meshData.calculateMetadata();
+        meshData.metadata.format = MeshFormat::SU2;
+
+        errorCode = MeshErrorCode::SUCCESS;
+        errorMsg = "";
+        return true;
+
+    } catch (const std::exception& e) {
+        file.close();
+        errorCode = MeshErrorCode::READ_FAILED;
+        errorMsg = std::string("Error reading SU2 file: ") + e.what();
+        return false;
+    }
 }
 
 /**
